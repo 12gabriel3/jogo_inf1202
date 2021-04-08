@@ -1,0 +1,1 @@
+  -LC:/Users/Gabriel/Documents/Jogo/allegro/lib  -lallegro_monolith libgraphics.a libinput.a libgeometry.a libcharacter.a libgraphics.a libgeometry.a libinput.a -lallegro_monolith -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

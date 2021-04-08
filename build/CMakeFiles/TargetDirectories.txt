@@ -1,0 +1,8 @@
+C:/Users/Gabriel/Documents/Jogo/build/CMakeFiles/edit_cache.dir
+C:/Users/Gabriel/Documents/Jogo/build/CMakeFiles/character.dir
+C:/Users/Gabriel/Documents/Jogo/build/CMakeFiles/graphics.dir
+C:/Users/Gabriel/Documents/Jogo/build/CMakeFiles/input.dir
+C:/Users/Gabriel/Documents/Jogo/build/CMakeFiles/geometry.dir
+C:/Users/Gabriel/Documents/Jogo/build/CMakeFiles/env.dir
+C:/Users/Gabriel/Documents/Jogo/build/CMakeFiles/OMago.dir
+C:/Users/Gabriel/Documents/Jogo/build/CMakeFiles/rebuild_cache.dir

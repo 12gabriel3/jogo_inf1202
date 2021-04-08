@@ -1,0 +1,7 @@
+Módulo de graficos:
+    Tipos:
+        SPRITE
+        ANIMATION
+    Funções:
+        carrega_sprites
+        
