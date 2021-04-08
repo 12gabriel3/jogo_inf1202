@@ -18,7 +18,7 @@
 typedef enum {MainCharacter, EnemySkeleton, EnemyOgre, EnemySpike} CHARACTER_TYPE; 
 
 typedef struct {
-    ANIMATION *current;
+    ANIMATION current;
     ANIMATION *anims;
     int alive;
     CHARACTER_TYPE type;
