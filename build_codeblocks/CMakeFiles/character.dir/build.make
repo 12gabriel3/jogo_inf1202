@@ -52,10 +52,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\paulo\Documents\jogo
+CMAKE_SOURCE_DIR = C:\Users\Gabriel\jogo_inf1202
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\paulo\Documents\jogo\build_codeblocks
+CMAKE_BINARY_DIR = C:\Users\Gabriel\jogo_inf1202\build_codeblocks
 
 # Include any dependencies generated for this target.
 include CMakeFiles/character.dir/depend.make
@@ -72,16 +72,16 @@ CMakeFiles/character.dir/src/character.c.obj: CMakeFiles/character.dir/flags.mak
 CMakeFiles/character.dir/src/character.c.obj: CMakeFiles/character.dir/includes_C.rsp
 CMakeFiles/character.dir/src/character.c.obj: ../src/character.c
 CMakeFiles/character.dir/src/character.c.obj: CMakeFiles/character.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/character.dir/src/character.c.obj"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/character.dir/src/character.c.obj -MF CMakeFiles\character.dir\src\character.c.obj.d -o CMakeFiles\character.dir\src\character.c.obj -c C:\Users\paulo\Documents\jogo\src\character.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/character.dir/src/character.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/character.dir/src/character.c.obj -MF CMakeFiles\character.dir\src\character.c.obj.d -o CMakeFiles\character.dir\src\character.c.obj -c C:\Users\Gabriel\jogo_inf1202\src\character.c
 
 CMakeFiles/character.dir/src/character.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/character.dir/src/character.c.i"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\paulo\Documents\jogo\src\character.c > CMakeFiles\character.dir\src\character.c.i
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Gabriel\jogo_inf1202\src\character.c > CMakeFiles\character.dir\src\character.c.i
 
 CMakeFiles/character.dir/src/character.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/character.dir/src/character.c.s"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\paulo\Documents\jogo\src\character.c -o CMakeFiles\character.dir\src\character.c.s
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Gabriel\jogo_inf1202\src\character.c -o CMakeFiles\character.dir\src\character.c.s
 
 # Object files for target character
 character_OBJECTS = \
@@ -93,7 +93,7 @@ character_EXTERNAL_OBJECTS =
 libcharacter.a: CMakeFiles/character.dir/src/character.c.obj
 libcharacter.a: CMakeFiles/character.dir/build.make
 libcharacter.a: CMakeFiles/character.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libcharacter.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libcharacter.a"
 	$(CMAKE_COMMAND) -P CMakeFiles\character.dir\cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\character.dir\link.txt --verbose=$(VERBOSE)
 
@@ -106,6 +106,6 @@ CMakeFiles/character.dir/clean:
 .PHONY : CMakeFiles/character.dir/clean
 
 CMakeFiles/character.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\paulo\Documents\jogo C:\Users\paulo\Documents\jogo C:\Users\paulo\Documents\jogo\build_codeblocks C:\Users\paulo\Documents\jogo\build_codeblocks C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles\character.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Gabriel\jogo_inf1202 C:\Users\Gabriel\jogo_inf1202 C:\Users\Gabriel\jogo_inf1202\build_codeblocks C:\Users\Gabriel\jogo_inf1202\build_codeblocks C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles\character.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/character.dir/depend
 

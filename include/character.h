@@ -14,6 +14,7 @@
 
 
 #define ANIMS_PER_CHAR 4
+#define HITBOX_MARGIN_PX 2
 
 typedef enum {MainCharacter, EnemySkeleton, EnemyOgre, EnemySpike} CHARACTER_TYPE; 
 
@@ -22,7 +23,8 @@ typedef struct {
     ANIMATION *anims;
     int alive;
     CHARACTER_TYPE type;
-    COORD pos, direction;
+    COORD pos_graphic, direction;
+    HITBOX hitbox;
     float speed;
     int flags;
 }CHARACTER;

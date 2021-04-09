@@ -52,10 +52,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Gabriel\Documents\Jogo
+CMAKE_SOURCE_DIR = C:\Users\Gabriel\jogo_inf1202
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Gabriel\Documents\Jogo\build
+CMAKE_BINARY_DIR = C:\Users\Gabriel\jogo_inf1202\build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/env.dir/depend.make
@@ -72,16 +72,16 @@ CMakeFiles/env.dir/src/env.c.obj: CMakeFiles/env.dir/flags.make
 CMakeFiles/env.dir/src/env.c.obj: CMakeFiles/env.dir/includes_C.rsp
 CMakeFiles/env.dir/src/env.c.obj: ../src/env.c
 CMakeFiles/env.dir/src/env.c.obj: CMakeFiles/env.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Gabriel\Documents\Jogo\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/env.dir/src/env.c.obj"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/env.dir/src/env.c.obj -MF CMakeFiles\env.dir\src\env.c.obj.d -o CMakeFiles\env.dir\src\env.c.obj -c C:\Users\Gabriel\Documents\Jogo\src\env.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Gabriel\jogo_inf1202\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/env.dir/src/env.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/env.dir/src/env.c.obj -MF CMakeFiles\env.dir\src\env.c.obj.d -o CMakeFiles\env.dir\src\env.c.obj -c C:\Users\Gabriel\jogo_inf1202\src\env.c
 
 CMakeFiles/env.dir/src/env.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/env.dir/src/env.c.i"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Gabriel\Documents\Jogo\src\env.c > CMakeFiles\env.dir\src\env.c.i
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Gabriel\jogo_inf1202\src\env.c > CMakeFiles\env.dir\src\env.c.i
 
 CMakeFiles/env.dir/src/env.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/env.dir/src/env.c.s"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Gabriel\Documents\Jogo\src\env.c -o CMakeFiles\env.dir\src\env.c.s
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Gabriel\jogo_inf1202\src\env.c -o CMakeFiles\env.dir\src\env.c.s
 
 # Object files for target env
 env_OBJECTS = \
@@ -93,7 +93,7 @@ env_EXTERNAL_OBJECTS =
 libenv.a: CMakeFiles/env.dir/src/env.c.obj
 libenv.a: CMakeFiles/env.dir/build.make
 libenv.a: CMakeFiles/env.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Gabriel\Documents\Jogo\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libenv.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Gabriel\jogo_inf1202\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libenv.a"
 	$(CMAKE_COMMAND) -P CMakeFiles\env.dir\cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\env.dir\link.txt --verbose=$(VERBOSE)
 
@@ -106,6 +106,6 @@ CMakeFiles/env.dir/clean:
 .PHONY : CMakeFiles/env.dir/clean
 
 CMakeFiles/env.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Gabriel\Documents\Jogo C:\Users\Gabriel\Documents\Jogo C:\Users\Gabriel\Documents\Jogo\build C:\Users\Gabriel\Documents\Jogo\build C:\Users\Gabriel\Documents\Jogo\build\CMakeFiles\env.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Gabriel\jogo_inf1202 C:\Users\Gabriel\jogo_inf1202 C:\Users\Gabriel\jogo_inf1202\build C:\Users\Gabriel\jogo_inf1202\build C:\Users\Gabriel\jogo_inf1202\build\CMakeFiles\env.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/env.dir/depend
 

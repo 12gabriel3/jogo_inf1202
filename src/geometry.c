@@ -10,8 +10,8 @@ COORD dist_from_to(COORD from, COORD to){
 }
 
 void add_to_vector(COORD *dst, float x, float y){
-    (*dst).x += x;
-    (*dst).y += y;
+    dst->x += x;
+    dst->y += y;
 }
 
 float module(COORD v){
@@ -21,9 +21,13 @@ float module(COORD v){
 void normalize(COORD *v){
     float m = module(*v);
     if(m){
-        (*v).x /= m;
-        (*v).y /= m;
+        v->x /= m;
+        v->y /= m;
     }
+}
+
+int detect_collision(HITBOX h1, HITBOX h2){
+    
 }
 
 COORD input_to_vector(KEYBOARD_STATE input){
@@ -39,13 +43,20 @@ COORD input_to_vector(KEYBOARD_STATE input){
 }
 
 void add_vector(COORD *pos, COORD delta, float speed){
-    (*pos).x += delta.x * speed;
-    (*pos).y += delta.y * speed;
+    if(module(delta) > 0.5){
+        pos->x += delta.x * speed;
+        pos->y += delta.y * speed;
+    }
 }
 
 
 COORD direction_from_to(COORD from, COORD to){
     COORD dist = dist_from_to(from, to);
-    normalize(&dist);
+    if(module(dist) > 1){
+        normalize(&dist);
+    } else {
+        dist.x = 0;
+        dist.y = 0;
+    }
     return dist;
 }

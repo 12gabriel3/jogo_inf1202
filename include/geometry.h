@@ -32,6 +32,8 @@ COORD input_to_vector(KEYBOARD_STATE input);
 void add_vector(COORD *pos, COORD delta, float speed);
 
 
+float module(COORD v);
+
 COORD direction_from_to(COORD from, COORD to);
 
 

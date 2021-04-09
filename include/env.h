@@ -8,7 +8,8 @@ typedef struct {
     COORD pos;
     ANIMATION *anim;
     SPRITE *sprite;
-
+    int collidable;
+    HITBOX hitbox;
 } PROP;
 
 #endif

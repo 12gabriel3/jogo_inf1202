@@ -8,34 +8,34 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="C:/Users/paulo/Documents/jogo/build_codeblocks"/>
+				<Option working_dir="C:/Users/Gabriel/jogo_inf1202/build_codeblocks"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="C:/Users/paulo/Documents/jogo/build_codeblocks"/>
+				<Option working_dir="C:/Users/Gabriel/jogo_inf1202/build_codeblocks"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="character">
-				<Option output="C:/Users/paulo/Documents/jogo/build_codeblocks/libcharacter.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/paulo/Documents/jogo/build_codeblocks"/>
+				<Option output="C:/Users/Gabriel/jogo_inf1202/build_codeblocks/libcharacter.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Gabriel/jogo_inf1202/build_codeblocks"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/paulo/Documents/jogo/allegro/include"/>
-					<Add directory="C:/Users/paulo/Documents/jogo/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/allegro/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/include"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
@@ -44,21 +44,21 @@
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 character"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 character"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="character/fast">
-				<Option output="C:/Users/paulo/Documents/jogo/build_codeblocks/libcharacter.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/paulo/Documents/jogo/build_codeblocks"/>
+				<Option output="C:/Users/Gabriel/jogo_inf1202/build_codeblocks/libcharacter.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Gabriel/jogo_inf1202/build_codeblocks"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/paulo/Documents/jogo/allegro/include"/>
-					<Add directory="C:/Users/paulo/Documents/jogo/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/allegro/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/include"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
@@ -67,21 +67,21 @@
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 character/fast"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 character/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="graphics">
-				<Option output="C:/Users/paulo/Documents/jogo/build_codeblocks/libgraphics.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/paulo/Documents/jogo/build_codeblocks"/>
+				<Option output="C:/Users/Gabriel/jogo_inf1202/build_codeblocks/libgraphics.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Gabriel/jogo_inf1202/build_codeblocks"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/paulo/Documents/jogo/allegro/include"/>
-					<Add directory="C:/Users/paulo/Documents/jogo/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/allegro/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/include"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
@@ -90,21 +90,21 @@
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 graphics"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 graphics"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="graphics/fast">
-				<Option output="C:/Users/paulo/Documents/jogo/build_codeblocks/libgraphics.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/paulo/Documents/jogo/build_codeblocks"/>
+				<Option output="C:/Users/Gabriel/jogo_inf1202/build_codeblocks/libgraphics.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Gabriel/jogo_inf1202/build_codeblocks"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/paulo/Documents/jogo/allegro/include"/>
-					<Add directory="C:/Users/paulo/Documents/jogo/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/allegro/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/include"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
@@ -113,21 +113,21 @@
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 graphics/fast"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 graphics/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="input">
-				<Option output="C:/Users/paulo/Documents/jogo/build_codeblocks/libinput.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/paulo/Documents/jogo/build_codeblocks"/>
+				<Option output="C:/Users/Gabriel/jogo_inf1202/build_codeblocks/libinput.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Gabriel/jogo_inf1202/build_codeblocks"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/paulo/Documents/jogo/allegro/include"/>
-					<Add directory="C:/Users/paulo/Documents/jogo/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/allegro/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/include"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
@@ -136,21 +136,21 @@
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 input"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 input"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="input/fast">
-				<Option output="C:/Users/paulo/Documents/jogo/build_codeblocks/libinput.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/paulo/Documents/jogo/build_codeblocks"/>
+				<Option output="C:/Users/Gabriel/jogo_inf1202/build_codeblocks/libinput.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Gabriel/jogo_inf1202/build_codeblocks"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/paulo/Documents/jogo/allegro/include"/>
-					<Add directory="C:/Users/paulo/Documents/jogo/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/allegro/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/include"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
@@ -159,21 +159,21 @@
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 input/fast"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 input/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="geometry">
-				<Option output="C:/Users/paulo/Documents/jogo/build_codeblocks/libgeometry.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/paulo/Documents/jogo/build_codeblocks"/>
+				<Option output="C:/Users/Gabriel/jogo_inf1202/build_codeblocks/libgeometry.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Gabriel/jogo_inf1202/build_codeblocks"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/paulo/Documents/jogo/allegro/include"/>
-					<Add directory="C:/Users/paulo/Documents/jogo/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/allegro/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/include"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
@@ -182,21 +182,21 @@
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 geometry"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 geometry"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="geometry/fast">
-				<Option output="C:/Users/paulo/Documents/jogo/build_codeblocks/libgeometry.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/paulo/Documents/jogo/build_codeblocks"/>
+				<Option output="C:/Users/Gabriel/jogo_inf1202/build_codeblocks/libgeometry.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Gabriel/jogo_inf1202/build_codeblocks"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/paulo/Documents/jogo/allegro/include"/>
-					<Add directory="C:/Users/paulo/Documents/jogo/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/allegro/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/include"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
@@ -205,21 +205,21 @@
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 geometry/fast"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 geometry/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="env">
-				<Option output="C:/Users/paulo/Documents/jogo/build_codeblocks/libenv.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/paulo/Documents/jogo/build_codeblocks"/>
+				<Option output="C:/Users/Gabriel/jogo_inf1202/build_codeblocks/libenv.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Gabriel/jogo_inf1202/build_codeblocks"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/paulo/Documents/jogo/allegro/include"/>
-					<Add directory="C:/Users/paulo/Documents/jogo/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/allegro/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/include"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
@@ -228,21 +228,21 @@
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 env"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 env"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="env/fast">
-				<Option output="C:/Users/paulo/Documents/jogo/build_codeblocks/libenv.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/paulo/Documents/jogo/build_codeblocks"/>
+				<Option output="C:/Users/Gabriel/jogo_inf1202/build_codeblocks/libenv.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Gabriel/jogo_inf1202/build_codeblocks"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/paulo/Documents/jogo/allegro/include"/>
-					<Add directory="C:/Users/paulo/Documents/jogo/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/allegro/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/include"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
@@ -251,21 +251,21 @@
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 env/fast"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 env/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="OMago">
-				<Option output="C:/Users/paulo/Documents/jogo/build_codeblocks/OMago.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/paulo/Documents/jogo/build_codeblocks"/>
+				<Option output="C:/Users/Gabriel/jogo_inf1202/build_codeblocks/OMago.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Gabriel/jogo_inf1202/build_codeblocks"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/paulo/Documents/jogo/allegro/include"/>
-					<Add directory="C:/Users/paulo/Documents/jogo/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/allegro/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/include"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
@@ -274,21 +274,21 @@
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 OMago"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 OMago"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="OMago/fast">
-				<Option output="C:/Users/paulo/Documents/jogo/build_codeblocks/OMago.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/paulo/Documents/jogo/build_codeblocks"/>
+				<Option output="C:/Users/Gabriel/jogo_inf1202/build_codeblocks/OMago.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Gabriel/jogo_inf1202/build_codeblocks"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:/Users/paulo/Documents/jogo/allegro/include"/>
-					<Add directory="C:/Users/paulo/Documents/jogo/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/allegro/include"/>
+					<Add directory="C:/Users/Gabriel/jogo_inf1202/include"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
@@ -297,42 +297,42 @@
 					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 OMago/fast"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 OMago/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="C:/Users/paulo/Documents/jogo/build_codeblocks"/>
+				<Option working_dir="C:/Users/Gabriel/jogo_inf1202/build_codeblocks"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Gabriel/jogo_inf1202/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/paulo/Documents/jogo/src/character.c">
+		<Unit filename="C:/Users/Gabriel/jogo_inf1202/src/character.c">
 			<Option target="character"/>
 		</Unit>
-		<Unit filename="C:/Users/paulo/Documents/jogo/src/env.c">
+		<Unit filename="C:/Users/Gabriel/jogo_inf1202/src/env.c">
 			<Option target="env"/>
 		</Unit>
-		<Unit filename="C:/Users/paulo/Documents/jogo/src/geometry.c">
+		<Unit filename="C:/Users/Gabriel/jogo_inf1202/src/geometry.c">
 			<Option target="geometry"/>
 		</Unit>
-		<Unit filename="C:/Users/paulo/Documents/jogo/src/graphics.c">
+		<Unit filename="C:/Users/Gabriel/jogo_inf1202/src/graphics.c">
 			<Option target="graphics"/>
 		</Unit>
-		<Unit filename="C:/Users/paulo/Documents/jogo/src/input.c">
+		<Unit filename="C:/Users/Gabriel/jogo_inf1202/src/input.c">
 			<Option target="input"/>
 		</Unit>
-		<Unit filename="C:/Users/paulo/Documents/jogo/src/main.c">
+		<Unit filename="C:/Users/Gabriel/jogo_inf1202/src/main.c">
 			<Option target="OMago"/>
 		</Unit>
-		<Unit filename="C:/Users/paulo/Documents/jogo/CMakeLists.txt">
+		<Unit filename="C:/Users/Gabriel/jogo_inf1202/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

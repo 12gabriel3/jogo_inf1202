@@ -50,23 +50,23 @@ int main(){
 
     // Personagem principal
     mage.anims = get_anim(anims, "wizzard_m");
-    mage.current = mage.anims;
+    mage.current = mage.anims[0];
     mage.speed = 3;
-    mage.pos = pos_mage;
+    mage.pos_graphic = pos_mage;
     mage.alive = 1;
     mage.type = MainCharacter;
 
     demon.anims = get_anim(anims, "big_demon");
-    demon.current = demon.anims;
+    demon.current = demon.anims[0];
     demon.speed = 1;
-    demon.pos = pos_demon;
+    demon.pos_graphic = pos_demon;
     demon.alive = 1;
     demon.type = EnemyOgre;
 
     zombie.anims = get_anim(anims, "big_zombie");
-    zombie.current = zombie.anims;
+    zombie.current = zombie.anims[0];
     zombie.speed = 2;
-    zombie.pos = pos_zombie;
+    zombie.pos_graphic= pos_demon;
     zombie.alive = 1;
     zombie.type = EnemyOgre;
 
@@ -75,9 +75,9 @@ int main(){
         if(event.type == ALLEGRO_EVENT_TIMER){
             al_clear_to_color(al_map_rgb_f(0, 0, 0));
 
-            update_character(&mage, key_pressed, mage.pos);
-            update_character(&demon, key_pressed, mage.pos);
-            update_character(&zombie, key_pressed, mage.pos);
+            update_character(&mage, key_pressed, mage.hitbox.center);
+            update_character(&demon, key_pressed, mage.hitbox.center);
+            update_character(&zombie, key_pressed, mage.hitbox.center);
             al_flip_display();
         }
         set_kb_state(&key_pressed, event);

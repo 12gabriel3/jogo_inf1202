@@ -52,10 +52,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\paulo\Documents\jogo
+CMAKE_SOURCE_DIR = C:\Users\Gabriel\jogo_inf1202
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\paulo\Documents\jogo\build_codeblocks
+CMAKE_BINARY_DIR = C:\Users\Gabriel\jogo_inf1202\build_codeblocks
 
 # Include any dependencies generated for this target.
 include CMakeFiles/geometry.dir/depend.make
@@ -72,16 +72,16 @@ CMakeFiles/geometry.dir/src/geometry.c.obj: CMakeFiles/geometry.dir/flags.make
 CMakeFiles/geometry.dir/src/geometry.c.obj: CMakeFiles/geometry.dir/includes_C.rsp
 CMakeFiles/geometry.dir/src/geometry.c.obj: ../src/geometry.c
 CMakeFiles/geometry.dir/src/geometry.c.obj: CMakeFiles/geometry.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/geometry.dir/src/geometry.c.obj"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/geometry.dir/src/geometry.c.obj -MF CMakeFiles\geometry.dir\src\geometry.c.obj.d -o CMakeFiles\geometry.dir\src\geometry.c.obj -c C:\Users\paulo\Documents\jogo\src\geometry.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/geometry.dir/src/geometry.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/geometry.dir/src/geometry.c.obj -MF CMakeFiles\geometry.dir\src\geometry.c.obj.d -o CMakeFiles\geometry.dir\src\geometry.c.obj -c C:\Users\Gabriel\jogo_inf1202\src\geometry.c
 
 CMakeFiles/geometry.dir/src/geometry.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/geometry.dir/src/geometry.c.i"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\paulo\Documents\jogo\src\geometry.c > CMakeFiles\geometry.dir\src\geometry.c.i
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Gabriel\jogo_inf1202\src\geometry.c > CMakeFiles\geometry.dir\src\geometry.c.i
 
 CMakeFiles/geometry.dir/src/geometry.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/geometry.dir/src/geometry.c.s"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\paulo\Documents\jogo\src\geometry.c -o CMakeFiles\geometry.dir\src\geometry.c.s
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Gabriel\jogo_inf1202\src\geometry.c -o CMakeFiles\geometry.dir\src\geometry.c.s
 
 # Object files for target geometry
 geometry_OBJECTS = \
@@ -93,7 +93,7 @@ geometry_EXTERNAL_OBJECTS =
 libgeometry.a: CMakeFiles/geometry.dir/src/geometry.c.obj
 libgeometry.a: CMakeFiles/geometry.dir/build.make
 libgeometry.a: CMakeFiles/geometry.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libgeometry.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libgeometry.a"
 	$(CMAKE_COMMAND) -P CMakeFiles\geometry.dir\cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\geometry.dir\link.txt --verbose=$(VERBOSE)
 
@@ -106,6 +106,6 @@ CMakeFiles/geometry.dir/clean:
 .PHONY : CMakeFiles/geometry.dir/clean
 
 CMakeFiles/geometry.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\paulo\Documents\jogo C:\Users\paulo\Documents\jogo C:\Users\paulo\Documents\jogo\build_codeblocks C:\Users\paulo\Documents\jogo\build_codeblocks C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles\geometry.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Gabriel\jogo_inf1202 C:\Users\Gabriel\jogo_inf1202 C:\Users\Gabriel\jogo_inf1202\build_codeblocks C:\Users\Gabriel\jogo_inf1202\build_codeblocks C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles\geometry.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/geometry.dir/depend
 

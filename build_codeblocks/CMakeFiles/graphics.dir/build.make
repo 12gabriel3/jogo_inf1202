@@ -52,10 +52,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\paulo\Documents\jogo
+CMAKE_SOURCE_DIR = C:\Users\Gabriel\jogo_inf1202
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\paulo\Documents\jogo\build_codeblocks
+CMAKE_BINARY_DIR = C:\Users\Gabriel\jogo_inf1202\build_codeblocks
 
 # Include any dependencies generated for this target.
 include CMakeFiles/graphics.dir/depend.make
@@ -72,16 +72,16 @@ CMakeFiles/graphics.dir/src/graphics.c.obj: CMakeFiles/graphics.dir/flags.make
 CMakeFiles/graphics.dir/src/graphics.c.obj: CMakeFiles/graphics.dir/includes_C.rsp
 CMakeFiles/graphics.dir/src/graphics.c.obj: ../src/graphics.c
 CMakeFiles/graphics.dir/src/graphics.c.obj: CMakeFiles/graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/graphics.dir/src/graphics.c.obj"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/graphics.dir/src/graphics.c.obj -MF CMakeFiles\graphics.dir\src\graphics.c.obj.d -o CMakeFiles\graphics.dir\src\graphics.c.obj -c C:\Users\paulo\Documents\jogo\src\graphics.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/graphics.dir/src/graphics.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/graphics.dir/src/graphics.c.obj -MF CMakeFiles\graphics.dir\src\graphics.c.obj.d -o CMakeFiles\graphics.dir\src\graphics.c.obj -c C:\Users\Gabriel\jogo_inf1202\src\graphics.c
 
 CMakeFiles/graphics.dir/src/graphics.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/graphics.dir/src/graphics.c.i"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\paulo\Documents\jogo\src\graphics.c > CMakeFiles\graphics.dir\src\graphics.c.i
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Gabriel\jogo_inf1202\src\graphics.c > CMakeFiles\graphics.dir\src\graphics.c.i
 
 CMakeFiles/graphics.dir/src/graphics.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/graphics.dir/src/graphics.c.s"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\paulo\Documents\jogo\src\graphics.c -o CMakeFiles\graphics.dir\src\graphics.c.s
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Gabriel\jogo_inf1202\src\graphics.c -o CMakeFiles\graphics.dir\src\graphics.c.s
 
 # Object files for target graphics
 graphics_OBJECTS = \
@@ -93,7 +93,7 @@ graphics_EXTERNAL_OBJECTS =
 libgraphics.a: CMakeFiles/graphics.dir/src/graphics.c.obj
 libgraphics.a: CMakeFiles/graphics.dir/build.make
 libgraphics.a: CMakeFiles/graphics.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libgraphics.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libgraphics.a"
 	$(CMAKE_COMMAND) -P CMakeFiles\graphics.dir\cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\graphics.dir\link.txt --verbose=$(VERBOSE)
 
@@ -106,6 +106,6 @@ CMakeFiles/graphics.dir/clean:
 .PHONY : CMakeFiles/graphics.dir/clean
 
 CMakeFiles/graphics.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\paulo\Documents\jogo C:\Users\paulo\Documents\jogo C:\Users\paulo\Documents\jogo\build_codeblocks C:\Users\paulo\Documents\jogo\build_codeblocks C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles\graphics.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Gabriel\jogo_inf1202 C:\Users\Gabriel\jogo_inf1202 C:\Users\Gabriel\jogo_inf1202\build_codeblocks C:\Users\Gabriel\jogo_inf1202\build_codeblocks C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles\graphics.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/graphics.dir/depend
 

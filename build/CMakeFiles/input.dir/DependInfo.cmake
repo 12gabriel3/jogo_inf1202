@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/Gabriel/Documents/Jogo/src/input.c" "CMakeFiles/input.dir/src/input.c.obj" "gcc" "CMakeFiles/input.dir/src/input.c.obj.d"
+  "C:/Users/Gabriel/jogo_inf1202/src/input.c" "CMakeFiles/input.dir/src/input.c.obj" "gcc" "CMakeFiles/input.dir/src/input.c.obj.d"
   )
 
 # Targets to which this target links.
