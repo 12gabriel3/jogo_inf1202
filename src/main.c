@@ -3,10 +3,6 @@
 #include <geometry.h>
 #include <character.h>
 
-#define SPEED 3
-#define ANIM_FRAMES 10
-#define SPEED_DIAGONAL (SPEED*0.70710678118)
-
 int main(){
     ALLEGRO_DISPLAY *display;
     ALLEGRO_TIMER *timer;
@@ -52,21 +48,21 @@ int main(){
     mage.anims = get_anim(anims, "wizzard_m");
     mage.current = mage.anims[0];
     mage.speed = 3;
-    mage.pos_graphic = pos_mage;
+    set_character_hitbox(&mage);
     mage.alive = 1;
     mage.type = MainCharacter;
 
     demon.anims = get_anim(anims, "big_demon");
     demon.current = demon.anims[0];
     demon.speed = 1;
-    demon.pos_graphic = pos_demon;
+    set_character_hitbox(&demon);
     demon.alive = 1;
     demon.type = EnemyOgre;
 
     zombie.anims = get_anim(anims, "big_zombie");
     zombie.current = zombie.anims[0];
     zombie.speed = 2;
-    zombie.pos_graphic= pos_demon;
+    set_character_hitbox(&zombie);
     zombie.alive = 1;
     zombie.type = EnemyOgre;
 

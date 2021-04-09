@@ -14,7 +14,7 @@
 
 
 #define ANIMS_PER_CHAR 4
-#define HITBOX_MARGIN_PX 2
+#define HITBOX_MARGIN_PX 0
 
 typedef enum {MainCharacter, EnemySkeleton, EnemyOgre, EnemySpike} CHARACTER_TYPE; 
 
@@ -33,5 +33,6 @@ typedef struct {
 
 void update_character(CHARACTER *character, KEYBOARD_STATE kb_state, COORD pos_main);
 
+void set_character_hitbox(CHARACTER *character);
 
 #endif

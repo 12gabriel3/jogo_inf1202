@@ -12,11 +12,9 @@ void move_character(CHARACTER *character){
         set_anim(get_anim(character->anims, "_run"), character);
         if(character->direction.x < 0) character->flags |= ALLEGRO_FLIP_HORIZONTAL;
         else if(character->direction.x > 0) character->flags &= ~ALLEGRO_FLIP_HORIZONTAL;
-    }
-    else set_anim(get_anim(character->anims, "_idle"), character);
-    if(module(character->direction) > 0.9){
         add_vector(&character->hitbox.center, character->direction, character->speed); 
     }
+    else set_anim(get_anim(character->anims, "_idle"), character);
 }
 
 void update_character(CHARACTER *character, KEYBOARD_STATE kb_input, COORD pos_main){
@@ -42,4 +40,13 @@ void update_character(CHARACTER *character, KEYBOARD_STATE kb_input, COORD pos_m
                        character->pos_graphic.y + character->hitbox.center.y, 
                        character->flags);
     }
+}
+
+
+void set_character_hitbox(CHARACTER *character){
+    character->hitbox.iscircle = 1;
+    character->hitbox.radius = al_get_bitmap_width(character->current.frames[0].bitmap)/2;
+    character->pos_graphic.x = -character->hitbox.radius;
+    character->pos_graphic.y = -al_get_bitmap_height(character->current.frames[0].bitmap) + 
+                               character->hitbox.radius + HITBOX_MARGIN_PX;
 }
