@@ -60,3 +60,62 @@ COORD direction_from_to(COORD from, COORD to){
     }
     return dist;
 }
+
+int cr_collides(HITBOX c, HITBOX r){
+    int collides = 0;
+    if(
+        // Se colide na coordenada y
+        abs(c.center.y - r.center.y) < (c.radius + r.halfheight) &&
+        // e na coordenada x
+        abs(c.center.x - r.center.x) < (c.radius + r.halfwidth)
+    ) collides = 1;
+    return collides;
+}
+
+int cc_collides(HITBOX c1, HITBOX c2){
+    int collides = 0;
+    // Se a distancia for menor que a soma dos modulos, esta colidindo
+    if(module(dist_from_to(c1.center, c2.center)) < (c1.radius + c2.radius)) collides = 1;
+    return collides;
+}
+
+COORD cc_colision_normal(HITBOX c1, HITBOX c2){
+    COORD normal;
+    if(cc_collides(c1, c2)){
+        normal = dist_from_to(c2.center, c1.center);
+        normalize(&normal);
+    }
+    return normal;
+}
+
+float dot_prod(COORD v1, COORD v2){
+    return v1.x * v2.x + v1.y * v2.y;
+}
+
+COORD multiply(float scalar, COORD v){
+    COORD mult;
+    mult.x = v.x * scalar;
+    mult.y = v.y * scalar;
+    return mult;
+}
+
+void subtract(COORD *v1, COORD v2){
+    v1->x -= v2.x;
+    v1->y -= v2.y;
+}
+
+void vec_sum(COORD *v1, COORD v2){
+    v1->x += v2.x;
+    v1->y += v2.y;
+}
+
+COORD project_a_on_b(COORD a, COORD b){
+    float dot = dot_prod(a, b) / dot_prod(b, b);
+    if(dot < 0) dot = 0;
+    // Projeção = (a . b) / (b . b) * b
+    return multiply(dot, b);
+}
+
+void rm_direction(COORD direction, COORD *vector){
+    subtract(vector, project_a_on_b(*vector, direction));
+}

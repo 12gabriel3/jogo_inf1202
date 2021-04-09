@@ -31,10 +31,22 @@ COORD input_to_vector(KEYBOARD_STATE input);
  */
 void add_vector(COORD *pos, COORD delta, float speed);
 
+int cr_collides(HITBOX c, HITBOX r);
+
+int cc_collides(HITBOX c1, HITBOX c2);
 
 float module(COORD v);
 
 COORD direction_from_to(COORD from, COORD to);
 
+COORD cc_colision_normal(HITBOX c1, HITBOX c2);
+
+void rm_direction(COORD direction, COORD *vector);
+
+void vec_sum(COORD *v1, COORD v2);
+
+COORD multiply(float scalar, COORD v);
+
+void normalize(COORD *v);
 
 #endif

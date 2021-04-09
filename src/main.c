@@ -11,7 +11,7 @@ int main(){
     ALLEGRO_KEYBOARD_STATE *ret_state;
     SPRITE sprites[SPRITES_MAX];
     ANIMATION anims[ANIMS_MAX];
-    CHARACTER mage, demon, zombie;
+    CHARACTER characters[3];
     COORD pos_mage = {320, 240};
     COORD pos_demon = {0, 0};
     COORD pos_zombie = {600, 450};
@@ -45,35 +45,38 @@ int main(){
     carrega_sprites(sprites, anims, "../img");
 
     // Personagem principal
-    mage.anims = get_anim(anims, "wizzard_m");
-    mage.current = mage.anims[0];
-    mage.speed = 3;
-    set_character_hitbox(&mage);
-    mage.alive = 1;
-    mage.type = MainCharacter;
+    characters[0].anims = get_anim(anims, "wizzard_m");
+    characters[0].current = characters[0].anims[0];
+    characters[0].speed = 3;
+    set_character_hitbox(&characters[0]);
+    characters[0].alive = 1;
+    characters[0].type = MainCharacter;
 
-    demon.anims = get_anim(anims, "big_demon");
-    demon.current = demon.anims[0];
-    demon.speed = 1;
-    set_character_hitbox(&demon);
-    demon.alive = 1;
-    demon.type = EnemyOgre;
+    characters[1].anims = get_anim(anims, "big_demon");
+    characters[1].current = characters[1].anims[0];
+    characters[1].speed = 1;
+    set_character_hitbox(&characters[1]);
+    characters[1].alive = 1;
+    characters[1].type = EnemyOgre;
+    characters[1].hitbox.center.x = 600;
+    characters[1].hitbox.center.y = 400;
 
-    zombie.anims = get_anim(anims, "big_zombie");
-    zombie.current = zombie.anims[0];
-    zombie.speed = 2;
-    set_character_hitbox(&zombie);
-    zombie.alive = 1;
-    zombie.type = EnemyOgre;
+    characters[2].anims = get_anim(anims, "big_zombie");
+    characters[2].current = characters[2].anims[0];
+    characters[2].speed = 2;
+    set_character_hitbox(&characters[2]);
+    characters[2].alive = 1;
+    characters[2].type = EnemyOgre;
+    characters[2].hitbox.center.x = 600;
+    characters[2].hitbox.center.y = 0;
 
     do{
         al_wait_for_event(queue, &event);
         if(event.type == ALLEGRO_EVENT_TIMER){
             al_clear_to_color(al_map_rgb_f(0, 0, 0));
-
-            update_character(&mage, key_pressed, mage.hitbox.center);
-            update_character(&demon, key_pressed, mage.hitbox.center);
-            update_character(&zombie, key_pressed, mage.hitbox.center);
+            update_character(&characters[0], key_pressed, characters);
+            update_character(&characters[1], key_pressed, characters);
+            update_character(&characters[2], key_pressed, characters);
             al_flip_display();
         }
         set_kb_state(&key_pressed, event);

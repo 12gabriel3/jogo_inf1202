@@ -5,11 +5,10 @@
 #include <graphics.h>
 
 typedef struct {
-    COORD pos;
     ANIMATION *anim;
     SPRITE *sprite;
-    int collidable;
     HITBOX hitbox;
-} PROP;
+    COORD pos_graphic;
+} COLLIDABLE;
 
 #endif
