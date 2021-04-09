@@ -7,8 +7,9 @@
 typedef struct {
     ANIMATION *anim;
     SPRITE *sprite;
-    HITBOX hitbox;
     COORD pos_graphic;
-} COLLIDABLE;
+} ENV;
+
+void update_env(ENV *col);
 
 #endif

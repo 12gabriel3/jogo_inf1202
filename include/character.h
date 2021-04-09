@@ -31,7 +31,7 @@ typedef struct {
 
 
 
-void update_character(CHARACTER *character, KEYBOARD_STATE kb_state, CHARACTER *characters);
+void update_character(CHARACTER *character, KEYBOARD_STATE kb_input, CHARACTER *characters, LINE l);
 
 void set_character_hitbox(CHARACTER *character);
 

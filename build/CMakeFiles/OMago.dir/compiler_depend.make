@@ -95,7 +95,9 @@ CMakeFiles/OMago.dir/src/main.c.obj: ../src/main.c \
   ../allegro/include/allegro5/allegro_image.h \
   ../include/input.h \
   ../include/geometry.h \
-  ../include/character.h
+  ../include/character.h \
+  ../allegro/include/allegro5/allegro_primitives.h \
+  ../allegro/include/allegro5/allegro_color.h
 
 
 ../src/main.c:
@@ -287,3 +289,7 @@ C:/MinGW/x86_64-w64-mingw32/include/assert.h:
 ../include/geometry.h:
 
 ../include/character.h:
+
+../allegro/include/allegro5/allegro_primitives.h:
+
+../allegro/include/allegro5/allegro_color.h:

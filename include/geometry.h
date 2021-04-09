@@ -9,10 +9,14 @@ typedef struct {
 } COORD;
 
 typedef struct{
-    int iscircle;
     COORD center;
-    float halfheight, halfwidth, radius;
+    float r;
 } HITBOX;
+
+
+typedef struct{
+    COORD p1, p2, normal;
+} LINE;
 
 /**
  * @brief Converte um estado do teclado em um vetor de movimento
@@ -31,7 +35,7 @@ COORD input_to_vector(KEYBOARD_STATE input);
  */
 void add_vector(COORD *pos, COORD delta, float speed);
 
-int cr_collides(HITBOX c, HITBOX r);
+COORD lc_collision_normal(HITBOX c, LINE l);
 
 int cc_collides(HITBOX c1, HITBOX c2);
 
@@ -39,7 +43,7 @@ float module(COORD v);
 
 COORD direction_from_to(COORD from, COORD to);
 
-COORD cc_colision_normal(HITBOX c1, HITBOX c2);
+COORD cc_collision_normal(HITBOX c1, HITBOX c2);
 
 void rm_direction(COORD direction, COORD *vector);
 

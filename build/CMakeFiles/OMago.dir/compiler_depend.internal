@@ -97,4 +97,6 @@ CMakeFiles/OMago.dir/src/main.c.obj
  C:/Users/Gabriel/jogo_inf1202/include/input.h
  C:/Users/Gabriel/jogo_inf1202/include/geometry.h
  C:/Users/Gabriel/jogo_inf1202/include/character.h
+ C:/Users/Gabriel/jogo_inf1202/allegro/include/allegro5/allegro_primitives.h
+ C:/Users/Gabriel/jogo_inf1202/allegro/include/allegro5/allegro_color.h
 

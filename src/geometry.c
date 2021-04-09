@@ -26,10 +26,6 @@ void normalize(COORD *v){
     }
 }
 
-int detect_collision(HITBOX h1, HITBOX h2){
-    
-}
-
 COORD input_to_vector(KEYBOARD_STATE input){
     COORD output_vector;
     output_vector.x = 0;
@@ -61,28 +57,55 @@ COORD direction_from_to(COORD from, COORD to){
     return dist;
 }
 
-int cr_collides(HITBOX c, HITBOX r){
-    int collides = 0;
-    if(
-        // Se colide na coordenada y
-        abs(c.center.y - r.center.y) < (c.radius + r.halfheight) &&
-        // e na coordenada x
-        abs(c.center.x - r.center.x) < (c.radius + r.halfwidth)
-    ) collides = 1;
-    return collides;
+float shortest_to_line(LINE l, COORD p){
+    // https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line
+    float n1 = (l.p2.x - l.p1.x) * (l.p1.y - p.y);
+    float n2 = (l.p1.x - p.x) * (l.p2.y - l.p1.y);
+    float d1 = pow(l.p2.x - l.p1.x, 2);
+    float d2 = pow(l.p2.y - l.p1.y, 2);
+    return fabs(n1 - n2) / pow(d1 + d2, 0.5);
 }
 
-int cc_collides(HITBOX c1, HITBOX c2){
-    int collides = 0;
-    // Se a distancia for menor que a soma dos modulos, esta colidindo
-    if(module(dist_from_to(c1.center, c2.center)) < (c1.radius + c2.radius)) collides = 1;
-    return collides;
+COORD lc_collision_normal(HITBOX c, LINE l){
+    COORD normal = {0, 0};
+    HITBOX corner;
+    corner.r = 0;
+    // reta horizontal
+    if(l.p1.y == l.p2.y){
+        // Se o centro do circulo estiver no meio da reta
+        if(c.center.x > l.p1.x && c.center.x < l.p2.x){
+            if(shortest_to_line(l, c.center) < c.r) normal = l.normal;
+        } else if(c.center.x <= l.p1.x){
+            corner.center = l.p1;
+            normal = cc_collision_normal(corner, c);
+        } else {
+            corner.center = l.p2;
+            normal = cc_collision_normal(corner, c);
+        }
+    }
+    // reta vertical
+    else{
+        // Se o centro do circulo estiver no meio da reta
+        if(c.center.y > l.p1.y && c.center.y < l.p2.y){
+            if(shortest_to_line(l, c.center) < c.r) normal = l.normal;
+        } else if(c.center.y <= l.p1.y){
+            corner.center = l.p1;
+            normal = cc_collision_normal(corner, c);
+        } else {
+            corner.center = l.p2;
+            normal = cc_collision_normal(corner, c);
+        }
+    }
+    return normal;
 }
 
-COORD cc_colision_normal(HITBOX c1, HITBOX c2){
+COORD cc_collision_normal(HITBOX c1, HITBOX c2){
     COORD normal;
-    if(cc_collides(c1, c2)){
-        normal = dist_from_to(c2.center, c1.center);
+    normal = dist_from_to(c2.center, c1.center);
+    if(module(normal) > c1.r + c2.r) {
+        normal.x = 0;
+        normal.y = 0;
+    } else {
         normalize(&normal);
     }
     return normal;

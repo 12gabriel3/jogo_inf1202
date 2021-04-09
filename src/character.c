@@ -8,24 +8,23 @@ void set_anim(ANIMATION *new_anim, CHARACTER *character){
 }
 
 void move_character(CHARACTER *character){
-    float mod = module(character->direction);
-    normalize(&character->direction);
-    if(mod > 0.1) {
+    if(module(character->direction) * character->speed > 0.2) {
         set_anim(get_anim(character->anims, "_run"), character);
-        if(character->direction.x < 0) {
+        if(character->direction.x < -0.1) {
             character->flags |= ALLEGRO_FLIP_HORIZONTAL;
         }
-        else if(character->direction.x > 0) {
+        else if(character->direction.x > 0.1) {
             character->flags &= ~ALLEGRO_FLIP_HORIZONTAL;
         }
-        add_vector(&character->hitbox.center, character->direction, character->speed * mod); 
+        add_vector(&character->hitbox.center, character->direction, character->speed); 
     }
     else set_anim(get_anim(character->anims, "_idle"), character);
 }
 
-void update_character(CHARACTER *character, KEYBOARD_STATE kb_input, CHARACTER *characters){
+void update_character(CHARACTER *character, KEYBOARD_STATE kb_input, CHARACTER *characters, LINE l){
     if(character->alive){
         HITBOX next_pos = character->hitbox;
+        COORD normal;
         int i;
         switch(character->type){
             case MainCharacter:
@@ -43,11 +42,14 @@ void update_character(CHARACTER *character, KEYBOARD_STATE kb_input, CHARACTER *
         vec_sum(&next_pos.center, multiply(character->speed, character->direction));
         for(i = 0; i < 3; i++){
             if(character != &characters[i]){
-                if(cc_collides(next_pos, characters[i].hitbox))
-                    rm_direction(cc_colision_normal(characters[i].hitbox, next_pos), &character->direction);
+                normal = cc_collision_normal(characters[i].hitbox, next_pos);
+                if(normal.x || normal.y)
+                    rm_direction(normal, &character->direction);
             }
-            
         }
+        normal = lc_collision_normal(character->hitbox, l);
+        if(normal.x || normal.y)
+            rm_direction(normal, &character->direction);
         
         move_character(character);
         al_draw_bitmap(animate(&character->current), 
@@ -59,9 +61,8 @@ void update_character(CHARACTER *character, KEYBOARD_STATE kb_input, CHARACTER *
 
 
 void set_character_hitbox(CHARACTER *character){
-    character->hitbox.iscircle = 1;
-    character->hitbox.radius = al_get_bitmap_width(character->current.frames[0].bitmap)/2;
-    character->pos_graphic.x = -character->hitbox.radius;
+    character->hitbox.r = al_get_bitmap_width(character->current.frames[0].bitmap)/2;
+    character->pos_graphic.x = -character->hitbox.r;
     character->pos_graphic.y = -al_get_bitmap_height(character->current.frames[0].bitmap) + 
-                               character->hitbox.radius + HITBOX_MARGIN_PX;
+                               character->hitbox.r + HITBOX_MARGIN_PX;
 }
