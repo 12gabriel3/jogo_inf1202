@@ -32,6 +32,8 @@ void update_character(CHARACTER *character, KEYBOARD_STATE kb_input, CHARACTER *
                 break;
             case EnemySkeleton:
                 character->direction = direction_from_to(character->hitbox.center, characters[0].hitbox.center);
+                if(module(dist_from_to(character->hitbox.center, characters[0].hitbox.center)) < 200) character->speed = 2.7;
+                else character->speed = 1;
                 break;
             case EnemyOgre:
                 character->direction = direction_from_to(character->hitbox.center, characters[0].hitbox.center);

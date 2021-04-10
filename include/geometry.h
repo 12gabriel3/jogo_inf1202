@@ -43,6 +43,8 @@ float module(COORD v);
 
 COORD direction_from_to(COORD from, COORD to);
 
+COORD dist_from_to(COORD from, COORD to);
+
 COORD cc_collision_normal(HITBOX c1, HITBOX c2);
 
 void rm_direction(COORD direction, COORD *vector);

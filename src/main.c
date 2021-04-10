@@ -64,7 +64,7 @@ int main(){
     characters[1].speed = 1;
     set_character_hitbox(&characters[1]);
     characters[1].alive = 1;
-    characters[1].type = EnemyOgre;
+    characters[1].type = EnemySkeleton;
     characters[1].hitbox.center.x = 600;
     characters[1].hitbox.center.y = 400;
 
