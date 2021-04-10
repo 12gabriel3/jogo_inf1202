@@ -7,7 +7,7 @@
 
 #ifndef CHARACTER_H
 #define CHARACTER_H
-
+// Conteúdo da biblioteca aqui
 #include <geometry.h>
 #include <graphics.h>
 #include <input.h>
