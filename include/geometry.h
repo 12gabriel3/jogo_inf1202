@@ -79,4 +79,6 @@ void set_circle_box(CIRCLE *c);
 
 void set_line_box(LINE *l);
 
+void rm_direction_scaled(COORD direction, COORD *vector);
+
 #endif

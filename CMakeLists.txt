@@ -28,4 +28,4 @@ target_link_libraries(level geometry env character)
 
 # add the executable
 add_executable(OMago ./src/main.c)
-target_link_libraries(OMago allegro_monolith graphics input geometry character)
+target_link_libraries(OMago allegro_monolith graphics input geometry character level)

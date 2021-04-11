@@ -156,6 +156,8 @@ int sweep_and_prune(BOX b1, BOX b2){
 
 COORD cc_collision_normal(CIRCLE c1, CIRCLE c2){
     COORD normal= {0, 0};
+    COORD distance;
+    float moddistance;
     BOX b1, b2;
     b1.center = c1.bounds.center;
     b1.halfheight = c1.r;
@@ -164,12 +166,15 @@ COORD cc_collision_normal(CIRCLE c1, CIRCLE c2){
     b2.halfheight = c2.r;
     b2.halfwidth = c2.r;
     if(sweep_and_prune(b1, b2)){
-        normal = dist_from_to(c2.bounds.center, c1.bounds.center);
-        if(module(normal) > c1.r + c2.r) {
+        distance = dist_from_to(c2.bounds.center, c1.bounds.center);
+        moddistance = module(distance);
+        if(moddistance > c1.r + c2.r) {
             normal.x = 0;
             normal.y = 0;
         } else {
+            normal = distance;
             normalize(&normal);
+            normal = multiply( c1.r + c2.r - moddistance, normal);
         }
     }
     return normal;
