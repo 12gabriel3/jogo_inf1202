@@ -42,7 +42,7 @@ void update_character(CHARACTER *character, KEYBOARD_STATE kb_input, CHARACTER *
                 break;
         }
         vec_sum(&next_pos.bounds.center, multiply(character->speed, character->direction));
-        for(i = 0; i < 3; i++){
+        for(i = 0; i < 20; i++){
             if(character != &characters[i]){
                 normal = cc_collision_normal(characters[i].hitbox, next_pos);
                 if(normal.x || normal.y)

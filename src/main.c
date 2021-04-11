@@ -15,14 +15,11 @@ int main(){
     ALLEGRO_KEYBOARD_STATE *ret_state;
     SPRITE sprites[SPRITES_MAX];
     ANIMATION anims[ANIMS_MAX];
-    CHARACTER characters[3];
-    COORD pos_mage = {320, 240};
-    COORD pos_demon = {0, 0};
-    COORD pos_zombie = {600, 450};
+    CHARACTER characters[20];
     KEYBOARD_STATE key_pressed;
     ALLEGRO_MONITOR_INFO monitor;
     LINE wall_south;
-    
+    int i;
     if(!al_init()){
         return -1;
     }
@@ -59,23 +56,27 @@ int main(){
     characters[0].alive = 1;
     characters[0].type = MainCharacter;
 
-    characters[1].anims = get_anim(anims, "big_demon");
-    characters[1].current = characters[1].anims[0];
-    characters[1].speed = 1;
-    set_character_hitbox(&characters[1]);
-    characters[1].alive = 1;
-    characters[1].type = EnemySkeleton;
-    characters[1].hitbox.bounds.center.x = 600;
-    characters[1].hitbox.bounds.center.y = 400;
+    for(i = 1; i < 10; i++){
+        characters[i].anims = get_anim(anims, "big_demon");
+        characters[i].current = characters[i].anims[0];
+        characters[i].speed = 1;
+        set_character_hitbox(&characters[i]);
+        characters[i].alive = 1;
+        characters[i].type = EnemySkeleton;
+        characters[i].hitbox.bounds.center.x = 600;
+        characters[i].hitbox.bounds.center.y = i * 50 - 100;
+    }
 
-    characters[2].anims = get_anim(anims, "big_zombie");
-    characters[2].current = characters[2].anims[0];
-    characters[2].speed = 2;
-    set_character_hitbox(&characters[2]);
-    characters[2].alive = 1;
-    characters[2].type = EnemyOgre;
-    characters[2].hitbox.bounds.center.x = 600;
-    characters[2].hitbox.bounds.center.y = 0;
+    for(i = 10; i < 20; i++){
+        characters[i].anims = get_anim(anims, "big_zombie");
+        characters[i].current = characters[i].anims[0];
+        characters[i].speed = 2;
+        set_character_hitbox(&characters[i]);
+        characters[i].alive = 1;
+        characters[i].type = EnemyOgre;
+        characters[i].hitbox.bounds.center.x = 300;
+        characters[i].hitbox.bounds.center.y = i * 50 - 900;
+    }
 
     // muro do sul
     wall_south.p1.x = 0;
@@ -89,9 +90,9 @@ int main(){
         al_wait_for_event(queue, &event);
         if(event.type == ALLEGRO_EVENT_TIMER){
             al_clear_to_color(al_map_rgb_f(0, 0, 0));
-            update_character(&characters[0], key_pressed, characters, wall_south);
-            update_character(&characters[1], key_pressed, characters, wall_south);
-            update_character(&characters[2], key_pressed, characters, wall_south);
+            for(i = 0; i < 20; i++){
+                update_character(&characters[i], key_pressed, characters, wall_south);
+            }
             al_draw_line(0, 400, 600, 500, al_color_name("red"), 1);
             al_flip_display();
         }
