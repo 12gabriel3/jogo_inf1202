@@ -101,16 +101,18 @@ COORD invert(COORD c){
     return inv;
 }
 
-COORD lc_collision_normal(HITBOX c, LINE l){
+COORD lc_collision_normal(CIRCLE c, LINE l){
     COORD normal = {0, 0};
-    HITBOX corner;
-    corner.r = 0;
-    // Se for obtuso
-    if(obtuse_angle(c.center, l.p1, l.p2, &corner.center)){
-        normal = cc_collision_normal(corner, c);
-    }
-    else if(shortest_to_line(l, c.center) < c.r){
-        normal = invert(l.normal);
+    CIRCLE corner;
+    if(sweep_and_prune(c.bounds, l.bounds)){
+        corner.r = 0;
+        // Se for obtuso
+        if(obtuse_angle(c.bounds.center, l.p1, l.p2, &corner.bounds.center)){
+            normal = cc_collision_normal(corner, c);
+        }
+        else if(shortest_to_line(l, c.bounds.center) < c.r){
+            normal = invert(l.normal);
+        }
     }
     return normal;
 }
@@ -132,14 +134,43 @@ void set_line_normal(LINE *l, char direction){
     l->normal = change_direction(l->normal, direction);
 }
 
-COORD cc_collision_normal(HITBOX c1, HITBOX c2){
-    COORD normal;
-    normal = dist_from_to(c2.center, c1.center);
-    if(module(normal) > c1.r + c2.r) {
-        normal.x = 0;
-        normal.y = 0;
-    } else {
-        normalize(&normal);
+void set_line_box(LINE *l){
+    l->bounds.halfwidth = fmod(l->p1.x - l->p2.x, 1.0)/2;
+    l->bounds.halfheight = fmod(l->p1.x - l->p2.x, 1.0)/2;
+    l->bounds.center = multiply(0.5, dist_from_to(l->p1, l->p2));
+    vec_sum(&l->bounds.center, l->p1);
+}
+
+void set_circle_box(CIRCLE *c){
+    c->bounds.halfheight = c->r;
+    c->bounds.halfwidth = c->r;
+}
+
+int sweep_and_prune(BOX b1, BOX b2){
+    int possible_collision = 0;
+    if(fmod(b1.center.x - b2.center.x, 1.0) <= b1.halfwidth + b2.halfwidth &&
+       fmod(b1.center.y - b2.center.y, 1.0) <= b1.halfheight + b2.halfheight)
+       possible_collision = 1;
+    return possible_collision;
+}
+
+COORD cc_collision_normal(CIRCLE c1, CIRCLE c2){
+    COORD normal= {0, 0};
+    BOX b1, b2;
+    b1.center = c1.bounds.center;
+    b1.halfheight = c1.r;
+    b1.halfwidth = c1.r;
+    b2.center = c2.bounds.center;
+    b2.halfheight = c2.r;
+    b2.halfwidth = c2.r;
+    if(sweep_and_prune(b1, b2)){
+        normal = dist_from_to(c2.bounds.center, c1.bounds.center);
+        if(module(normal) > c1.r + c2.r) {
+            normal.x = 0;
+            normal.y = 0;
+        } else {
+            normalize(&normal);
+        }
     }
     return normal;
 }

@@ -10,19 +10,29 @@
 #define LEFT (1 << 2)
 #define RIGHT (1 << 3)
 
+
+
+
 typedef struct {
     float x, y;
 } COORD;
 
 typedef struct{
     COORD center;
+    float halfheight, halfwidth;
+} BOX;
+
+typedef struct{
     float r;
-} HITBOX;
+    BOX bounds;
+} CIRCLE;
 
 
 typedef struct{
     COORD p1, p2, normal;
+    BOX bounds;
 } LINE;
+
 
 /**
  * @brief Converte um estado do teclado em um vetor de movimento
@@ -41,9 +51,9 @@ COORD input_to_vector(KEYBOARD_STATE input);
  */
 void add_vector(COORD *pos, COORD delta, float speed);
 
-COORD lc_collision_normal(HITBOX c, LINE l);
+COORD lc_collision_normal(CIRCLE c, LINE l);
 
-int cc_collides(HITBOX c1, HITBOX c2);
+int cc_collides(CIRCLE c1, CIRCLE c2);
 
 float module(COORD v);
 
@@ -51,7 +61,7 @@ COORD direction_from_to(COORD from, COORD to);
 
 COORD dist_from_to(COORD from, COORD to);
 
-COORD cc_collision_normal(HITBOX c1, HITBOX c2);
+COORD cc_collision_normal(CIRCLE c1, CIRCLE c2);
 
 void rm_direction(COORD direction, COORD *vector);
 
@@ -61,6 +71,12 @@ COORD multiply(float scalar, COORD v);
 
 void normalize(COORD *v);
 
+int sweep_and_prune(BOX b1, BOX b2);
+
 void set_line_normal(LINE *l, char direction);
+
+void set_circle_box(CIRCLE *c);
+
+void set_line_box(LINE *l);
 
 #endif

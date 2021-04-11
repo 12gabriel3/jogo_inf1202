@@ -65,8 +65,8 @@ int main(){
     set_character_hitbox(&characters[1]);
     characters[1].alive = 1;
     characters[1].type = EnemySkeleton;
-    characters[1].hitbox.center.x = 600;
-    characters[1].hitbox.center.y = 400;
+    characters[1].hitbox.bounds.center.x = 600;
+    characters[1].hitbox.bounds.center.y = 400;
 
     characters[2].anims = get_anim(anims, "big_zombie");
     characters[2].current = characters[2].anims[0];
@@ -74,8 +74,8 @@ int main(){
     set_character_hitbox(&characters[2]);
     characters[2].alive = 1;
     characters[2].type = EnemyOgre;
-    characters[2].hitbox.center.x = 600;
-    characters[2].hitbox.center.y = 0;
+    characters[2].hitbox.bounds.center.x = 600;
+    characters[2].hitbox.bounds.center.y = 0;
 
     // muro do sul
     wall_south.p1.x = 0;
@@ -83,6 +83,7 @@ int main(){
     wall_south.p2.x = 600;
     wall_south.p2.y = 500;
     set_line_normal(&wall_south, UP | RIGHT);
+    set_line_box(&wall_south);
 
     do{
         al_wait_for_event(queue, &event);

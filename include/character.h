@@ -24,7 +24,7 @@ typedef struct {
     int alive;
     CHARACTER_TYPE type;
     COORD pos_graphic, direction;
-    HITBOX hitbox;
+    CIRCLE hitbox;
     float speed;
     int flags;
 }CHARACTER;
