@@ -4,6 +4,12 @@
 
 #include <input.h>
 
+
+#define UP (1 << 0)
+#define DOWN (1 << 1)
+#define LEFT (1 << 2)
+#define RIGHT (1 << 3)
+
 typedef struct {
     float x, y;
 } COORD;
@@ -54,5 +60,7 @@ void vec_sum(COORD *v1, COORD v2);
 COORD multiply(float scalar, COORD v);
 
 void normalize(COORD *v);
+
+void set_line_normal(LINE *l, char direction);
 
 #endif

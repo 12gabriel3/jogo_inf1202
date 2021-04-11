@@ -45,11 +45,11 @@ int obtuse_angle(COORD p0, COORD p1, COORD p2, COORD *point){
     float p1p2sq = p1p2 * p1p2;
     if(p0p1sq > p1p2sq + p0p2sq){
         is_obtuse = 1;
-        *point = p1;
+        *point = p2;
     }
     else if(p0p2sq > p1p2sq + p0p1sq){
         is_obtuse = 1;
-        *point = p2;
+        *point = p1;
     }
     return is_obtuse;
 }
@@ -107,12 +107,29 @@ COORD lc_collision_normal(HITBOX c, LINE l){
     corner.r = 0;
     // Se for obtuso
     if(obtuse_angle(c.center, l.p1, l.p2, &corner.center)){
-        normal = cc_collision_normal(c, corner);
+        normal = cc_collision_normal(corner, c);
     }
     else if(shortest_to_line(l, c.center) < c.r){
         normal = invert(l.normal);
     }
     return normal;
+}
+
+COORD change_direction(COORD v, char direction){
+    if(direction & UP) v.y = -fmod(v.y, 1.0);
+    else v.y = fmod(v.y, 1.0);
+    if(direction & LEFT) v.x = -fmod(v.x, 1.0);
+    else v.x = fmod(v.x, 1.0);
+    return v;
+}
+
+void set_line_normal(LINE *l, char direction){
+    float aux;
+    l->normal = direction_from_to(l->p1, l->p2);
+    aux = l->normal.x;
+    l->normal.x = l->normal.y;
+    l->normal.y = aux;
+    l->normal = change_direction(l->normal, direction);
 }
 
 COORD cc_collision_normal(HITBOX c1, HITBOX c2){

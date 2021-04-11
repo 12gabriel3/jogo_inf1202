@@ -78,12 +78,11 @@ int main(){
     characters[2].hitbox.center.y = 0;
 
     // muro do sul
-    wall_south.normal.y = -1;
-    wall_south.normal.x = 0;
     wall_south.p1.x = 0;
-    wall_south.p2.x = 600;
     wall_south.p1.y = 400;
-    wall_south.p2.y = 400;
+    wall_south.p2.x = 600;
+    wall_south.p2.y = 500;
+    set_line_normal(&wall_south, UP | RIGHT);
 
     do{
         al_wait_for_event(queue, &event);
@@ -92,7 +91,7 @@ int main(){
             update_character(&characters[0], key_pressed, characters, wall_south);
             update_character(&characters[1], key_pressed, characters, wall_south);
             update_character(&characters[2], key_pressed, characters, wall_south);
-            al_draw_line(0, 400, 600, 400, al_color_name("red"), 1);
+            al_draw_line(0, 400, 600, 500, al_color_name("red"), 1);
             al_flip_display();
         }
         set_kb_state(&key_pressed, event);
