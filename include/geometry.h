@@ -27,7 +27,7 @@ typedef struct{
 COORD input_to_vector(KEYBOARD_STATE input);
 
 /**
- * @brief Soma a um vetor um outro vetor de tamanho mod(delta) * speed
+ * @brief Soma a um vetor a um outro vetor de tamanho mod(delta) * speed
  * 
  * @param pos o vetor que será modificado
  * @param delta um vetor que representa o movimento

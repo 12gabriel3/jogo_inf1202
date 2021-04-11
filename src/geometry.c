@@ -26,6 +26,34 @@ void normalize(COORD *v){
     }
 }
 
+/**
+ * @brief Diz se o trianglulo é obtuso e indica qual o ponto
+ * 
+ * @param p0 as coordenadas do personagem
+ * @param p1 as coordenadas de um dos vertices
+ * @param p2 as coordenadas de um dos vertices
+ * @param point as coordenadas do ponto obtuso
+ * @return indica se é ou não obtuso
+ */
+int obtuse_angle(COORD p0, COORD p1, COORD p2, COORD *point){
+    int is_obtuse = 0;
+    float p0p1 = module(dist_from_to(p0, p1));
+    float p0p2 = module(dist_from_to(p0, p2));
+    float p1p2 = module(dist_from_to(p1, p2));
+    float p0p1sq = p0p1 * p0p1;
+    float p0p2sq = p0p2 * p0p2;
+    float p1p2sq = p1p2 * p1p2;
+    if(p0p1sq > p1p2sq + p0p2sq){
+        is_obtuse = 1;
+        *point = p1;
+    }
+    else if(p0p2sq > p1p2sq + p0p1sq){
+        is_obtuse = 1;
+        *point = p2;
+    }
+    return is_obtuse;
+}
+
 COORD input_to_vector(KEYBOARD_STATE input){
     COORD output_vector;
     output_vector.x = 0;
@@ -66,35 +94,23 @@ float shortest_to_line(LINE l, COORD p){
     return fabs(n1 - n2) / pow(d1 + d2, 0.5);
 }
 
+COORD invert(COORD c){
+    COORD inv;
+    inv.x = -c.x;
+    inv.y = -c.y;
+    return inv;
+}
+
 COORD lc_collision_normal(HITBOX c, LINE l){
     COORD normal = {0, 0};
     HITBOX corner;
     corner.r = 0;
-    // reta horizontal
-    if(l.p1.y == l.p2.y){
-        // Se o centro do circulo estiver no meio da reta
-        if(c.center.x > l.p1.x && c.center.x < l.p2.x){
-            if(shortest_to_line(l, c.center) < c.r) normal = l.normal;
-        } else if(c.center.x <= l.p1.x){
-            corner.center = l.p1;
-            normal = cc_collision_normal(corner, c);
-        } else {
-            corner.center = l.p2;
-            normal = cc_collision_normal(corner, c);
-        }
+    // Se for obtuso
+    if(obtuse_angle(c.center, l.p1, l.p2, &corner.center)){
+        normal = cc_collision_normal(c, corner);
     }
-    // reta vertical
-    else{
-        // Se o centro do circulo estiver no meio da reta
-        if(c.center.y > l.p1.y && c.center.y < l.p2.y){
-            if(shortest_to_line(l, c.center) < c.r) normal = l.normal;
-        } else if(c.center.y <= l.p1.y){
-            corner.center = l.p1;
-            normal = cc_collision_normal(corner, c);
-        } else {
-            corner.center = l.p2;
-            normal = cc_collision_normal(corner, c);
-        }
+    else if(shortest_to_line(l, c.center) < c.r){
+        normal = invert(l.normal);
     }
     return normal;
 }

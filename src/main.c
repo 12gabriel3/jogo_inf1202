@@ -77,9 +77,8 @@ int main(){
     characters[2].hitbox.center.x = 600;
     characters[2].hitbox.center.y = 0;
 
-
     // muro do sul
-    wall_south.normal.y = 1;
+    wall_south.normal.y = -1;
     wall_south.normal.x = 0;
     wall_south.p1.x = 0;
     wall_south.p2.x = 600;
