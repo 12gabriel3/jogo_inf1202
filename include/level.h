@@ -21,7 +21,7 @@ typedef struct {
 
 void set_characters_intention(LEVEL *level);
 
-void remove_collision(LEVEL *level);
+int remove_collision(LEVEL *level);
 
 void update_characters(LEVEL *level);
 

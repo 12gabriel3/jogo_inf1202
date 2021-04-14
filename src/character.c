@@ -16,9 +16,9 @@ void move_character(CHARACTER *character){
         else if(character->direction.x > 0.1) {
             character->flags &= ~ALLEGRO_FLIP_HORIZONTAL;
         }
-        add_vector(&character->hitbox.bounds.center, character->direction, character->speed); 
     }
     else set_anim(get_anim(character->anims, "_idle"), character);
+    add_vector(&character->hitbox.bounds.center, character->direction, character->speed); 
 }
 
 void set_character_hitbox(CHARACTER *character){

@@ -104,14 +104,17 @@ COORD invert(COORD c){
 COORD lc_collision_normal(CIRCLE c, LINE l){
     COORD normal = {0, 0};
     CIRCLE corner;
+    float distance;
     if(sweep_and_prune(c.bounds, l.bounds)){
         corner.r = 0;
         // Se for obtuso
         if(obtuse_angle(c.bounds.center, l.p1, l.p2, &corner.bounds.center)){
             normal = cc_collision_normal(corner, c);
-        }
-        else if(shortest_to_line(l, c.bounds.center) < c.r){
-            normal = invert(l.normal);
+        } else {
+            distance = shortest_to_line(l, c.bounds.center);
+            if(distance < c.r){
+                normal = multiply(distance - c.r, l.normal);
+            }
         }
     }
     return normal;
