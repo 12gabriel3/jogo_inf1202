@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/Gabriel/jogo_inf1202/src/graphics.c" "CMakeFiles/graphics.dir/src/graphics.c.obj" "gcc" "CMakeFiles/graphics.dir/src/graphics.c.obj.d"
+  "C:/Users/paulo/Documents/jogo/src/graphics.c" "CMakeFiles/graphics.dir/src/graphics.c.obj" "gcc" "CMakeFiles/graphics.dir/src/graphics.c.obj.d"
   )
 
 # Targets to which this target links.
