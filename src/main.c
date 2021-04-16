@@ -101,9 +101,12 @@ int main()
     characters[2].hitbox.center.x = 600;
     characters[2].hitbox.center.y = 0;
 
+<<<<<<< HEAD
     //add retas para colisao
+=======
+>>>>>>> 52f7b32 (Generaliza colisao de retas para qualquer angulo)
     // muro do sul
-    wall_south.normal.y = 1;
+    wall_south.normal.y = -1;
     wall_south.normal.x = 0;
     //cordenadas
     wall_south.p1.x = 0;

@@ -7,7 +7,7 @@
 
 #ifndef CHARACTER_H
 #define CHARACTER_H
-// Conteúdo da biblioteca aqui
+
 #include <geometry.h>
 #include <graphics.h>
 #include <input.h>
@@ -26,7 +26,7 @@ typedef struct {
     COORD pos_graphic, direction;
     HITBOX hitbox;
     float speed;
-    int flags, frames_same_dir;
+    int flags;
 }CHARACTER;
 
 
