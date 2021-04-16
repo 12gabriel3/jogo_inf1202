@@ -181,6 +181,19 @@ env/fast:
 .PHONY : env/fast
 
 #=============================================================================
+# Target rules for targets named level
+
+# Build rule for target.
+level: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 level
+.PHONY : level
+
+# fast build rule for target.
+level/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\level.dir\build.make CMakeFiles/level.dir/build
+.PHONY : level/fast
+
+#=============================================================================
 # Target rules for targets named OMago
 
 # Build rule for target.
@@ -313,6 +326,30 @@ src/input.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\input.dir\build.make CMakeFiles/input.dir/src/input.c.s
 .PHONY : src/input.c.s
 
+src/level.obj: src/level.c.obj
+.PHONY : src/level.obj
+
+# target to build an object file
+src/level.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\level.dir\build.make CMakeFiles/level.dir/src/level.c.obj
+.PHONY : src/level.c.obj
+
+src/level.i: src/level.c.i
+.PHONY : src/level.i
+
+# target to preprocess a source file
+src/level.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\level.dir\build.make CMakeFiles/level.dir/src/level.c.i
+.PHONY : src/level.c.i
+
+src/level.s: src/level.c.s
+.PHONY : src/level.s
+
+# target to generate assembly for a file
+src/level.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\level.dir\build.make CMakeFiles/level.dir/src/level.c.s
+.PHONY : src/level.c.s
+
 src/main.obj: src/main.c.obj
 .PHONY : src/main.obj
 
@@ -351,6 +388,7 @@ help:
 	@echo ... geometry
 	@echo ... graphics
 	@echo ... input
+	@echo ... level
 	@echo ... src/character.obj
 	@echo ... src/character.i
 	@echo ... src/character.s
@@ -366,6 +404,9 @@ help:
 	@echo ... src/input.obj
 	@echo ... src/input.i
 	@echo ... src/input.s
+	@echo ... src/level.obj
+	@echo ... src/level.i
+	@echo ... src/level.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

@@ -24,14 +24,14 @@ typedef struct {
     int alive;
     CHARACTER_TYPE type;
     COORD pos_graphic, direction;
-    HITBOX hitbox;
+    CIRCLE hitbox;
     float speed;
     int flags;
 }CHARACTER;
 
 
 
-void update_character(CHARACTER *character, KEYBOARD_STATE kb_input, CHARACTER *characters, LINE l);
+void move_character(CHARACTER *character);
 
 void set_character_hitbox(CHARACTER *character);
 

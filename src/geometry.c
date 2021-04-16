@@ -31,9 +31,12 @@ void normalize(COORD *v)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 COORD input_to_vector(KEYBOARD_STATE input)
 {
 =======
+=======
+>>>>>>> d2f23e72729eb9c5fe326c59ad90bc7d062f93ed
 /**
  * @brief Diz se o trianglulo é obtuso e indica qual o ponto
  * 
@@ -53,11 +56,19 @@ int obtuse_angle(COORD p0, COORD p1, COORD p2, COORD *point){
     float p1p2sq = p1p2 * p1p2;
     if(p0p1sq > p1p2sq + p0p2sq){
         is_obtuse = 1;
+<<<<<<< HEAD
         *point = p1;
     }
     else if(p0p2sq > p1p2sq + p0p1sq){
         is_obtuse = 1;
         *point = p2;
+=======
+        *point = p2;
+    }
+    else if(p0p2sq > p1p2sq + p0p1sq){
+        is_obtuse = 1;
+        *point = p1;
+>>>>>>> d2f23e72729eb9c5fe326c59ad90bc7d062f93ed
     }
     return is_obtuse;
 }
@@ -112,6 +123,7 @@ float shortest_to_line(LINE l, COORD p)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 COORD lc_collision_normal(HITBOX c, LINE l)
 {
     COORD normal = {0, 0};
@@ -153,6 +165,29 @@ COORD lc_collision_normal(HITBOX c, LINE l)
         {
             corner.center = l.p2;
             normal = cc_collision_normal(corner, c);
+=======
+COORD invert(COORD c){
+    COORD inv;
+    inv.x = -c.x;
+    inv.y = -c.y;
+    return inv;
+}
+
+COORD lc_collision_normal(CIRCLE c, LINE l){
+    COORD normal = {0, 0};
+    CIRCLE corner;
+    float distance;
+    if(sweep_and_prune(c.bounds, l.bounds)){
+        corner.r = 0;
+        // Se for obtuso
+        if(obtuse_angle(c.bounds.center, l.p1, l.p2, &corner.bounds.center)){
+            normal = cc_collision_normal(corner, c);
+        } else {
+            distance = shortest_to_line(l, c.bounds.center);
+            if(distance < c.r){
+                normal = multiply(distance - c.r, l.normal);
+            }
+>>>>>>> d2f23e72729eb9c5fe326c59ad90bc7d062f93ed
         }
 =======
 COORD invert(COORD c){
@@ -177,6 +212,7 @@ COORD lc_collision_normal(HITBOX c, LINE l){
     return normal;
 }
 
+<<<<<<< HEAD
 COORD cc_collision_normal(HITBOX c1, HITBOX c2)
 {
     COORD normal;
@@ -189,6 +225,67 @@ COORD cc_collision_normal(HITBOX c1, HITBOX c2)
     else
     {
         normalize(&normal);
+=======
+COORD change_direction(COORD v, char direction){
+    if(direction & UP) v.y = -fmod(v.y, 1.0);
+    else v.y = fmod(v.y, 1.0);
+    if(direction & LEFT) v.x = -fmod(v.x, 1.0);
+    else v.x = fmod(v.x, 1.0);
+    return v;
+}
+
+void set_line_normal(LINE *l, char direction){
+    float aux;
+    l->normal = direction_from_to(l->p1, l->p2);
+    aux = l->normal.x;
+    l->normal.x = l->normal.y;
+    l->normal.y = aux;
+    l->normal = change_direction(l->normal, direction);
+}
+
+void set_line_box(LINE *l){
+    l->bounds.halfwidth = fmod(l->p1.x - l->p2.x, 1.0)/2;
+    l->bounds.halfheight = fmod(l->p1.x - l->p2.x, 1.0)/2;
+    l->bounds.center = multiply(0.5, dist_from_to(l->p1, l->p2));
+    vec_sum(&l->bounds.center, l->p1);
+}
+
+void set_circle_box(CIRCLE *c){
+    c->bounds.halfheight = c->r;
+    c->bounds.halfwidth = c->r;
+}
+
+int sweep_and_prune(BOX b1, BOX b2){
+    int possible_collision = 0;
+    if(fmod(b1.center.x - b2.center.x, 1.0) <= b1.halfwidth + b2.halfwidth &&
+       fmod(b1.center.y - b2.center.y, 1.0) <= b1.halfheight + b2.halfheight)
+       possible_collision = 1;
+    return possible_collision;
+}
+
+COORD cc_collision_normal(CIRCLE c1, CIRCLE c2){
+    COORD normal= {0, 0};
+    COORD distance;
+    float moddistance;
+    BOX b1, b2;
+    b1.center = c1.bounds.center;
+    b1.halfheight = c1.r;
+    b1.halfwidth = c1.r;
+    b2.center = c2.bounds.center;
+    b2.halfheight = c2.r;
+    b2.halfwidth = c2.r;
+    if(sweep_and_prune(b1, b2)){
+        distance = dist_from_to(c2.bounds.center, c1.bounds.center);
+        moddistance = module(distance);
+        if(moddistance > c1.r + c2.r) {
+            normal.x = 0;
+            normal.y = 0;
+        } else {
+            normal = distance;
+            normalize(&normal);
+            normal = multiply( c1.r + c2.r - moddistance, normal);
+        }
+>>>>>>> d2f23e72729eb9c5fe326c59ad90bc7d062f93ed
     }
     return normal;
 }

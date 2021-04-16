@@ -96,6 +96,9 @@ OMago.exe: libgraphics.a
 OMago.exe: libinput.a
 OMago.exe: libgeometry.a
 OMago.exe: libcharacter.a
+OMago.exe: liblevel.a
+OMago.exe: libcharacter.a
+OMago.exe: libenv.a
 OMago.exe: libgraphics.a
 OMago.exe: libgeometry.a
 OMago.exe: libinput.a

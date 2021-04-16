@@ -53,10 +53,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Gabriel\jogo_inf1202
+CMAKE_SOURCE_DIR = C:\Users\paulo\Documents\jogo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Gabriel\jogo_inf1202\build_codeblocks
+CMAKE_BINARY_DIR = C:\Users\paulo\Documents\jogo\build_codeblocks
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -67,6 +67,7 @@ all: CMakeFiles/graphics.dir/all
 all: CMakeFiles/input.dir/all
 all: CMakeFiles/geometry.dir/all
 all: CMakeFiles/env.dir/all
+all: CMakeFiles/level.dir/all
 all: CMakeFiles/OMago.dir/all
 .PHONY : all
 
@@ -80,6 +81,7 @@ clean: CMakeFiles/graphics.dir/clean
 clean: CMakeFiles/input.dir/clean
 clean: CMakeFiles/geometry.dir/clean
 clean: CMakeFiles/env.dir/clean
+clean: CMakeFiles/level.dir/clean
 clean: CMakeFiles/OMago.dir/clean
 .PHONY : clean
 
@@ -92,14 +94,14 @@ CMakeFiles/character.dir/all: CMakeFiles/geometry.dir/all
 CMakeFiles/character.dir/all: CMakeFiles/graphics.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\character.dir\build.make CMakeFiles/character.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\character.dir\build.make CMakeFiles/character.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles --progress-num=3,4 "Built target character"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles --progress-num=3,4 "Built target character"
 .PHONY : CMakeFiles/character.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/character.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/character.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles 0
 .PHONY : CMakeFiles/character.dir/rule
 
 # Convenience name for target.
@@ -118,14 +120,14 @@ CMakeFiles/character.dir/clean:
 CMakeFiles/graphics.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\graphics.dir\build.make CMakeFiles/graphics.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\graphics.dir\build.make CMakeFiles/graphics.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles --progress-num=9,10 "Built target graphics"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles --progress-num=9,10 "Built target graphics"
 .PHONY : CMakeFiles/graphics.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/graphics.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/graphics.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles 0
 .PHONY : CMakeFiles/graphics.dir/rule
 
 # Convenience name for target.
@@ -144,14 +146,14 @@ CMakeFiles/graphics.dir/clean:
 CMakeFiles/input.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\input.dir\build.make CMakeFiles/input.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\input.dir\build.make CMakeFiles/input.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles --progress-num=11,12 "Built target input"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles --progress-num=11,12 "Built target input"
 .PHONY : CMakeFiles/input.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/input.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/input.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles 0
 .PHONY : CMakeFiles/input.dir/rule
 
 # Convenience name for target.
@@ -170,14 +172,14 @@ CMakeFiles/input.dir/clean:
 CMakeFiles/geometry.dir/all: CMakeFiles/input.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\geometry.dir\build.make CMakeFiles/geometry.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\geometry.dir\build.make CMakeFiles/geometry.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles --progress-num=7,8 "Built target geometry"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles --progress-num=7,8 "Built target geometry"
 .PHONY : CMakeFiles/geometry.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/geometry.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/geometry.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles 0
 .PHONY : CMakeFiles/geometry.dir/rule
 
 # Convenience name for target.
@@ -198,14 +200,14 @@ CMakeFiles/env.dir/all: CMakeFiles/geometry.dir/all
 CMakeFiles/env.dir/all: CMakeFiles/graphics.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\env.dir\build.make CMakeFiles/env.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\env.dir\build.make CMakeFiles/env.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles --progress-num=5,6 "Built target env"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles --progress-num=5,6 "Built target env"
 .PHONY : CMakeFiles/env.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/env.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/env.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles 0
 .PHONY : CMakeFiles/env.dir/rule
 
 # Convenience name for target.
@@ -218,23 +220,62 @@ CMakeFiles/env.dir/clean:
 .PHONY : CMakeFiles/env.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/level.dir
+
+# All Build rule for target.
+CMakeFiles/level.dir/all: CMakeFiles/character.dir/all
+CMakeFiles/level.dir/all: CMakeFiles/graphics.dir/all
+CMakeFiles/level.dir/all: CMakeFiles/input.dir/all
+CMakeFiles/level.dir/all: CMakeFiles/geometry.dir/all
+CMakeFiles/level.dir/all: CMakeFiles/env.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\level.dir\build.make CMakeFiles/level.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\level.dir\build.make CMakeFiles/level.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles --progress-num=13,14 "Built target level"
+.PHONY : CMakeFiles/level.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/level.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles 12
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/level.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles 0
+.PHONY : CMakeFiles/level.dir/rule
+
+# Convenience name for target.
+level: CMakeFiles/level.dir/rule
+.PHONY : level
+
+# clean rule for target.
+CMakeFiles/level.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\level.dir\build.make CMakeFiles/level.dir/clean
+.PHONY : CMakeFiles/level.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/OMago.dir
 
 # All Build rule for target.
+<<<<<<< HEAD
 CMakeFiles/OMago.dir/all: CMakeFiles/input.dir/all
 CMakeFiles/OMago.dir/all: CMakeFiles/geometry.dir/all
 CMakeFiles/OMago.dir/all: CMakeFiles/character.dir/all
 CMakeFiles/OMago.dir/all: CMakeFiles/graphics.dir/all
+=======
+CMakeFiles/OMago.dir/all: CMakeFiles/character.dir/all
+CMakeFiles/OMago.dir/all: CMakeFiles/graphics.dir/all
+CMakeFiles/OMago.dir/all: CMakeFiles/input.dir/all
+CMakeFiles/OMago.dir/all: CMakeFiles/geometry.dir/all
+CMakeFiles/OMago.dir/all: CMakeFiles/env.dir/all
+CMakeFiles/OMago.dir/all: CMakeFiles/level.dir/all
+>>>>>>> d2f23e72729eb9c5fe326c59ad90bc7d062f93ed
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\OMago.dir\build.make CMakeFiles/OMago.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\OMago.dir\build.make CMakeFiles/OMago.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles --progress-num=1,2 "Built target OMago"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles --progress-num=1,2 "Built target OMago"
 .PHONY : CMakeFiles/OMago.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/OMago.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/OMago.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Gabriel\jogo_inf1202\build_codeblocks\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles 0
 .PHONY : CMakeFiles/OMago.dir/rule
 
 # Convenience name for target.

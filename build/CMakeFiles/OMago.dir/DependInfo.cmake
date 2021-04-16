@@ -17,6 +17,8 @@ set(CMAKE_TARGET_LINKED_INFO_FILES
   "C:/Users/Gabriel/jogo_inf1202/build/CMakeFiles/input.dir/DependInfo.cmake"
   "C:/Users/Gabriel/jogo_inf1202/build/CMakeFiles/geometry.dir/DependInfo.cmake"
   "C:/Users/Gabriel/jogo_inf1202/build/CMakeFiles/character.dir/DependInfo.cmake"
+  "C:/Users/Gabriel/jogo_inf1202/build/CMakeFiles/level.dir/DependInfo.cmake"
+  "C:/Users/Gabriel/jogo_inf1202/build/CMakeFiles/env.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.
