@@ -3,3 +3,6 @@ build:
 
 cb:
 	cd build & cmake .. -G "CodeBlocks - MinGW Makefiles"
+
+clean:
+	rm 
