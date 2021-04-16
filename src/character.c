@@ -1,31 +1,10 @@
 #include <character.h>
 #include <geometry.h>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 void set_anim(ANIMATION *new_anim, CHARACTER *character){
     if(strcmp(character->current.name, new_anim->name)){
         character->current = *new_anim;
     }
-=======
-=======
->>>>>>> main
-void move_character(CHARACTER *character){
-    if(character->direction.x || character->direction.y) character->current = *get_anim(character->anims, "_run");
-    else character->current = *get_anim(character->anims, "_idle");
-    if(character->direction.x < 0) character->flags |= ALLEGRO_FLIP_HORIZONTAL;
-    if(character->direction.x > 0) character->flags &= ~ALLEGRO_FLIP_HORIZONTAL;
-    add_vector(&character->pos, character->direction, character->speed);
-<<<<<<< HEAD
->>>>>>> main
-=======
-=======
-void set_anim(ANIMATION *new_anim, CHARACTER *character){
-    if(strcmp(character->current.name, new_anim->name)){
-        character->current = *new_anim;
-    }
->>>>>>> fc5b3670360a24cf3a73add142f5ed8d9e67dd54
->>>>>>> main
 }
 
 void move_character(CHARACTER *character){
@@ -37,16 +16,8 @@ void move_character(CHARACTER *character){
         else if(character->direction.x > 0.1) {
             character->flags &= ~ALLEGRO_FLIP_HORIZONTAL;
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-        al_draw_bitmap(animate(&character->current), character->pos.x, character->pos.y, character->flags);
->>>>>>> main
-=======
-        al_draw_bitmap(animate(&character->current), character->pos.x, character->pos.y, character->flags);
-=======
->>>>>>> fc5b3670360a24cf3a73add142f5ed8d9e67dd54
->>>>>>> main
+        al_draw_bitmap(animate(&character->current), character->hitbox.bounds.center.x + character->pos_graphic.x, 
+                       character->hitbox.bounds.center.y + character->pos_graphic.y, character->flags);
     }
     else set_anim(get_anim(character->anims, "_idle"), character);
     add_vector(&character->hitbox.bounds.center, character->direction, character->speed); 

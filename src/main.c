@@ -4,13 +4,8 @@
 #include <character.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_color.h>
-<<<<<<< HEAD
 
 //al_ :Funcoes prontas do Allegro
-=======
-#include <level.h>
-#define N_ENV 10
->>>>>>> d2f23e72729eb9c5fe326c59ad90bc7d062f93ed
 
 int main()
 {
@@ -21,20 +16,11 @@ int main()
     ALLEGRO_EVENT event;
     SPRITE sprites[SPRITES_MAX];
     ANIMATION anims[ANIMS_MAX];
-<<<<<<< HEAD
     CHARACTER characters[3];
-=======
-    LEVEL level;
->>>>>>> d2f23e72729eb9c5fe326c59ad90bc7d062f93ed
     KEYBOARD_STATE key_pressed;
     ALLEGRO_MONITOR_INFO monitor;
     LINE wall_south;
 
-<<<<<<< HEAD
-=======
-    int i;
-
->>>>>>> d2f23e72729eb9c5fe326c59ad90bc7d062f93ed
     //intalar as coisas do allegro
     if(!al_init())
     {
@@ -43,10 +29,6 @@ int main()
 
     al_install_keyboard();
     al_install_mouse();
-<<<<<<< HEAD
-=======
-
->>>>>>> d2f23e72729eb9c5fe326c59ad90bc7d062f93ed
     if(al_get_monitor_info(0, &monitor))
     {
         printf("%d, %d", monitor.x2, monitor.y2);
@@ -62,13 +44,8 @@ int main()
         return -1;
     }
 
-<<<<<<< HEAD
 
     timer = al_create_timer(1.0 / FPS); //quanto tempo a tela sera atualizada
-=======
-    timer = al_create_timer(1.0 / FPS); //quanto tempo a tela sera atualizada
-
->>>>>>> d2f23e72729eb9c5fe326c59ad90bc7d062f93ed
     //inicia os eventos
     queue = al_create_event_queue();
 
@@ -76,24 +53,15 @@ int main()
     al_register_event_source(queue, al_get_keyboard_event_source());
     al_register_event_source(queue, al_get_display_event_source(display));
     al_register_event_source(queue, al_get_timer_event_source(timer));
-<<<<<<< HEAD
 
     //começar a contagem de tempo
     al_start_timer(timer);
 
-=======
-    //começar a contagem de tempo
-    al_start_timer(timer);
->>>>>>> d2f23e72729eb9c5fe326c59ad90bc7d062f93ed
     //titulo da tela
     al_set_window_title(display, "O mago");
 
     //pegar sprites
     al_init_image_addon();
-<<<<<<< HEAD
-
-=======
->>>>>>> d2f23e72729eb9c5fe326c59ad90bc7d062f93ed
     //p representar o muro vermelho
     al_init_primitives_addon();
 
@@ -101,7 +69,6 @@ int main()
     carrega_sprites(sprites, anims, "../img"); //.. :Diretorio de cima
 
 
-<<<<<<< HEAD
     //Personagem principal
     characters[0].anims = get_anim(anims, "wizzard_m");
     //current é animaçao atual do main
@@ -134,14 +101,10 @@ int main()
     characters[2].hitbox.center.x = 600;
     characters[2].hitbox.center.y = 0;
 
-<<<<<<< HEAD
     //add retas para colisao
-=======
->>>>>>> 52f7b32 (Generaliza colisao de retas para qualquer angulo)
     // muro do sul
     wall_south.normal.y = -1;
     wall_south.normal.x = 0;
-=======
 
     //Personagem principal
     level.characters[0].anims = get_anim(anims, "wizzard_m");
@@ -185,7 +148,6 @@ int main()
 
     //add retas para colisao
     //muro do sul
->>>>>>> d2f23e72729eb9c5fe326c59ad90bc7d062f93ed
     //cordenadas
     wall_south.p1.x = 0;
     wall_south.p1.y = 400;
@@ -208,23 +170,19 @@ int main()
         //saber quais teclas estão sendo apertadas
         set_kb_state(&key_pressed, event);//&key referencia de quais teclas estão sendo usadas
 
-<<<<<<< HEAD
     do
     {
         //espera ocorrer algo na fila de evento para executar
         al_wait_for_event(queue, &event);//passando o endereço, vai modificando a cada atualização
 
-=======
         //diz para o nivel qual o imput
         level.input = key_pressed; //agora o nivel vai saber qual tecla esta sendo apertada
 
         //analisa o evento timer p cada frame
->>>>>>> d2f23e72729eb9c5fe326c59ad90bc7d062f93ed
         if(event.type == ALLEGRO_EVENT_TIMER)
         {
             //limpa a tela p preto (tabela RGB 000) p cada atualização
             al_clear_to_color(al_map_rgb_f(0, 0, 0));
-<<<<<<< HEAD
 
             //atualização da bio p cada ps
             update_character(&characters[0], key_pressed, characters, wall_south);
@@ -239,7 +197,6 @@ int main()
         }
         //saber quais teclas estão sendo apertadas
         set_kb_state(&key_pressed, event);//&key referencia de quais teclas estão sendo usadas
-=======
             //direcao que os char querem ir
             set_characters_intention(&level);
             //analisar e dizer que nao pode ir naquela direcao quando houver colisao
@@ -251,8 +208,6 @@ int main()
             //atualiza tela (?) veio de um exemplo
             al_flip_display();
         }
-
->>>>>>> d2f23e72729eb9c5fe326c59ad90bc7d062f93ed
     }
     //A allegro roda ate tu apertar 'X' p encerrar o prog
     while(event.type != ALLEGRO_EVENT_DISPLAY_CLOSE);
