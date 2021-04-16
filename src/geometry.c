@@ -30,13 +30,6 @@ void normalize(COORD *v)
     }
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-COORD input_to_vector(KEYBOARD_STATE input)
-{
-=======
-=======
->>>>>>> d2f23e72729eb9c5fe326c59ad90bc7d062f93ed
 /**
  * @brief Diz se o trianglulo é obtuso e indica qual o ponto
  * 
@@ -56,25 +49,20 @@ int obtuse_angle(COORD p0, COORD p1, COORD p2, COORD *point){
     float p1p2sq = p1p2 * p1p2;
     if(p0p1sq > p1p2sq + p0p2sq){
         is_obtuse = 1;
-<<<<<<< HEAD
         *point = p1;
     }
     else if(p0p2sq > p1p2sq + p0p1sq){
         is_obtuse = 1;
         *point = p2;
-=======
-        *point = p2;
     }
     else if(p0p2sq > p1p2sq + p0p1sq){
         is_obtuse = 1;
         *point = p1;
->>>>>>> d2f23e72729eb9c5fe326c59ad90bc7d062f93ed
     }
     return is_obtuse;
 }
 
 COORD input_to_vector(KEYBOARD_STATE input){
->>>>>>> 52f7b32 (Generaliza colisao de retas para qualquer angulo)
     COORD output_vector;
     output_vector.x = 0;
     output_vector.y = 0;
@@ -122,57 +110,6 @@ float shortest_to_line(LINE l, COORD p)
     return fabs(n1 - n2) / pow(d1 + d2, 0.5);
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-COORD lc_collision_normal(HITBOX c, LINE l)
-{
-    COORD normal = {0, 0};
-    HITBOX corner;
-    corner.r = 0;
-    // reta horizontal
-    if(l.p1.y == l.p2.y)
-    {
-        // Se o centro do circulo estiver no meio da reta
-        if(c.center.x > l.p1.x && c.center.x < l.p2.x)
-        {
-            if(shortest_to_line(l, c.center) < c.r) normal = l.normal;
-        }
-        else if(c.center.x <= l.p1.x)
-        {
-            corner.center = l.p1;
-            normal = cc_collision_normal(corner, c);
-        }
-        else
-        {
-            corner.center = l.p2;
-            normal = cc_collision_normal(corner, c);
-        }
-    }
-    // reta vertical
-    else
-    {
-        // Se o centro do circulo estiver no meio da reta
-        if(c.center.y > l.p1.y && c.center.y < l.p2.y)
-        {
-            if(shortest_to_line(l, c.center) < c.r) normal = l.normal;
-        }
-        else if(c.center.y <= l.p1.y)
-        {
-            corner.center = l.p1;
-            normal = cc_collision_normal(corner, c);
-        }
-        else
-        {
-            corner.center = l.p2;
-            normal = cc_collision_normal(corner, c);
-=======
-COORD invert(COORD c){
-    COORD inv;
-    inv.x = -c.x;
-    inv.y = -c.y;
-    return inv;
-}
-
 COORD lc_collision_normal(CIRCLE c, LINE l){
     COORD normal = {0, 0};
     CIRCLE corner;
@@ -187,9 +124,11 @@ COORD lc_collision_normal(CIRCLE c, LINE l){
             if(distance < c.r){
                 normal = multiply(distance - c.r, l.normal);
             }
->>>>>>> d2f23e72729eb9c5fe326c59ad90bc7d062f93ed
         }
-=======
+    }
+    return normal;
+}
+
 COORD invert(COORD c){
     COORD inv;
     inv.x = -c.x;
@@ -197,35 +136,8 @@ COORD invert(COORD c){
     return inv;
 }
 
-COORD lc_collision_normal(HITBOX c, LINE l){
-    COORD normal = {0, 0};
-    HITBOX corner;
-    corner.r = 0;
-    // Se for obtuso
-    if(obtuse_angle(c.center, l.p1, l.p2, &corner.center)){
-        normal = cc_collision_normal(c, corner);
-    }
-    else if(shortest_to_line(l, c.center) < c.r){
-        normal = invert(l.normal);
->>>>>>> 52f7b32 (Generaliza colisao de retas para qualquer angulo)
-    }
-    return normal;
-}
 
-<<<<<<< HEAD
-COORD cc_collision_normal(HITBOX c1, HITBOX c2)
-{
-    COORD normal;
-    normal = dist_from_to(c2.center, c1.center);
-    if(module(normal) > c1.r + c2.r)
-    {
-        normal.x = 0;
-        normal.y = 0;
-    }
-    else
-    {
-        normalize(&normal);
-=======
+
 COORD change_direction(COORD v, char direction){
     if(direction & UP) v.y = -fmod(v.y, 1.0);
     else v.y = fmod(v.y, 1.0);
@@ -285,7 +197,6 @@ COORD cc_collision_normal(CIRCLE c1, CIRCLE c2){
             normalize(&normal);
             normal = multiply( c1.r + c2.r - moddistance, normal);
         }
->>>>>>> d2f23e72729eb9c5fe326c59ad90bc7d062f93ed
     }
     return normal;
 }

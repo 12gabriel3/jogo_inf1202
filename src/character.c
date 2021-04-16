@@ -16,8 +16,6 @@ void move_character(CHARACTER *character){
         else if(character->direction.x > 0.1) {
             character->flags &= ~ALLEGRO_FLIP_HORIZONTAL;
         }
-        al_draw_bitmap(animate(&character->current), character->hitbox.bounds.center.x + character->pos_graphic.x, 
-                       character->hitbox.bounds.center.y + character->pos_graphic.y, character->flags);
     }
     else set_anim(get_anim(character->anims, "_idle"), character);
     add_vector(&character->hitbox.bounds.center, character->direction, character->speed); 

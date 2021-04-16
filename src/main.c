@@ -2,6 +2,7 @@
 #include <input.h>
 #include <geometry.h>
 #include <character.h>
+#include <level.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_color.h>
 
@@ -16,11 +17,11 @@ int main()
     ALLEGRO_EVENT event;
     SPRITE sprites[SPRITES_MAX];
     ANIMATION anims[ANIMS_MAX];
-    CHARACTER characters[3];
+    LEVEL level;
     KEYBOARD_STATE key_pressed;
     ALLEGRO_MONITOR_INFO monitor;
     LINE wall_south;
-
+    int i;
     //intalar as coisas do allegro
     if(!al_init())
     {
@@ -67,39 +68,6 @@ int main()
 
     //coloca todos os sprites e imagens que estão na pasta aos vetores
     carrega_sprites(sprites, anims, "../img"); //.. :Diretorio de cima
-
-
-    //Personagem principal
-    characters[0].anims = get_anim(anims, "wizzard_m");
-    //current é animaçao atual do main
-    characters[0].current = characters[0].anims[0];//ponteiro para as animaçoes do main
-    //velocidade dele
-    characters[0].speed = 3;
-    //para detectar colisoes do main
-    set_character_hitbox(&characters[0]);
-    //tectar a vida do main
-    characters[0].alive = 1;
-    //padronizar o comportamento de um ps
-    characters[0].type = MainCharacter;
-
-    characters[1].anims = get_anim(anims, "big_demon");
-    characters[1].current = characters[1].anims[0];
-    characters[1].speed = 1;
-    set_character_hitbox(&characters[1]);
-    characters[1].alive = 1;
-    characters[1].type = EnemySkeleton;
-    //determinam a posicao do ps, seu centro x y
-    characters[1].hitbox.center.x = 600;
-    characters[1].hitbox.center.y = 400;
-
-    characters[2].anims = get_anim(anims, "big_zombie");
-    characters[2].current = characters[2].anims[0];
-    characters[2].speed = 2;
-    set_character_hitbox(&characters[2]);
-    characters[2].alive = 1;
-    characters[2].type = EnemyOgre;
-    characters[2].hitbox.center.x = 600;
-    characters[2].hitbox.center.y = 0;
 
     //add retas para colisao
     // muro do sul
@@ -170,11 +138,6 @@ int main()
         //saber quais teclas estão sendo apertadas
         set_kb_state(&key_pressed, event);//&key referencia de quais teclas estão sendo usadas
 
-    do
-    {
-        //espera ocorrer algo na fila de evento para executar
-        al_wait_for_event(queue, &event);//passando o endereço, vai modificando a cada atualização
-
         //diz para o nivel qual o imput
         level.input = key_pressed; //agora o nivel vai saber qual tecla esta sendo apertada
 
@@ -184,19 +147,9 @@ int main()
             //limpa a tela p preto (tabela RGB 000) p cada atualização
             al_clear_to_color(al_map_rgb_f(0, 0, 0));
 
-            //atualização da bio p cada ps
-            update_character(&characters[0], key_pressed, characters, wall_south);
-            update_character(&characters[1], key_pressed, characters, wall_south);
-            update_character(&characters[2], key_pressed, characters, wall_south);
-
-            //desenha a linha p allegro
-            al_draw_line(0, 400, 600, 400, al_color_name("red"), 1);
-
             //atualiza tela (?)
             al_flip_display();
-        }
-        //saber quais teclas estão sendo apertadas
-        set_kb_state(&key_pressed, event);//&key referencia de quais teclas estão sendo usadas
+        
             //direcao que os char querem ir
             set_characters_intention(&level);
             //analisar e dizer que nao pode ir naquela direcao quando houver colisao
