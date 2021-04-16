@@ -3,10 +3,11 @@
 #include <input.h>
 #include <geometry.h>
 #include <character.h>
+#include <level.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_color.h>
-#include <level.h>
-#define N_ENV 10
+
+//al_ :Funcoes prontas do Allegro
 
 int main()
 {
@@ -15,16 +16,13 @@ int main()
     //fila de eventos p serem processados, organiza tudo
     ALLEGRO_EVENT_QUEUE *queue;
     ALLEGRO_EVENT event;
-    ALLEGRO_KEYBOARD_STATE *ret_state;
     SPRITE sprites[SPRITES_MAX];
     ANIMATION anims[ANIMS_MAX];
     LEVEL level;
     KEYBOARD_STATE key_pressed;
     ALLEGRO_MONITOR_INFO monitor;
     LINE wall_south;
-
     int i;
-
     //intalar as coisas do allegro
     if(!al_init())
     {
@@ -33,7 +31,6 @@ int main()
 
     al_install_keyboard();
     al_install_mouse();
-
     if(al_get_monitor_info(0, &monitor))
     {
         printf("%d, %d", monitor.x2, monitor.y2);
@@ -49,8 +46,8 @@ int main()
         return -1;
     }
 
-    timer = al_create_timer(1.0 / FPS); //quanto tempo a tela sera atualizada
 
+    timer = al_create_timer(1.0 / FPS); //quanto tempo a tela sera atualizada
     //inicia os eventos
     queue = al_create_event_queue();
 
@@ -58,8 +55,10 @@ int main()
     al_register_event_source(queue, al_get_keyboard_event_source());
     al_register_event_source(queue, al_get_display_event_source(display));
     al_register_event_source(queue, al_get_timer_event_source(timer));
+
     //começar a contagem de tempo
     al_start_timer(timer);
+
     //titulo da tela
     al_set_window_title(display, "O mago");
 
@@ -68,8 +67,13 @@ int main()
     //p representar o muro vermelho
     al_init_primitives_addon();
 
-    carrega_sprites(sprites, anims, "../img");
+    //coloca todos os sprites e imagens que estão na pasta aos vetores
+    carrega_sprites(sprites, anims, "../img"); //.. :Diretorio de cima
 
+    //add retas para colisao
+    // muro do sul
+    wall_south.normal.y = -1;
+    wall_south.normal.x = 0;
 
     //Personagem principal
     level.characters[0].anims = get_anim(anims, "wizzard_m");
@@ -143,6 +147,10 @@ int main()
         {
             //limpa a tela p preto (tabela RGB 000) p cada atualização
             al_clear_to_color(al_map_rgb_f(0, 0, 0));
+
+            //atualiza tela (?)
+            al_flip_display();
+        
             //direcao que os char querem ir
             set_characters_intention(&level);
             //analisar e dizer que nao pode ir naquela direcao quando houver colisao
@@ -154,7 +162,6 @@ int main()
             //atualiza tela (?) veio de um exemplo
             al_flip_display();
         }
-
     }
     //A allegro roda ate tu apertar 'X' p encerrar o prog
     while(event.type != ALLEGRO_EVENT_DISPLAY_CLOSE);

@@ -89,9 +89,9 @@ clean: CMakeFiles/OMago.dir/clean
 # Target rules for target CMakeFiles/character.dir
 
 # All Build rule for target.
-CMakeFiles/character.dir/all: CMakeFiles/graphics.dir/all
 CMakeFiles/character.dir/all: CMakeFiles/input.dir/all
 CMakeFiles/character.dir/all: CMakeFiles/geometry.dir/all
+CMakeFiles/character.dir/all: CMakeFiles/graphics.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\character.dir\build.make CMakeFiles/character.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\character.dir\build.make CMakeFiles/character.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles --progress-num=3,4 "Built target character"
@@ -195,9 +195,9 @@ CMakeFiles/geometry.dir/clean:
 # Target rules for target CMakeFiles/env.dir
 
 # All Build rule for target.
-CMakeFiles/env.dir/all: CMakeFiles/graphics.dir/all
 CMakeFiles/env.dir/all: CMakeFiles/input.dir/all
 CMakeFiles/env.dir/all: CMakeFiles/geometry.dir/all
+CMakeFiles/env.dir/all: CMakeFiles/graphics.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\env.dir\build.make CMakeFiles/env.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\env.dir\build.make CMakeFiles/env.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles --progress-num=5,6 "Built target env"
@@ -253,12 +253,19 @@ CMakeFiles/level.dir/clean:
 # Target rules for target CMakeFiles/OMago.dir
 
 # All Build rule for target.
+<<<<<<< HEAD
+CMakeFiles/OMago.dir/all: CMakeFiles/input.dir/all
+CMakeFiles/OMago.dir/all: CMakeFiles/geometry.dir/all
+CMakeFiles/OMago.dir/all: CMakeFiles/character.dir/all
+CMakeFiles/OMago.dir/all: CMakeFiles/graphics.dir/all
+=======
 CMakeFiles/OMago.dir/all: CMakeFiles/character.dir/all
 CMakeFiles/OMago.dir/all: CMakeFiles/graphics.dir/all
 CMakeFiles/OMago.dir/all: CMakeFiles/input.dir/all
 CMakeFiles/OMago.dir/all: CMakeFiles/geometry.dir/all
 CMakeFiles/OMago.dir/all: CMakeFiles/env.dir/all
 CMakeFiles/OMago.dir/all: CMakeFiles/level.dir/all
+>>>>>>> d2f23e72729eb9c5fe326c59ad90bc7d062f93ed
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\OMago.dir\build.make CMakeFiles/OMago.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\OMago.dir\build.make CMakeFiles/OMago.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\paulo\Documents\jogo\build_codeblocks\CMakeFiles --progress-num=1,2 "Built target OMago"

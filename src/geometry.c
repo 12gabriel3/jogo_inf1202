@@ -1,26 +1,30 @@
 #include <geometry.h>
 #include <math.h>
 
-
-COORD dist_from_to(COORD from, COORD to){
+COORD dist_from_to(COORD from, COORD to)
+{
     COORD dist;
     dist.x = to.x - from.x;
     dist.y = to.y - from.y;
     return dist;
 }
 
-void add_to_vector(COORD *dst, float x, float y){
+void add_to_vector(COORD *dst, float x, float y)
+{
     dst->x += x;
     dst->y += y;
 }
 
-float module(COORD v){
+float module(COORD v)
+{
     return sqrt(v.x * v.x + v.y * v.y);
 }
 
-void normalize(COORD *v){
+void normalize(COORD *v)
+{
     float m = module(*v);
-    if(m){
+    if(m)
+    {
         v->x /= m;
         v->y /= m;
     }
@@ -45,6 +49,10 @@ int obtuse_angle(COORD p0, COORD p1, COORD p2, COORD *point){
     float p1p2sq = p1p2 * p1p2;
     if(p0p1sq > p1p2sq + p0p2sq){
         is_obtuse = 1;
+        *point = p1;
+    }
+    else if(p0p2sq > p1p2sq + p0p1sq){
+        is_obtuse = 1;
         *point = p2;
     }
     else if(p0p2sq > p1p2sq + p0p1sq){
@@ -66,39 +74,40 @@ COORD input_to_vector(KEYBOARD_STATE input){
     return output_vector;
 }
 
-void add_vector(COORD *pos, COORD delta, float speed){
-    if(module(delta) > 0.5){
+void add_vector(COORD *pos, COORD delta, float speed)
+{
+    if(module(delta) > 0.5)
+    {
         pos->x += delta.x * speed;
         pos->y += delta.y * speed;
     }
 }
 
 
-COORD direction_from_to(COORD from, COORD to){
+COORD direction_from_to(COORD from, COORD to)
+{
     COORD dist = dist_from_to(from, to);
-    if(module(dist) > 1){
+    if(module(dist) > 1)
+    {
         normalize(&dist);
-    } else {
+    }
+    else
+    {
         dist.x = 0;
         dist.y = 0;
     }
     return dist;
 }
 
-float shortest_to_line(LINE l, COORD p){
+//linha definida por 2 pontos que gera
+float shortest_to_line(LINE l, COORD p)
+{
     // https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line
     float n1 = (l.p2.x - l.p1.x) * (l.p1.y - p.y);
     float n2 = (l.p1.x - p.x) * (l.p2.y - l.p1.y);
     float d1 = pow(l.p2.x - l.p1.x, 2);
     float d2 = pow(l.p2.y - l.p1.y, 2);
     return fabs(n1 - n2) / pow(d1 + d2, 0.5);
-}
-
-COORD invert(COORD c){
-    COORD inv;
-    inv.x = -c.x;
-    inv.y = -c.y;
-    return inv;
 }
 
 COORD lc_collision_normal(CIRCLE c, LINE l){
@@ -119,6 +128,15 @@ COORD lc_collision_normal(CIRCLE c, LINE l){
     }
     return normal;
 }
+
+COORD invert(COORD c){
+    COORD inv;
+    inv.x = -c.x;
+    inv.y = -c.y;
+    return inv;
+}
+
+
 
 COORD change_direction(COORD v, char direction){
     if(direction & UP) v.y = -fmod(v.y, 1.0);
@@ -183,34 +201,40 @@ COORD cc_collision_normal(CIRCLE c1, CIRCLE c2){
     return normal;
 }
 
-float dot_prod(COORD v1, COORD v2){
+float dot_prod(COORD v1, COORD v2)
+{
     return v1.x * v2.x + v1.y * v2.y;
 }
 
-COORD multiply(float scalar, COORD v){
+COORD multiply(float scalar, COORD v)
+{
     COORD mult;
     mult.x = v.x * scalar;
     mult.y = v.y * scalar;
     return mult;
 }
 
-void subtract(COORD *v1, COORD v2){
+void subtract(COORD *v1, COORD v2)
+{
     v1->x -= v2.x;
     v1->y -= v2.y;
 }
 
-void vec_sum(COORD *v1, COORD v2){
+void vec_sum(COORD *v1, COORD v2)
+{
     v1->x += v2.x;
     v1->y += v2.y;
 }
 
-COORD project_a_on_b(COORD a, COORD b){
+COORD project_a_on_b(COORD a, COORD b)
+{
     float dot = dot_prod(a, b) / dot_prod(b, b);
     if(dot < 0) dot = 0;
     // Projeção = (a . b) / (b . b) * b
     return multiply(dot, b);
 }
 
-void rm_direction(COORD direction, COORD *vector){
+void rm_direction(COORD direction, COORD *vector)
+{
     subtract(vector, project_a_on_b(*vector, direction));
 }

@@ -1,3 +1,5 @@
+//define os tipos e constantes
+//todas as contantes estão no include, .h
 #include <input.h>
 
 void set_kb_state(KEYBOARD_STATE *state, ALLEGRO_EVENT event){
