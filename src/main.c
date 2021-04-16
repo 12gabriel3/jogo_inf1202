@@ -147,9 +147,6 @@ int main()
         {
             //limpa a tela p preto (tabela RGB 000) p cada atualização
             al_clear_to_color(al_map_rgb_f(0, 0, 0));
-
-            //atualiza tela (?)
-            al_flip_display();
         
             //direcao que os char querem ir
             set_characters_intention(&level);
