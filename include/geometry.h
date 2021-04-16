@@ -81,4 +81,5 @@ void set_line_box(LINE *l);
 
 void rm_direction_scaled(COORD direction, COORD *vector);
 
+float dot_prod(COORD v1, COORD v2);
 #endif

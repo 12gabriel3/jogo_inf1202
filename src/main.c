@@ -89,7 +89,7 @@ int main()
 
     for(i = 1; i < 10; i++)
     {
-        level.characters[i].anims = get_anim(anims, "big_demon");
+        level.characters[i].anims = get_anim(anims, "wizzard_f");
         level.characters[i].current = level.characters[i].anims[0];
         level.characters[i].speed = 1;
         set_character_hitbox(&level.characters[i]);
