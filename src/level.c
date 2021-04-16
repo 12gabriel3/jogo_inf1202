@@ -30,17 +30,6 @@ int remove_collision(LEVEL *level){
     collision = 0;
     for(i = 0; i < level->n_characters; i++){
         for(j = 0; j < level->n_characters; j++){
-            //remove as colisoes com os muros
-            for(k = 0; k < level->n_lines; k++){
-                next_pos_i = level->characters[i].hitbox;
-                vec_sum(&next_pos_i.bounds.center, multiply(level->characters[i].speed, level->characters[i].direction));
-                normal = lc_collision_normal(next_pos_i, level->lines[k]);
-                if(dot_prod(normal, level->characters[i].direction) > 0){
-                    vec_sum(&level->characters[i].direction, multiply(-0.5, normal));
-                    collision = 1;
-                }
-
-            }
             //se tiver uma colisao ele tira a velocidade do char
             if(&level->characters[j] != &level->characters[i]){
                 next_pos_i = level->characters[i].hitbox;
@@ -53,7 +42,18 @@ int remove_collision(LEVEL *level){
                     vec_sum(&level->characters[i].direction, normal);
                     collision = 1;
                 }
-
+                if(module(level->characters[i].direction) > 1) normalize(&level->characters[i].direction);
+            }
+            //remove as colisoes com os muros
+            for(k = 0; k < level->n_lines; k++){
+                next_pos_i = level->characters[i].hitbox;
+                vec_sum(&next_pos_i.bounds.center, multiply(level->characters[i].speed, level->characters[i].direction));
+                normal = lc_collision_normal(next_pos_i, level->lines[k]);
+                if(dot_prod(normal, level->characters[i].direction) > 0){
+                    vec_sum(&level->characters[i].direction, multiply(-0.5, normal));
+                    collision = 1;
+                }
+                if(module(level->characters[i].direction) > 1) normalize(&level->characters[i].direction);
             }
         }
     }
