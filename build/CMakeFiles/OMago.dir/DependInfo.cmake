@@ -8,15 +8,17 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/Gabriel/Documents/Jogo/src/main.c" "CMakeFiles/OMago.dir/src/main.c.obj" "gcc" "CMakeFiles/OMago.dir/src/main.c.obj.d"
+  "C:/Users/Gabriel/jogo_inf1202/src/main.c" "CMakeFiles/OMago.dir/src/main.c.obj" "gcc" "CMakeFiles/OMago.dir/src/main.c.obj.d"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "C:/Users/Gabriel/Documents/Jogo/build/CMakeFiles/graphics.dir/DependInfo.cmake"
-  "C:/Users/Gabriel/Documents/Jogo/build/CMakeFiles/input.dir/DependInfo.cmake"
-  "C:/Users/Gabriel/Documents/Jogo/build/CMakeFiles/geometry.dir/DependInfo.cmake"
-  "C:/Users/Gabriel/Documents/Jogo/build/CMakeFiles/character.dir/DependInfo.cmake"
+  "C:/Users/Gabriel/jogo_inf1202/build/CMakeFiles/graphics.dir/DependInfo.cmake"
+  "C:/Users/Gabriel/jogo_inf1202/build/CMakeFiles/input.dir/DependInfo.cmake"
+  "C:/Users/Gabriel/jogo_inf1202/build/CMakeFiles/geometry.dir/DependInfo.cmake"
+  "C:/Users/Gabriel/jogo_inf1202/build/CMakeFiles/character.dir/DependInfo.cmake"
+  "C:/Users/Gabriel/jogo_inf1202/build/CMakeFiles/level.dir/DependInfo.cmake"
+  "C:/Users/Gabriel/jogo_inf1202/build/CMakeFiles/env.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

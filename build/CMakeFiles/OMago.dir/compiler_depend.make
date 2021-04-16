@@ -95,7 +95,11 @@ CMakeFiles/OMago.dir/src/main.c.obj: ../src/main.c \
   ../allegro/include/allegro5/allegro_image.h \
   ../include/input.h \
   ../include/geometry.h \
-  ../include/character.h
+  ../include/character.h \
+  ../allegro/include/allegro5/allegro_primitives.h \
+  ../allegro/include/allegro5/allegro_color.h \
+  ../include/level.h \
+  ../include/env.h
 
 
 ../src/main.c:
@@ -252,6 +256,8 @@ C:/MinGW/x86_64-w64-mingw32/include/assert.h:
 
 ../allegro/include/allegro5/joystick.h:
 
+../include/level.h:
+
 ../allegro/include/allegro5/keyboard.h:
 
 ../allegro/include/allegro5/keycodes.h:
@@ -287,3 +293,9 @@ C:/MinGW/x86_64-w64-mingw32/include/assert.h:
 ../include/geometry.h:
 
 ../include/character.h:
+
+../allegro/include/allegro5/allegro_primitives.h:
+
+../allegro/include/allegro5/allegro_color.h:
+
+../include/env.h:

@@ -107,14 +107,14 @@ ANIMATION *get_anim(ANIMATION *anims, char *name){
 
 ALLEGRO_BITMAP *animate(ANIMATION *anim){
     int current_frame;
-    current_frame = (int) ((*anim).current_period / (float) (*anim).period * (*anim).n_frames);
-    if((*anim).play){
-        if((*anim).loop){
-            (*anim).current_period = ((*anim).current_period + 1) % (*anim).period;
+    current_frame = (int) (anim->current_period / (float) anim->period * anim->n_frames);
+    if(anim->play){
+        if(anim->loop){
+            anim->current_period = (anim->current_period + 1) % anim->period;
         } else {
-            if((*anim).current_period < (*anim).period - 1) (*anim).current_period++;
+            if(anim->current_period < anim->period - 1) anim->current_period++;
         }
     }
     
-    return (*anim).frames[current_frame].bitmap;
+    return anim->frames[current_frame].bitmap;
 }

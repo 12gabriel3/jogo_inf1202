@@ -257,6 +257,52 @@
 					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="level">
+				<Option output="C:/Users/paulo/Documents/jogo/build_codeblocks/liblevel.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/paulo/Documents/jogo/build_codeblocks"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/paulo/Documents/jogo/allegro/include"/>
+					<Add directory="C:/Users/paulo/Documents/jogo/include"/>
+					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 level"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="level/fast">
+				<Option output="C:/Users/paulo/Documents/jogo/build_codeblocks/liblevel.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/paulo/Documents/jogo/build_codeblocks"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/paulo/Documents/jogo/allegro/include"/>
+					<Add directory="C:/Users/paulo/Documents/jogo/include"/>
+					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 level/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/paulo/Documents/jogo/build_codeblocks/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="OMago">
 				<Option output="C:/Users/paulo/Documents/jogo/build_codeblocks/OMago.exe" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="C:/Users/paulo/Documents/jogo/build_codeblocks"/>
@@ -328,6 +374,9 @@
 		</Unit>
 		<Unit filename="C:/Users/paulo/Documents/jogo/src/input.c">
 			<Option target="input"/>
+		</Unit>
+		<Unit filename="C:/Users/paulo/Documents/jogo/src/level.c">
+			<Option target="level"/>
 		</Unit>
 		<Unit filename="C:/Users/paulo/Documents/jogo/src/main.c">
 			<Option target="OMago"/>

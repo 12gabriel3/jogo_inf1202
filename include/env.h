@@ -5,10 +5,11 @@
 #include <graphics.h>
 
 typedef struct {
-    COORD pos;
     ANIMATION *anim;
     SPRITE *sprite;
+    COORD pos_graphic;
+} ENV;
 
-} PROP;
+void update_env(ENV *col);
 
 #endif

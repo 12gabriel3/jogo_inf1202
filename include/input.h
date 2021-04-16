@@ -4,10 +4,10 @@
 #include <allegro5/allegro.h>
 
 
-#define UP (1 << 0)
-#define DOWN (1 << 1)
-#define LEFT (1 << 2)
-#define RIGHT (1 << 3)
+#define ARROWUP (1 << 0)
+#define ARROWDOWN (1 << 1)
+#define ARROWLEFT (1 << 2)
+#define ARROWRIGHT (1 << 3)
 
 typedef char KEYBOARD_STATE;
 
