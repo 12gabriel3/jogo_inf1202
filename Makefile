@@ -1,9 +1,5 @@
-all:
-	make cb
-	make m
-
-m:
+build:
 	cd build & cmake .. -G "MinGW Makefiles" & make
 
 cb:
-	cd build_codeblocks & cmake .. -G "CodeBlocks - MinGW Makefiles"
+	cd build & cmake .. -G "CodeBlocks - MinGW Makefiles"

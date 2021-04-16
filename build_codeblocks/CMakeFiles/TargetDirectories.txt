@@ -1,9 +1,0 @@
-C:/Users/paulo/Documents/jogo/build_codeblocks/CMakeFiles/edit_cache.dir
-C:/Users/paulo/Documents/jogo/build_codeblocks/CMakeFiles/character.dir
-C:/Users/paulo/Documents/jogo/build_codeblocks/CMakeFiles/graphics.dir
-C:/Users/paulo/Documents/jogo/build_codeblocks/CMakeFiles/input.dir
-C:/Users/paulo/Documents/jogo/build_codeblocks/CMakeFiles/geometry.dir
-C:/Users/paulo/Documents/jogo/build_codeblocks/CMakeFiles/env.dir
-C:/Users/paulo/Documents/jogo/build_codeblocks/CMakeFiles/level.dir
-C:/Users/paulo/Documents/jogo/build_codeblocks/CMakeFiles/OMago.dir
-C:/Users/paulo/Documents/jogo/build_codeblocks/CMakeFiles/rebuild_cache.dir
