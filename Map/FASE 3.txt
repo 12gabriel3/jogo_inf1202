@@ -1,0 +1,23 @@
+############################################################
+#                                       Z                  #
+#   J            Z                                    Z    #
+#                           Z                              #
+#                 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX          #
+#                XXXX                                      #
+#               XXXX                  T                    #
+#              XXXX                                   Z    #
+#         Z   XXXX       T                                 #
+#            XXXX                              T           #
+#           XXXX                                           #
+#          XXXX                  XXXXXXXXXXXXXXXXX         #
+#  Z       XXXX                  XXXXXXXXXXXXXXXXX         #
+#           XXXX       T                        XX         #
+#            XXXX                      T        XX     Z   #
+#             XXXX                              XX         #
+#              XXXX            T                XX         #
+#               XXXX                          G XX         #
+#         Z      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX         #
+#                                        Z                 #
+#                                                      Z   #
+#  Z                   Z                                   #
+############################################################

@@ -7,6 +7,10 @@
 #include <allegro5/allegro_color.h>
 
 //al_ :Funcoes prontas do Allegro
+ALLEGRO_BITMAP *fundo = NULL;
+ALLEGRO_BITMAP *parede = NULL;
+ALLEGRO_BITMAP *Espinho = NULL;
+
 
 int main()
 {
@@ -21,29 +25,39 @@ int main()
     KEYBOARD_STATE key_pressed;
     ALLEGRO_MONITOR_INFO monitor;
     LINE wall_south;
+/*                                                     Inicio alteração sem o gabriel
+-----------------------------------------------------------------------------------------------------------------------------------------------*/
     int i;
+    char MAPA[LINHA][COLUNA];
+
+    MONSTROS Inimigos;
+    POSICAO CHARG;
+    OBJ Itens;
+
+/*                                                     fim alteração sem o gabriel
+-----------------------------------------------------------------------------------------------------------------------------------------------*/
     //intalar as coisas do allegro
     if(!al_init())
-    {
-        return -1;
-    }
+        {
+            return -1;
+        }
 
     al_install_keyboard();
     al_install_mouse();
     if(al_get_monitor_info(0, &monitor))
-    {
-        printf("%d, %d", monitor.x2, monitor.y2);
-    }
+        {
+            printf("%d, %d", monitor.x2, monitor.y2);
+        }
     else
-    {
-        printf("Não consegui");
-    }
-    display = al_create_display((int) monitor.x2*0.6, (int) monitor.y2 * 0.6);
+        {
+            printf("Não consegui");
+        }
+    display = al_create_display((int) monitor.x2*0.750, (int) monitor.y2 * 0.772);
 
     if (!display)
-    {
-        return -1;
-    }
+        {
+            return -1;
+        }
 
 
     timer = al_create_timer(1.0 / FPS); //quanto tempo a tela sera atualizada
@@ -84,34 +98,34 @@ int main()
     set_character_hitbox(&level.characters[0]);
     //dectar a vida do main
     level.characters[0].alive = 1;
-     //padronizar o comportamento de um ps
+    //padronizar o comportamento de um ps
     level.characters[0].type = MainCharacter;
 
     for(i = 1; i < 10; i++)
-    {
-        level.characters[i].anims = get_anim(anims, "wizzard_f");
-        level.characters[i].current = level.characters[i].anims[0];
-        level.characters[i].speed = 1;
-        set_character_hitbox(&level.characters[i]);
-        level.characters[i].alive = 1;
-        level.characters[i].type = EnemySkeleton;
-        //determinam a posicao do ps, seu centro x y
-        level.characters[i].hitbox.bounds.center.x = 600;
-        level.characters[i].hitbox.bounds.center.y = i * 50 - 100;
-    }
+        {
+            level.characters[i].anims = get_anim(anims, "wizzard_f");
+            level.characters[i].current = level.characters[i].anims[0];
+            level.characters[i].speed = 1;
+            set_character_hitbox(&level.characters[i]);
+            level.characters[i].alive = 1;
+            level.characters[i].type = EnemySkeleton;
+            //determinam a posicao do ps, seu centro x y
+            level.characters[i].hitbox.bounds.center.x = 600;
+            level.characters[i].hitbox.bounds.center.y = i * 50 - 100;
+        }
 
     //add os chars no nivel
     for(i = 10; i < 20; i++)
-    {
-        level.characters[i].anims = get_anim(anims, "big_zombie");
-        level.characters[i].current = level.characters[i].anims[0];
-        level.characters[i].speed = 2;
-        set_character_hitbox(&level.characters[i]);
-        level.characters[i].alive = 1;
-        level.characters[i].type = EnemyOgre;
-        level.characters[i].hitbox.bounds.center.x = 300;
-        level.characters[i].hitbox.bounds.center.y = i * 50 - 900;
-    }
+        {
+            level.characters[i].anims = get_anim(anims, "big_zombie");
+            level.characters[i].current = level.characters[i].anims[0];
+            level.characters[i].speed = 2;
+            set_character_hitbox(&level.characters[i]);
+            level.characters[i].alive = 1;
+            level.characters[i].type = EnemyOgre;
+            level.characters[i].hitbox.bounds.center.x = 300;
+            level.characters[i].hitbox.bounds.center.y = i * 50 - 900;
+        }
     level.n_characters = 20;
 
     //add retas para colisao
@@ -129,36 +143,63 @@ int main()
     //dizer quantas linhas tem
     level.n_lines = 1;
 
+/*                                                     Inicio alteração sem o gabriel
+-----------------------------------------------------------------------------------------------------------------------------------------------*/
+
+    Atualiza_jogo(&Inimigos,&CHARG,"../Map/FASE 1.txt",MAPA,&Itens);
+    Salva_Jogo(MAPA,"../Map/salva jogo1.txt",&Itens);
+    fundo = al_load_bitmap("../img/Fundo.png");
+    parede = al_load_bitmap("../img/wall_1.png");
+    Espinho = al_load_bitmap("../img/floor_spikes_anim_f3.png");
+
+/*                                                     fim alteração sem o gabriel
+-----------------------------------------------------------------------------------------------------------------------------------------------*/
+
     //looping janela allegro p ficar aberta
     do
-    {
-        //espera ocorrer algo na fila de evento para executar
-        al_wait_for_event(queue, &event);//passando o endereço, vai modificando a cada atualização
-
-        //saber quais teclas estão sendo apertadas
-        set_kb_state(&key_pressed, event);//&key referencia de quais teclas estão sendo usadas
-
-        //diz para o nivel qual o imput
-        level.input = key_pressed; //agora o nivel vai saber qual tecla esta sendo apertada
-
-        //analisa o evento timer p cada frame
-        if(event.type == ALLEGRO_EVENT_TIMER)
         {
-            //limpa a tela p preto (tabela RGB 000) p cada atualização
-            al_clear_to_color(al_map_rgb_f(0, 0, 0));
-        
-            //direcao que os char querem ir
-            set_characters_intention(&level);
-            //analisar e dizer que nao pode ir naquela direcao quando houver colisao
-            remove_collision(&level);
-            //atualiza as caracteristicas de cada char
-            update_characters(&level);
-            //desenha a linha vermelha p allegro
-            al_draw_line(0, 400, 600, 500, al_color_name("red"), 1);
-            //atualiza tela (?) veio de um exemplo
-            al_flip_display();
+            //espera ocorrer algo na fila de evento para executar
+            al_wait_for_event(queue, &event);//passando o endereço, vai modificando a cada atualização
+
+            //saber quais teclas estão sendo apertadas
+            set_kb_state(&key_pressed, event);//&key referencia de quais teclas estão sendo usadas
+
+            //diz para o nivel qual o imput
+            level.input = key_pressed; //agora o nivel vai saber qual tecla esta sendo apertada
+
+            //analisa o evento timer p cada frame
+            if(event.type == ALLEGRO_EVENT_TIMER)
+                {
+                    //limpa a tela p preto (tabela RGB 000) p cada atualização
+                    al_clear_to_color(al_map_rgb_f(0, 0, 0));
+/*                                                     Inicio alteração sem o gabriel
+-----------------------------------------------------------------------------------------------------------------------------------------------*/
+                    //Argumentos: arquivo,posição da imagem (0,0), pega a largura original, pega a altura original, posição no programa (0,0),largura  programa, altura progrma, 0)
+                    al_draw_scaled_bitmap(fundo,0, 0,al_get_bitmap_width(fundo),al_get_bitmap_height(fundo),0, 0,((int) monitor.x2*0.750), ((int) monitor.y2 * 0.772),0);
+                    al_draw_scaled_bitmap(parede,0, 0,al_get_bitmap_width(parede),al_get_bitmap_height(parede),0,0,24, 32,0);
+                    for(i=0; i<(Itens.N_Parede); i++)
+                        al_draw_scaled_bitmap(parede,0, 0,al_get_bitmap_width(parede),al_get_bitmap_height(parede),((Itens.Parede_y[i])*24),((Itens.Parede_x[i])*32),24, 32,0);
+
+                    for(i=0; i<(Itens.N_Espinho); i++)
+                        al_draw_scaled_bitmap(Espinho,0, 0,al_get_bitmap_width(Espinho),al_get_bitmap_height(Espinho),((Itens.Espinho_y[i])*24),((Itens.Espinho_x[i])*32),24, 32,0);
+
+ /*                                                     fim alteração sem o gabriel
+-----------------------------------------------------------------------------------------------------------------------------------------------*/
+                    //direcao que os char querem ir
+                    set_characters_intention(&level);
+                    //analisar e dizer que nao pode ir naquela direcao quando houver colisao
+                    remove_collision(&level);
+                    //atualiza as caracteristicas de cada char
+                    update_characters(&level);
+                    //desenha a linha vermelha p allegro
+                    al_draw_line(0, 400, 600, 500, al_color_name("red"), 1);
+
+
+
+                    //atualiza tela (?) veio de um exemplo
+                    al_flip_display();
+                }
         }
-    }
     //A allegro roda ate tu apertar 'X' p encerrar o prog
     while(event.type != ALLEGRO_EVENT_DISPLAY_CLOSE);
 
