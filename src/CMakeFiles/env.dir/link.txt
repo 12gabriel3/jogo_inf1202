@@ -1,2 +1,0 @@
-C:\MinGW\bin\ar.exe qc libenv.a CMakeFiles/env.dir/env.c.obj
-C:\MinGW\bin\ranlib.exe libenv.a

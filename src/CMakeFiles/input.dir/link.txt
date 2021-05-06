@@ -1,2 +1,0 @@
-C:\MinGW\bin\ar.exe qc libinput.a CMakeFiles/input.dir/input.c.obj
-C:\MinGW\bin\ranlib.exe libinput.a
