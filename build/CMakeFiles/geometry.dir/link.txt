@@ -1,0 +1,2 @@
+C:\MinGW\bin\ar.exe qc libgeometry.a CMakeFiles/geometry.dir/src/geometry.c.obj
+C:\MinGW\bin\ranlib.exe libgeometry.a

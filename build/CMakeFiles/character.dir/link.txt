@@ -1,0 +1,2 @@
+C:\MinGW\bin\ar.exe qc libcharacter.a CMakeFiles/character.dir/src/character.c.obj
+C:\MinGW\bin\ranlib.exe libcharacter.a

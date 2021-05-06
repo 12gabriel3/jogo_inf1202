@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\OMago.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\OMago.dir/objects.a @CMakeFiles\OMago.dir\objects1.rsp
+C:\MinGW\bin\gcc.exe -Wl,--whole-archive CMakeFiles\OMago.dir/objects.a -Wl,--no-whole-archive -o OMago.exe -Wl,--out-implib,libOMago.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\OMago.dir\linklibs.rsp
