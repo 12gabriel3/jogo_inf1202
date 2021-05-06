@@ -1,0 +1,2 @@
+C:\MinGW\bin\ar.exe qc libgraphics.a CMakeFiles/graphics.dir/graphics.c.obj
+C:\MinGW\bin\ranlib.exe libgraphics.a
