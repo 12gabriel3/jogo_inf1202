@@ -16,12 +16,15 @@
 #define ANIMS_PER_CHAR 4
 #define HITBOX_MARGIN_PX 0
 #define FLIP_THRESHOLD 20
+#define INV_TIMER 60
+
 typedef enum {MainCharacter, EnemySkeleton, EnemyOgre, EnemySpike} CHARACTER_TYPE; 
 
 typedef struct {
     ANIMATION current;
     ANIMATION *anims;
-    int alive;
+    int lives;
+    int inv_timer;
     CHARACTER_TYPE type;
     COORD pos_graphic, direction;
     CIRCLE hitbox;

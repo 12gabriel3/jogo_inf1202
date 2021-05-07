@@ -98,7 +98,7 @@ int main()
     //para detectar colisoes do main
     set_character_hitbox(&level.characters[0]);
     //dectar a vida do main
-    level.characters[0].alive = 1;
+    level.characters[0].lives = 3;
     //padronizar o comportamento de um ps
     level.characters[0].type = MainCharacter;
 
@@ -108,7 +108,7 @@ int main()
             level.characters[i].current = level.characters[i].anims[0];
             level.characters[i].speed = 1;
             set_character_hitbox(&level.characters[i]);
-            level.characters[i].alive = 1;
+            level.characters[i].lives = 1;
             level.characters[i].type = EnemySkeleton;
             //determinam a posicao do ps, seu centro x y
             level.characters[i].hitbox.bounds.center.x = 600;
@@ -122,7 +122,7 @@ int main()
             level.characters[i].current = level.characters[i].anims[0];
             level.characters[i].speed = 2;
             set_character_hitbox(&level.characters[i]);
-            level.characters[i].alive = 1;
+            level.characters[i].lives = 1;
             level.characters[i].type = EnemyOgre;
             level.characters[i].hitbox.bounds.center.x = 300;
             level.characters[i].hitbox.bounds.center.y = i * 50 - 900;
@@ -143,6 +143,11 @@ int main()
     level.lines[0] = wall_south;
     //dizer quantas linhas tem
     level.n_lines = 1;
+
+    level.heart_full = get_sprite(sprites, "ui_heart_full");
+    level.heart_empty = get_sprite(sprites, "ui_heart_empty");
+
+
 
 /*                                                     Inicio alteração sem o gabriel
 -----------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -186,12 +191,10 @@ int main()
 
  /*                                                     fim alteração sem o gabriel
 -----------------------------------------------------------------------------------------------------------------------------------------------*/
-                    //direcao que os char querem ir
-                    set_characters_intention(&level);
-                    //analisar e dizer que nao pode ir naquela direcao quando houver colisao
-                    remove_collision(&level);
                     //atualiza as caracteristicas de cada char
                     update_characters(&level);
+                    get_main_collision(&level);
+                    update_ui(&level);
                     //desenha a linha vermelha p allegro
                     al_draw_line(0, 400, 600, 500, al_color_name("red"), 1);
 

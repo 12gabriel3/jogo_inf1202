@@ -257,6 +257,9 @@ input_LIB_DEPENDS:STATIC=general;allegro_monolith;
 //Dependencies for the target
 level_LIB_DEPENDS:STATIC=general;geometry;general;env;general;character;
 
+//Dependencies for the target
+ui_LIB_DEPENDS:STATIC=general;graphics;general;geometry;
+
 
 ########################
 # INTERNAL cache entries

@@ -61,8 +61,25 @@ int remove_collision(LEVEL *level){
 
 }
 
+void get_main_collision(LEVEL *level){
+    int i;
+    i = 1;
+    if(level->characters[0].inv_timer == 0){
+        while(!cc_collides(level->characters[0].hitbox, level->characters[i].hitbox) && i < level->n_characters) i++;
+        if(i < level->n_characters) {
+            level->characters[0].lives--;
+            level->characters[0].inv_timer = INV_TIMER;
+        }
+    } else {
+        level->characters[0].inv_timer--;
+    }
+    
+}
+
 void update_characters(LEVEL *level){
     int i;
+    set_characters_intention(level);
+    remove_collision(level);
     for(i = 0; i < level->n_characters; i++){
         move_character(&level->characters[i]);
         al_draw_bitmap(animate(&level->characters[i].current),
@@ -72,3 +89,12 @@ void update_characters(LEVEL *level){
     }
 }
 
+void update_ui(LEVEL *level){
+    int i;
+    for(i = 0; i < 3; i++){
+        if(i < level->characters[0].lives)
+            al_draw_bitmap(level->heart_full->bitmap, i*16, 0, 0);
+        else 
+            al_draw_bitmap(level->heart_empty->bitmap, i*16, 0, 0);
+    }
+}

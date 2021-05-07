@@ -201,6 +201,13 @@ COORD cc_collision_normal(CIRCLE c1, CIRCLE c2){
     return normal;
 }
 
+
+int cc_collides(CIRCLE c1, CIRCLE c2){
+    int collides = 1;
+    COORD normal = cc_collision_normal(c1, c2);
+    if(normal.x == 0 && normal.y == 0) collides = 0;
+    return collides;
+}
 float dot_prod(COORD v1, COORD v2)
 {
     return v1.x * v2.x + v1.y * v2.y;
