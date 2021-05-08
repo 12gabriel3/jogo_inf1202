@@ -1,2 +1,0 @@
-C:\MinGW\bin\ar.exe qc liblevel.a CMakeFiles/level.dir/src/level.c.obj
-C:\MinGW\bin\ranlib.exe liblevel.a

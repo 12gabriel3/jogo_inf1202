@@ -1,9 +1,0 @@
-C:/Users/Gabriel/jogo_inf1202/build/CMakeFiles/edit_cache.dir
-C:/Users/Gabriel/jogo_inf1202/build/CMakeFiles/character.dir
-C:/Users/Gabriel/jogo_inf1202/build/CMakeFiles/graphics.dir
-C:/Users/Gabriel/jogo_inf1202/build/CMakeFiles/input.dir
-C:/Users/Gabriel/jogo_inf1202/build/CMakeFiles/geometry.dir
-C:/Users/Gabriel/jogo_inf1202/build/CMakeFiles/env.dir
-C:/Users/Gabriel/jogo_inf1202/build/CMakeFiles/level.dir
-C:/Users/Gabriel/jogo_inf1202/build/CMakeFiles/OMago.dir
-C:/Users/Gabriel/jogo_inf1202/build/CMakeFiles/rebuild_cache.dir
