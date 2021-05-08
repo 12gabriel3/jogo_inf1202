@@ -29,33 +29,38 @@ int remove_collision(LEVEL *level){
     int i, j, k, collision;
     collision = 0;
     for(i = 0; i < level->n_characters; i++){
-        for(j = 0; j < level->n_characters; j++){
-            //se tiver uma colisao ele tira a velocidade do char
-            if(&level->characters[j] != &level->characters[i]){
-                next_pos_i = level->characters[i].hitbox;
-                vec_sum(&next_pos_i.bounds.center, multiply(level->characters[i].speed, level->characters[i].direction));
-                next_pos_j = level->characters[j].hitbox;
-                vec_sum(&next_pos_j.bounds.center, multiply(level->characters[j].speed, level->characters[j].direction));
-                normal = cc_collision_normal(next_pos_j, next_pos_i);
-                if(dot_prod(normal, level->characters[i].direction) > 0){
-                    normal = multiply(-0.5, normal);
-                    vec_sum(&level->characters[i].direction, normal);
-                    collision = 1;
+        if(level->characters[i].lives > 0){
+            for(j = 0; j < level->n_characters; j++){
+                if(level->characters[j].lives > 0){
+                    //se tiver uma colisao ele tira a velocidade do char
+                    if(&level->characters[j] != &level->characters[i]){
+                        next_pos_i = level->characters[i].hitbox;
+                        vec_sum(&next_pos_i.bounds.center, multiply(level->characters[i].speed, level->characters[i].direction));
+                        next_pos_j = level->characters[j].hitbox;
+                        vec_sum(&next_pos_j.bounds.center, multiply(level->characters[j].speed, level->characters[j].direction));
+                        normal = cc_collision_normal(next_pos_j, next_pos_i);
+                        if(dot_prod(normal, level->characters[i].direction) > 0){
+                            normal = multiply(-0.5, normal);
+                            vec_sum(&level->characters[i].direction, normal);
+                            collision = 1;
+                        }
+                        if(module(level->characters[i].direction) > 1) normalize(&level->characters[i].direction);
+                    }
+                    //remove as colisoes com os muros
+                    for(k = 0; k < level->n_lines; k++){
+                        next_pos_i = level->characters[i].hitbox;
+                        vec_sum(&next_pos_i.bounds.center, multiply(level->characters[i].speed, level->characters[i].direction));
+                        normal = lc_collision_normal(next_pos_i, level->lines[k]);
+                        if(dot_prod(normal, level->characters[i].direction) > 0){
+                            vec_sum(&level->characters[i].direction, multiply(-0.5, normal));
+                            collision = 1;
+                        }
+                        if(module(level->characters[i].direction) > 1) normalize(&level->characters[i].direction);
+                    }
                 }
-                if(module(level->characters[i].direction) > 1) normalize(&level->characters[i].direction);
-            }
-            //remove as colisoes com os muros
-            for(k = 0; k < level->n_lines; k++){
-                next_pos_i = level->characters[i].hitbox;
-                vec_sum(&next_pos_i.bounds.center, multiply(level->characters[i].speed, level->characters[i].direction));
-                normal = lc_collision_normal(next_pos_i, level->lines[k]);
-                if(dot_prod(normal, level->characters[i].direction) > 0){
-                    vec_sum(&level->characters[i].direction, multiply(-0.5, normal));
-                    collision = 1;
-                }
-                if(module(level->characters[i].direction) > 1) normalize(&level->characters[i].direction);
             }
         }
+        
     }
     return collision;
 
@@ -81,11 +86,13 @@ void update_characters(LEVEL *level){
     set_characters_intention(level);
     remove_collision(level);
     for(i = 0; i < level->n_characters; i++){
-        move_character(&level->characters[i]);
-        al_draw_bitmap(animate(&level->characters[i].current),
-                       level->characters[i].pos_graphic.x + level->characters[i].hitbox.bounds.center.x,
-                       level->characters[i].pos_graphic.y + level->characters[i].hitbox.bounds.center.y,
-                       level->characters[i].flags);
+        if(level->characters[i].lives > 0){
+            move_character(&level->characters[i]);
+            al_draw_bitmap(animate(&level->characters[i].current),
+                        level->characters[i].pos_graphic.x + level->characters[i].hitbox.bounds.center.x,
+                        level->characters[i].pos_graphic.y + level->characters[i].hitbox.bounds.center.y,
+                        level->characters[i].flags);
+        }
     }
 }
 
