@@ -49,7 +49,7 @@ int main()
     {
         printf("N�o consegui");
     }
-    display = al_create_display((int) monitor.x2*0.750, (int) monitor.y2 * 0.772);
+    display = al_create_display(960,368);
 
     if (!display)
     {
@@ -88,7 +88,7 @@ int main()
 
     level.aura.anim = *get_anim(anims, "aura");
     level.aura.active = 0;
-<<<<<<< HEAD
+
     /*
      //Personagem principal
      level.characters[0].anims = get_anim(anims, "wizzard_m");
@@ -132,60 +132,13 @@ int main()
      */
 
     level.n_characters = 1;
-    load_jogo("../Map/FASE 2.txt",MAPA,&level,anims);
+    level.n_envs = 0;
+    load_jogo("../Map/FASE 2.txt",MAPA,&level,anims,sprites);
+
     for(i=0; i<LINHA; i++)
         printf("%s",MAPA[i]);
 
     Salva_Jogo(MAPA,"../map/Naodeu.txt",&level);
-=======
-    //Personagem principal
-    level.characters[0].anims = get_anim(anims, "wizzard_m");
-    //current � anima�ao atual do main
-    level.characters[0].current = level.characters[0].anims[0];
-    //velocidade dele
-    level.characters[0].speed = 3;
-    //para detectar colisoes do main
-    set_character_hitbox(&level.characters[0]);
-    //dectar a vida do main
-    level.characters[0].lives = 3;
-    //padronizar o comportamento de um ps
-    level.characters[0].type = MainCharacter;
-    level.characters[0].atk_timer = 0;
-    for(i = 1; i < 10; i++)
-    {
-        level.characters[i].anims = get_anim(anims, "wizzard_f");
-        level.characters[i].current = level.characters[i].anims[0];
-        level.characters[i].speed = 1;
-        set_character_hitbox(&level.characters[i]);
-        level.characters[i].lives = 1;
-        level.characters[i].type = EnemySkeleton;
-        //determinam a posicao do ps, seu centro x y
-        level.characters[i].hitbox.bounds.center.x = 600;
-        level.characters[i].hitbox.bounds.center.y = i * 50 - 100;
-    }
-    
-    //add os chars no nivel
-    for(i = 10; i < 20; i++)
-        {
-            level.characters[i].anims = get_anim(anims, "big_zombie");
-            level.characters[i].current = level.characters[i].anims[0];
-            level.characters[i].speed = 2;
-            set_character_hitbox(&level.characters[i]);
-            level.characters[i].lives = 1;
-            level.characters[i].type = EnemyOgre;
-            level.characters[i].hitbox.bounds.center.x = 300;
-            level.characters[i].hitbox.bounds.center.y = i * 50 - 900;
-        }
-    level.n_characters = 20;
-
-    
-    //level.n_characters = 0;
-    //load_jogo("../mp/fase_1.txt",MAPA,&level,anims);
-    for(i=0;i<LINHA;i++)
-        puts(MAPA[i]);
-
-    //Salva_Jogo(MAPA,"../map/Naodeu.txt");
->>>>>>> daa3a568965589d1fad88ac20c611d44a5a1e80e
 
     //add retas para colisao
     //muro do sul
@@ -225,8 +178,8 @@ int main()
         {
             //limpa a tela p preto (tabela RGB 000) p cada atualiza��o
             al_clear_to_color(al_map_rgb_f(0, 0, 0));
+            atualiza_env(&level);
 
-<<<<<<< HEAD
             //atualiza as caracteristicas de cada char
             update_characters(&level);
             get_main_collision(&level);
@@ -234,18 +187,6 @@ int main()
             atk(&level);
             //desenha a linha vermelha p allegro
             al_draw_line(0, 400, 600, 500, al_color_name("red"), 1);
-=======
-                    //atualiza as caracteristicas de cada char
-                    
-                    atk(&level);
-                    get_main_collision(&level);
-                    update_characters(&level);
-                    update_ui(&level);
-                    
-                    printf("\n%f", level.characters[0].hitbox.r);
-                    //desenha a linha vermelha p allegro
-                    al_draw_line(0, 400, 600, 500, al_color_name("red"), 1);
->>>>>>> daa3a568965589d1fad88ac20c611d44a5a1e80e
 
 
 

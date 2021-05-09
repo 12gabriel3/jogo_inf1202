@@ -120,29 +120,36 @@ void update_characters(LEVEL *level)
     }
 }
 
-void atk(LEVEL *level){
+void atk(LEVEL *level)
+{
     int i;
-    if(level->input & ATTACK && level->characters[0].atk_timer == 0){
+    if(level->input & ATTACK && level->characters[0].atk_timer == 0)
+    {
         level->aura.active = 1;
         level->characters[0].atk_timer = ATTACK_TIMER;
     }
-    if(level->aura.active){
+    if(level->aura.active)
+    {
         level->aura.hitbox.bounds.center = level->characters[0].hitbox.bounds.center;
         set_atk_hitbox(&level->aura);
         al_draw_bitmap(animate(&level->aura.anim),
                        level->aura.hitbox.bounds.center.x + level->aura.pos_graphic.x,
                        level->aura.hitbox.bounds.center.y + level->aura.pos_graphic.y, 0);
-        if(level->aura.anim.current_period == level->aura.anim.period - 1) {
+        if(level->aura.anim.current_period == level->aura.anim.period - 1)
+        {
             level->aura.active = 0;
             level->aura.anim.current_period = 0;
         }
-        for(i = 1; i < level->n_characters; i++){
-            if(level->characters[i].lives && cc_collides(level->aura.hitbox, level->characters[i].hitbox)) {
+        for(i = 1; i < level->n_characters; i++)
+        {
+            if(level->characters[i].lives && cc_collides(level->aura.hitbox, level->characters[i].hitbox))
+            {
                 level->characters[i].lives--;
             }
         }
     }
-    if(level->characters[0].atk_timer) level->characters[0].atk_timer--;
+    if(level->characters[0].atk_timer)
+        level->characters[0].atk_timer--;
 }
 
 void update_ui(LEVEL *level)
@@ -160,11 +167,11 @@ void update_ui(LEVEL *level)
 
 
 
-void load_jogo(char Nome_Mapa[], char Mapa1 [][COLUNA], LEVEL *level,ANIMATION *anims1)
+void load_jogo(char Nome_Mapa[], char Mapa1 [][COLUNA], LEVEL *level,ANIMATION *anims1,SPRITE *sprite1)
 {
     FILE *Arq;
 
-    Busca(Nome_Mapa, Arq, Mapa1, level, anims1);
+    Busca(Nome_Mapa, Arq, Mapa1, level, anims1,sprite1);
 }
 
 
@@ -174,22 +181,22 @@ int Salva_Jogo(char mapa[][COLUNA],char nome_arquivo_out[MAX_NOME],LEVEL *level1
     FILE *arq;
     int i,falha = 0;
     if((arq = fopen((nome_arquivo_out),"w+")))
-     {
-         for(i=0; i<LINHA; i++)
-             fputs(mapa[i],arq);
+    {
+        for(i=0; i<LINHA; i++)
+            fputs(mapa[i],arq);
 
-         if(fprintf(arq,"\n\n--------------------------------------------------------------\n")< 0)
-             falha = 1;
-         // if(fprintf(arq,"\nFase: %d\n",obj->Fase) < 0)
-             //falha = 1;
-         if(fprintf(arq,"\nVidas: %d\n",level1->characters[0].lives) < 0)
-             falha = 1;
+        if(fprintf(arq,"\n\n--------------------------------------------------------------\n")< 0)
+            falha = 1;
+        // if(fprintf(arq,"\nFase: %d\n",obj->Fase) < 0)
+        //falha = 1;
+        if(fprintf(arq,"\nVidas: %d\n",level1->characters[0].lives) < 0)
+            falha = 1;
         // if(fprintf(arq,"\nPontos: %d\n",obj->Pontos) < 0)
-             //falha = 1;
+        //falha = 1;
 
-     }
-     else
-    falha = 1;
+    }
+    else
+        falha = 1;
 
     if(!falha)
         return 1;
@@ -198,7 +205,7 @@ int Salva_Jogo(char mapa[][COLUNA],char nome_arquivo_out[MAX_NOME],LEVEL *level1
     fclose(arq);
 }
 
-void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVEL *level1, ANIMATION *animacao)
+void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVEL *level1, ANIMATION *animacao, SPRITE *sprite)
 {
     int i=0,j,n_monstro = 0;
     char texto_str[COLUNA];
@@ -266,6 +273,8 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                 Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), '#', mapa[i]);
                 if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= 0)||((level1->envs[(level1->n_envs)].pos_graphic.y) != 0))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
                 {
+                    level1->envs[(level1->n_envs)].anim = NULL;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_mid");
                     (level1->n_envs) += 1;
                 }
             }
@@ -275,6 +284,9 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                 Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), 'X', mapa[i]);
                 if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= 0)||((level1->envs[(level1->n_envs)].pos_graphic.y) != 0))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
                 {
+                    level1->envs[(level1->n_envs)].anim = get_anim(animacao,"floor_spikes");
+                    level1->envs[(level1->n_envs)].anim->period = 240;
+                    level1->envs[(level1->n_envs)].sprite = NULL;
                     (level1->n_envs) += 1;
                 }
             }
@@ -294,7 +306,7 @@ void Coordenada(int linha,int coluna,float *cord_x,float *cord_y, char busca, ch
             {
 
                 *cord_y = corre_coluna*16;
-                *cord_x = linha*64;
+                *cord_x = linha*16;
             }
         }
     }
@@ -302,8 +314,16 @@ void Coordenada(int linha,int coluna,float *cord_x,float *cord_y, char busca, ch
     {
         if(Mapa[coluna] == busca)
         {
-            *cord_y = coluna*16;
-            *cord_x = linha*32;
+            *cord_x = coluna*16;
+            *cord_y = linha*16;
         }
+    }
+}
+
+void atualiza_env(LEVEL *level)
+{
+    for(int i=0; i<(level->n_envs);i++)
+    {
+      update_env(&level->envs[i]);
     }
 }

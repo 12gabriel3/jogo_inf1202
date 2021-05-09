@@ -4,7 +4,7 @@
 #include <env.h>
 #include <geometry.h>
 #include <character.h>
-#define ENVS_MAX 200
+#define ENVS_MAX 1400
 #define CHARACTERS_MAX 50
 #define LINES_MAX 100
 #define UI_MAX 50
@@ -31,10 +31,12 @@ void atk(LEVEL *level);
 
 void Coordenada(int linha,int coluna,float *cord_x,float *cord_y, char busca, char Mapa[]);
 
-void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVEL *level1, ANIMATION *animacao);
+void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVEL *level1, ANIMATION *animacao, SPRITE *sprite);
 
-void load_jogo(char Nome_Mapa[], char Mapa1 [][COLUNA], LEVEL *level,ANIMATION *anims1);
+void load_jogo(char Nome_Mapa[], char Mapa1 [][COLUNA], LEVEL *level,ANIMATION *anims1,SPRITE *sprite1);
 
 int Salva_Jogo(char mapa[][COLUNA],char nome_arquivo_out[MAX_NOME],LEVEL *level1);
+
+void atualiza_env(LEVEL *level);
 
 #endif
