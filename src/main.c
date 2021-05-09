@@ -124,11 +124,11 @@ int main()
 
     */
     level.n_characters = 0;
-    load_jogo("../Map/fase_1.txt",MAPA,&level,anims);
+    load_jogo("../mp/fase_1.txt",MAPA,&level,anims);
     for(i=0;i<LINHA;i++)
         puts(MAPA[i]);
 
-    Salva_Jogo(MAPA,"../Map/Naodeu.txt");
+    Salva_Jogo(MAPA,"../map/Naodeu.txt");
 
     //add retas para colisao
     //muro do sul
