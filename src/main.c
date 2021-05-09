@@ -21,12 +21,12 @@ int main()
     KEYBOARD_STATE key_pressed;
     ALLEGRO_MONITOR_INFO monitor;
     LINE wall_south;
-/*                                                     Inicio alteração sem o gabriel
+/*                                                     Inicio alteraï¿½ï¿½o sem o gabriel
 -----------------------------------------------------------------------------------------------------------------------------------------------*/
     int i;
     char MAPA[LINHA][COLUNA];
 
-/*                                                     fim alteração sem o gabriel
+/*                                                     fim alteraï¿½ï¿½o sem o gabriel
 -----------------------------------------------------------------------------------------------------------------------------------------------*/
     //intalar as coisas do allegro
     if(!al_init())
@@ -42,7 +42,7 @@ int main()
         }
     else
         {
-            printf("Não consegui");
+            printf("Nï¿½o consegui");
         }
     display = al_create_display((int) monitor.x2*0.750, (int) monitor.y2 * 0.772);
 
@@ -61,7 +61,7 @@ int main()
     al_register_event_source(queue, al_get_display_event_source(display));
     al_register_event_source(queue, al_get_timer_event_source(timer));
 
-    //começar a contagem de tempo
+    //comeï¿½ar a contagem de tempo
     al_start_timer(timer);
 
     //titulo da tela
@@ -72,7 +72,7 @@ int main()
     //p representar o muro vermelho
     al_init_primitives_addon();
 
-    //coloca todos os sprites e imagens que estão na pasta aos vetores
+    //coloca todos os sprites e imagens que estï¿½o na pasta aos vetores
     carrega_sprites(sprites, anims, "../img"); //.. :Diretorio de cima
 
     //add retas para colisao
@@ -84,7 +84,7 @@ int main()
 
     //Personagem principal
     level.characters[0].anims = get_anim(anims, "wizzard_m");
-    //current é animaçao atual do main
+    //current ï¿½ animaï¿½ao atual do main
     level.characters[0].current = level.characters[0].anims[0];
     //velocidade dele
     level.characters[0].speed = 3;
@@ -124,7 +124,7 @@ int main()
 
     */
     level.n_characters = 0;
-    load_jogo("../Map/Fase 1.txt",MAPA,&level,anims);
+    load_jogo("../Map/fase_1.txt",MAPA,&level,anims);
     for(i=0;i<LINHA;i++)
         puts(MAPA[i]);
 
@@ -155,10 +155,10 @@ int main()
     do
         {
             //espera ocorrer algo na fila de evento para executar
-            al_wait_for_event(queue, &event);//passando o endereço, vai modificando a cada atualização
+            al_wait_for_event(queue, &event);//passando o endereï¿½o, vai modificando a cada atualizaï¿½ï¿½o
 
-            //saber quais teclas estão sendo apertadas
-            set_kb_state(&key_pressed, event);//&key referencia de quais teclas estão sendo usadas
+            //saber quais teclas estï¿½o sendo apertadas
+            set_kb_state(&key_pressed, event);//&key referencia de quais teclas estï¿½o sendo usadas
 
             //diz para o nivel qual o imput
             level.input = key_pressed; //agora o nivel vai saber qual tecla esta sendo apertada
@@ -166,7 +166,7 @@ int main()
             //analisa o evento timer p cada frame
             if(event.type == ALLEGRO_EVENT_TIMER)
                 {
-                    //limpa a tela p preto (tabela RGB 000) p cada atualização
+                    //limpa a tela p preto (tabela RGB 000) p cada atualizaï¿½ï¿½o
                     al_clear_to_color(al_map_rgb_f(0, 0, 0));
 
                     //atualiza as caracteristicas de cada char
