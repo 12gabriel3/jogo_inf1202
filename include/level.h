@@ -26,4 +26,14 @@ void update_characters(LEVEL *level);
 
 void get_main_collision(LEVEL *level);
 
+
+
+void Coordenada(int linha,int coluna,float *cord_x,float *cord_y, char busca, char Mapa[]);
+
+void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVEL *level1, ANIMATION *animacao);
+
+void load_jogo(char Nome_Mapa[], char Mapa1 [][COLUNA], LEVEL *level,ANIMATION *anims1);
+
+int Salva_Jogo(char mapa[][COLUNA],char nome_arquivo_out[MAX_NOME]);
+
 #endif

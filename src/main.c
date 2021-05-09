@@ -7,11 +7,6 @@
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_color.h>
 
-//al_ :Funcoes prontas do Allegro
-ALLEGRO_BITMAP *fundo = NULL;
-ALLEGRO_BITMAP *parede = NULL;
-ALLEGRO_BITMAP *Espinho = NULL;
-
 
 int main()
 {
@@ -26,16 +21,12 @@ int main()
     KEYBOARD_STATE key_pressed;
     ALLEGRO_MONITOR_INFO monitor;
     LINE wall_south;
-/*                                                     Inicio altera√ß√£o sem o gabriel
+/*                                                     Inicio alteraÁ„o sem o gabriel
 -----------------------------------------------------------------------------------------------------------------------------------------------*/
     int i;
     char MAPA[LINHA][COLUNA];
 
-    MONSTROS Inimigos;
-    POSICAO CHARG;
-    OBJ Itens;
-
-/*                                                     fim altera√ß√£o sem o gabriel
+/*                                                     fim alteraÁ„o sem o gabriel
 -----------------------------------------------------------------------------------------------------------------------------------------------*/
     //intalar as coisas do allegro
     if(!al_init())
@@ -51,7 +42,7 @@ int main()
         }
     else
         {
-            printf("N√£o consegui");
+            printf("N„o consegui");
         }
     display = al_create_display((int) monitor.x2*0.750, (int) monitor.y2 * 0.772);
 
@@ -70,7 +61,7 @@ int main()
     al_register_event_source(queue, al_get_display_event_source(display));
     al_register_event_source(queue, al_get_timer_event_source(timer));
 
-    //come√ßar a contagem de tempo
+    //comeÁar a contagem de tempo
     al_start_timer(timer);
 
     //titulo da tela
@@ -81,7 +72,7 @@ int main()
     //p representar o muro vermelho
     al_init_primitives_addon();
 
-    //coloca todos os sprites e imagens que est√£o na pasta aos vetores
+    //coloca todos os sprites e imagens que est„o na pasta aos vetores
     carrega_sprites(sprites, anims, "../img"); //.. :Diretorio de cima
 
     //add retas para colisao
@@ -89,9 +80,11 @@ int main()
     wall_south.normal.y = -1;
     wall_south.normal.x = 0;
 
+  /*
+
     //Personagem principal
     level.characters[0].anims = get_anim(anims, "wizzard_m");
-    //current √© anima√ßao atual do main
+    //current È animaÁao atual do main
     level.characters[0].current = level.characters[0].anims[0];
     //velocidade dele
     level.characters[0].speed = 3;
@@ -129,6 +122,14 @@ int main()
         }
     level.n_characters = 20;
 
+    */
+    level.n_characters = 0;
+    load_jogo("../Map/Fase 1.txt",MAPA,&level,anims);
+    for(i=0;i<LINHA;i++)
+        puts(MAPA[i]);
+
+    Salva_Jogo(MAPA,"../Map/Naodeu.txt");
+
     //add retas para colisao
     //muro do sul
     //cordenadas
@@ -144,31 +145,20 @@ int main()
     //dizer quantas linhas tem
     level.n_lines = 1;
 
+
     level.heart_full = get_sprite(sprites, "ui_heart_full");
     level.heart_empty = get_sprite(sprites, "ui_heart_empty");
 
 
 
-/*                                                     Inicio altera√ß√£o sem o gabriel
------------------------------------------------------------------------------------------------------------------------------------------------*/
-
-    Atualiza_jogo(&Inimigos,&CHARG,"../Map/FASE 1.txt",MAPA,&Itens);
-    Salva_Jogo(MAPA,"../Map/salva jogo1.txt",&Itens);
-    fundo = al_load_bitmap("../img/Fundo.png");
-    parede = al_load_bitmap("../img/wall_1.png");
-    Espinho = al_load_bitmap("../img/floor_spikes_anim_f3.png");
-
-/*                                                     fim altera√ß√£o sem o gabriel
------------------------------------------------------------------------------------------------------------------------------------------------*/
-
     //looping janela allegro p ficar aberta
     do
         {
             //espera ocorrer algo na fila de evento para executar
-            al_wait_for_event(queue, &event);//passando o endere√ßo, vai modificando a cada atualiza√ß√£o
+            al_wait_for_event(queue, &event);//passando o endereÁo, vai modificando a cada atualizaÁ„o
 
-            //saber quais teclas est√£o sendo apertadas
-            set_kb_state(&key_pressed, event);//&key referencia de quais teclas est√£o sendo usadas
+            //saber quais teclas est„o sendo apertadas
+            set_kb_state(&key_pressed, event);//&key referencia de quais teclas est„o sendo usadas
 
             //diz para o nivel qual o imput
             level.input = key_pressed; //agora o nivel vai saber qual tecla esta sendo apertada
@@ -176,21 +166,9 @@ int main()
             //analisa o evento timer p cada frame
             if(event.type == ALLEGRO_EVENT_TIMER)
                 {
-                    //limpa a tela p preto (tabela RGB 000) p cada atualiza√ß√£o
+                    //limpa a tela p preto (tabela RGB 000) p cada atualizaÁ„o
                     al_clear_to_color(al_map_rgb_f(0, 0, 0));
-/*                                                     Inicio altera√ß√£o sem o gabriel
------------------------------------------------------------------------------------------------------------------------------------------------*/
-                    //Argumentos: arquivo,posi√ß√£o da imagem (0,0), pega a largura original, pega a altura original, posi√ß√£o no programa (0,0),largura  programa, altura progrma, 0)
-                    al_draw_scaled_bitmap(fundo,0, 0,al_get_bitmap_width(fundo),al_get_bitmap_height(fundo),0, 0,((int) monitor.x2*0.750), ((int) monitor.y2 * 0.772),0);
-                    al_draw_scaled_bitmap(parede,0, 0,al_get_bitmap_width(parede),al_get_bitmap_height(parede),0,0,24, 32,0);
-                    for(i=0; i<(Itens.N_Parede); i++)
-                        al_draw_scaled_bitmap(parede,0, 0,al_get_bitmap_width(parede),al_get_bitmap_height(parede),((Itens.Parede_y[i])*24),((Itens.Parede_x[i])*32),24, 32,0);
 
-                    for(i=0; i<(Itens.N_Espinho); i++)
-                        al_draw_scaled_bitmap(Espinho,0, 0,al_get_bitmap_width(Espinho),al_get_bitmap_height(Espinho),((Itens.Espinho_y[i])*24),((Itens.Espinho_x[i])*32),24, 32,0);
-
- /*                                                     fim altera√ß√£o sem o gabriel
------------------------------------------------------------------------------------------------------------------------------------------------*/
                     //atualiza as caracteristicas de cada char
                     update_characters(&level);
                     get_main_collision(&level);
