@@ -136,7 +136,7 @@ void atk(LEVEL *level){
             level->aura.active = 0;
             level->aura.anim.current_period = 0;
         }
-        for(i = 0; i < level->n_characters; i++){
+        for(i = 1; i < level->n_characters; i++){
             if(level->characters[i].lives && cc_collides(level->aura.hitbox, level->characters[i].hitbox)) level->characters[i].lives--;
         }
     }
