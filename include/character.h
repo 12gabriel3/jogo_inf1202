@@ -18,6 +18,7 @@
 #define FLIP_THRESHOLD 20
 #define INV_TIMER 60
 #define ATTACK_TIMER 60
+
 typedef enum {MainCharacter, EnemySkeleton, EnemyOgre, EnemySpike} CHARACTER_TYPE; 
 
 typedef struct {

@@ -35,6 +35,6 @@ void set_atk_hitbox(AURA *aura){
     aura->hitbox.r = al_get_bitmap_width(aura->anim.frames[current_frame].bitmap)/2;
     set_circle_box(&aura->hitbox);
     aura->pos_graphic.x = -aura->hitbox.r;
-    aura->pos_graphic.y = -al_get_bitmap_height(aura->anim.frames[0].bitmap) + 
-                               aura->hitbox.r + HITBOX_MARGIN_PX;
+    aura->pos_graphic.y = -al_get_bitmap_height(aura->anim.frames[current_frame].bitmap) + 
+                               aura->hitbox.r;
 }

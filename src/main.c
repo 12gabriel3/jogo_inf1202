@@ -81,7 +81,8 @@ int main()
     wall_south.normal.x = 0;
 
   
-
+    level.aura.anim = *get_anim(anims, "aura");
+    level.aura.active = 0;
     //Personagem principal
     level.characters[0].anims = get_anim(anims, "wizzard_m");
     //current � anima�ao atual do main
@@ -94,7 +95,7 @@ int main()
     level.characters[0].lives = 3;
     //padronizar o comportamento de um ps
     level.characters[0].type = MainCharacter;
-
+    level.characters[0].atk_timer = 0;
     for(i = 1; i < 10; i++)
         {
             level.characters[i].anims = get_anim(anims, "wizzard_f");
@@ -173,7 +174,7 @@ int main()
                     update_characters(&level);
                     get_main_collision(&level);
                     update_ui(&level);
-                    al_draw_bitmap(animate(get_anim(anims, "aura")), 500, 500, 0);
+                    atk(&level);
                     //desenha a linha vermelha p allegro
                     al_draw_line(0, 400, 600, 500, al_color_name("red"), 1);
 

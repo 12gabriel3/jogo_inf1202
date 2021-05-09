@@ -121,14 +121,26 @@ void update_characters(LEVEL *level)
 }
 
 void atk(LEVEL *level){
-    if(level->input | ATTACK && level->characters[0].atk_timer == 0){
+    int i;
+    if(level->input & ATTACK && level->characters[0].atk_timer == 0){
+        level->aura.active = 1;
         level->characters[0].atk_timer = ATTACK_TIMER;
+    }
+    if(level->aura.active){
         level->aura.hitbox.bounds.center = level->characters[0].hitbox.bounds.center;
         set_atk_hitbox(&level->aura);
         al_draw_bitmap(animate(&level->aura.anim), 
                        level->aura.hitbox.bounds.center.x + level->aura.pos_graphic.x, 
                        level->aura.hitbox.bounds.center.y + level->aura.pos_graphic.y, 0);
+        if(level->aura.anim.current_period == level->aura.anim.period - 1) {
+            level->aura.active = 0;
+            level->aura.anim.current_period = 0;
+        }
+        for(i = 0; i < level->n_characters; i++){
+            if(level->characters[i].lives && cc_collides(level->aura.hitbox, level->characters[i].hitbox)) level->characters[i].lives--;
+        }
     }
+    if(level->characters[0].atk_timer) level->characters[0].atk_timer--;
 }
 
 void update_ui(LEVEL *level)
