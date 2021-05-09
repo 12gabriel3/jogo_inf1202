@@ -133,7 +133,7 @@ int main()
 
     level.n_characters = 1;
     level.n_envs = 0;
-    load_jogo("../Map/FASE 2.txt",MAPA,&level,anims,sprites);
+    load_jogo("../Map/FASE 1.txt",MAPA,&level,anims,sprites);
 
     for(i=0; i<LINHA; i++)
         printf("%s",MAPA[i]);
@@ -143,12 +143,12 @@ int main()
     //add retas para colisao
     //muro do sul
     //cordenadas
-    wall_south.p1.x = 0;
-    wall_south.p1.y = 400;
-    wall_south.p2.x = 600;
+    wall_south.p1.x = 16;
+    wall_south.p1.y = 16;
+    wall_south.p2.x = 944;
     wall_south.p2.y = 500;
     //linha de colisao
-    set_line_normal(&wall_south, UP | RIGHT);
+    set_line_normal(&wall_south,DOWN | RIGHT);
     //area da linha que diz se tem colisao ou n
     set_line_box(&wall_south);
     level.lines[0] = wall_south;
@@ -186,7 +186,7 @@ int main()
             update_ui(&level);
             atk(&level);
             //desenha a linha vermelha p allegro
-            al_draw_line(0, 400, 600, 500, al_color_name("red"), 1);
+           // al_draw_line(0, 400, 600, 500, al_color_name("red"), 1);
 
 
 

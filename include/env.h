@@ -14,7 +14,8 @@
 #include <string.h>
 
 typedef struct {
-    ANIMATION *anim;
+    int is_anim;
+    ANIMATION anim;
     SPRITE *sprite;
     COORD pos_graphic;
 } ENV;
