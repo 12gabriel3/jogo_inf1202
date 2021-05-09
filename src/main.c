@@ -21,35 +21,40 @@ int main()
     KEYBOARD_STATE key_pressed;
     ALLEGRO_MONITOR_INFO monitor;
     LINE wall_south;
-/*                                                     Inicio altera��o sem o gabriel
------------------------------------------------------------------------------------------------------------------------------------------------*/
+    /*                                                     Inicio altera��o sem o gabriel
+    -----------------------------------------------------------------------------------------------------------------------------------------------*/
     int i;
     char MAPA[LINHA][COLUNA];
 
-/*                                                     fim altera��o sem o gabriel
------------------------------------------------------------------------------------------------------------------------------------------------*/
+    for(i=0; i>200; i++)
+    {
+        level.characters[i].hitbox.bounds.center.x = 0;
+        level.characters[i].hitbox.bounds.center.y = 0;
+    }
+    /*                                                     fim altera��o sem o gabriel
+    -----------------------------------------------------------------------------------------------------------------------------------------------*/
     //intalar as coisas do allegro
     if(!al_init())
-        {
-            return -1;
-        }
+    {
+        return -1;
+    }
 
     al_install_keyboard();
     al_install_mouse();
     if(al_get_monitor_info(0, &monitor))
-        {
-            printf("%d, %d", monitor.x2, monitor.y2);
-        }
+    {
+        printf("%d, %d", monitor.x2, monitor.y2);
+    }
     else
-        {
-            printf("N�o consegui");
-        }
+    {
+        printf("N�o consegui");
+    }
     display = al_create_display((int) monitor.x2*0.750, (int) monitor.y2 * 0.772);
 
     if (!display)
-        {
-            return -1;
-        }
+    {
+        return -1;
+    }
 
 
     timer = al_create_timer(1.0 / FPS); //quanto tempo a tela sera atualizada
@@ -80,56 +85,57 @@ int main()
     wall_south.normal.y = -1;
     wall_south.normal.x = 0;
 
-  
+
     level.aura.anim = *get_anim(anims, "aura");
     level.aura.active = 0;
-    //Personagem principal
-    level.characters[0].anims = get_anim(anims, "wizzard_m");
-    //current � anima�ao atual do main
-    level.characters[0].current = level.characters[0].anims[0];
-    //velocidade dele
-    level.characters[0].speed = 3;
-    //para detectar colisoes do main
-    set_character_hitbox(&level.characters[0]);
-    //dectar a vida do main
-    level.characters[0].lives = 3;
-    //padronizar o comportamento de um ps
-    level.characters[0].type = MainCharacter;
-    level.characters[0].atk_timer = 0;
-    for(i = 1; i < 10; i++)
-        {
-            level.characters[i].anims = get_anim(anims, "wizzard_f");
-            level.characters[i].current = level.characters[i].anims[0];
-            level.characters[i].speed = 1;
-            set_character_hitbox(&level.characters[i]);
-            level.characters[i].lives = 1;
-            level.characters[i].type = EnemySkeleton;
-            //determinam a posicao do ps, seu centro x y
-            level.characters[i].hitbox.bounds.center.x = 600;
-            level.characters[i].hitbox.bounds.center.y = i * 50 - 100;
-        }
+    /*
+     //Personagem principal
+     level.characters[0].anims = get_anim(anims, "wizzard_m");
+     //current � anima�ao atual do main
+     level.characters[0].current = level.characters[0].anims[0];
+     //velocidade dele
+     level.characters[0].speed = 3;
+     //para detectar colisoes do main
+     set_character_hitbox(&level.characters[0]);
+     //dectar a vida do main
+     level.characters[0].lives = 3;
+     //padronizar o comportamento de um ps
+     level.characters[0].type = MainCharacter;
+     level.characters[0].atk_timer = 0;
+     for(i = 1; i < 10; i++)
+         {
+             level.characters[i].anims = get_anim(anims, "wizzard_f");
+             level.characters[i].current = level.characters[i].anims[0];
+             level.characters[i].speed = 1;
+             set_character_hitbox(&level.characters[i]);
+             level.characters[i].lives = 1;
+             level.characters[i].type = EnemySkeleton;
+             //determinam a posicao do ps, seu centro x y
+             level.characters[i].hitbox.bounds.center.x = 600;
+             level.characters[i].hitbox.bounds.center.y = i * 50 - 100;
+         }
 
-    //add os chars no nivel
-    for(i = 10; i < 20; i++)
-        {
-            level.characters[i].anims = get_anim(anims, "big_zombie");
-            level.characters[i].current = level.characters[i].anims[0];
-            level.characters[i].speed = 2;
-            set_character_hitbox(&level.characters[i]);
-            level.characters[i].lives = 1;
-            level.characters[i].type = EnemyOgre;
-            level.characters[i].hitbox.bounds.center.x = 300;
-            level.characters[i].hitbox.bounds.center.y = i * 50 - 900;
-        }
-    level.n_characters = 20;
+     //add os chars no nivel
+     for(i = 10; i < 20; i++)
+         {
+             level.characters[i].anims = get_anim(anims, "big_zombie");
+             level.characters[i].current = level.characters[i].anims[0];
+             level.characters[i].speed = 2;
+             set_character_hitbox(&level.characters[i]);
+             level.characters[i].lives = 1;
+             level.characters[i].type = EnemyOgre;
+             level.characters[i].hitbox.bounds.center.x = 300;
+             level.characters[i].hitbox.bounds.center.y = i * 50 - 900;
+         }
+     level.n_characters = 20;
+     */
 
-    
-    //level.n_characters = 0;
-    //load_jogo("../mp/fase_1.txt",MAPA,&level,anims);
-    for(i=0;i<LINHA;i++)
-        puts(MAPA[i]);
+    level.n_characters = 1;
+    load_jogo("../Map/FASE 2.txt",MAPA,&level,anims);
+    for(i=0; i<LINHA; i++)
+        printf("%s",MAPA[i]);
 
-    //Salva_Jogo(MAPA,"../map/Naodeu.txt");
+    Salva_Jogo(MAPA,"../map/Naodeu.txt",&level);
 
     //add retas para colisao
     //muro do sul
@@ -154,36 +160,36 @@ int main()
 
     //looping janela allegro p ficar aberta
     do
+    {
+        //espera ocorrer algo na fila de evento para executar
+        al_wait_for_event(queue, &event);//passando o endere�o, vai modificando a cada atualiza��o
+
+        //saber quais teclas est�o sendo apertadas
+        set_kb_state(&key_pressed, event);//&key referencia de quais teclas est�o sendo usadas
+
+        //diz para o nivel qual o imput
+        level.input = key_pressed; //agora o nivel vai saber qual tecla esta sendo apertada
+
+        //analisa o evento timer p cada frame
+        if(event.type == ALLEGRO_EVENT_TIMER)
         {
-            //espera ocorrer algo na fila de evento para executar
-            al_wait_for_event(queue, &event);//passando o endere�o, vai modificando a cada atualiza��o
+            //limpa a tela p preto (tabela RGB 000) p cada atualiza��o
+            al_clear_to_color(al_map_rgb_f(0, 0, 0));
 
-            //saber quais teclas est�o sendo apertadas
-            set_kb_state(&key_pressed, event);//&key referencia de quais teclas est�o sendo usadas
-
-            //diz para o nivel qual o imput
-            level.input = key_pressed; //agora o nivel vai saber qual tecla esta sendo apertada
-
-            //analisa o evento timer p cada frame
-            if(event.type == ALLEGRO_EVENT_TIMER)
-                {
-                    //limpa a tela p preto (tabela RGB 000) p cada atualiza��o
-                    al_clear_to_color(al_map_rgb_f(0, 0, 0));
-
-                    //atualiza as caracteristicas de cada char
-                    update_characters(&level);
-                    get_main_collision(&level);
-                    update_ui(&level);
-                    atk(&level);
-                    //desenha a linha vermelha p allegro
-                    al_draw_line(0, 400, 600, 500, al_color_name("red"), 1);
+            //atualiza as caracteristicas de cada char
+            update_characters(&level);
+            get_main_collision(&level);
+            update_ui(&level);
+            atk(&level);
+            //desenha a linha vermelha p allegro
+            al_draw_line(0, 400, 600, 500, al_color_name("red"), 1);
 
 
 
-                    //atualiza tela (?) veio de um exemplo
-                    al_flip_display();
-                }
+            //atualiza tela (?) veio de um exemplo
+            al_flip_display();
         }
+    }
     //A allegro roda ate tu apertar 'X' p encerrar o prog
     while(event.type != ALLEGRO_EVENT_DISPLAY_CLOSE);
 

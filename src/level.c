@@ -129,8 +129,8 @@ void atk(LEVEL *level){
     if(level->aura.active){
         level->aura.hitbox.bounds.center = level->characters[0].hitbox.bounds.center;
         set_atk_hitbox(&level->aura);
-        al_draw_bitmap(animate(&level->aura.anim), 
-                       level->aura.hitbox.bounds.center.x + level->aura.pos_graphic.x, 
+        al_draw_bitmap(animate(&level->aura.anim),
+                       level->aura.hitbox.bounds.center.x + level->aura.pos_graphic.x,
                        level->aura.hitbox.bounds.center.y + level->aura.pos_graphic.y, 0);
         if(level->aura.anim.current_period == level->aura.anim.period - 1) {
             level->aura.active = 0;
@@ -167,7 +167,7 @@ void load_jogo(char Nome_Mapa[], char Mapa1 [][COLUNA], LEVEL *level,ANIMATION *
 
 
 
-int Salva_Jogo(char mapa[][COLUNA],char nome_arquivo_out[MAX_NOME])
+int Salva_Jogo(char mapa[][COLUNA],char nome_arquivo_out[MAX_NOME],LEVEL *level1)
 {
     FILE *arq;
     int i,falha = 0;
@@ -178,13 +178,13 @@ int Salva_Jogo(char mapa[][COLUNA],char nome_arquivo_out[MAX_NOME])
 
          if(fprintf(arq,"\n\n--------------------------------------------------------------\n")< 0)
              falha = 1;
-        /*  if(fprintf(arq,"\nFase: %d\n",obj->Fase) < 0)
+         // if(fprintf(arq,"\nFase: %d\n",obj->Fase) < 0)
+             //falha = 1;
+         if(fprintf(arq,"\nVidas: %d\n",level1->characters[0].lives) < 0)
              falha = 1;
-         if(fprintf(arq,"\nVidas: %d\n",obj->Vida) < 0)
-             falha = 1;
-         if(fprintf(arq,"\nPontos: %d\n",obj->Pontos) < 0)
-             falha = 1;
-        */
+        // if(fprintf(arq,"\nPontos: %d\n",obj->Pontos) < 0)
+             //falha = 1;
+
      }
      else
     falha = 1;
@@ -198,7 +198,7 @@ int Salva_Jogo(char mapa[][COLUNA],char nome_arquivo_out[MAX_NOME])
 
 void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVEL *level1, ANIMATION *animacao)
 {
-    int i,j,n_monstro = 0;
+    int i=0,j,n_monstro = 0;
     char texto_str[COLUNA];
 
     if(!(arq = fopen((nome_arquivo_inp),"r")))
@@ -220,35 +220,32 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
 
         for(i=0; i<LINHA; i++)
         {
-            Coordenada(i,0, &(level1->characters[(level1->n_characters)].hitbox.bounds.center.x), &(level1->characters[(level1->n_characters)].hitbox.bounds.center.y), 'J', mapa[i]);
-            if(((level1->characters[(level1->n_characters)].hitbox.bounds.center.x)!= 0)||((level1->characters[(level1->n_characters)].hitbox.bounds.center.y) != 0))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+            Coordenada(i,0, &(level1->characters[0].hitbox.bounds.center.x), &(level1->characters[0].hitbox.bounds.center.y), 'J', mapa[i]);
+            if(((level1->characters[0].hitbox.bounds.center.x)!= 0)||((level1->characters[0].hitbox.bounds.center.y) != 0))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
             {
-                level1->characters[(level1->n_characters)].anims = get_anim(animacao, "wizzard_m");
-                level1->characters[(level1->n_characters)].current = level1->characters[(level1->n_characters)].anims[0];
-                level1->characters[(level1->n_characters)].speed = 3;
-                set_character_hitbox(&level1->characters[(level1->n_characters)]);
-                level1->characters[(level1->n_characters)].lives = 3;
-                level1->characters[(level1->n_characters)].type = MainCharacter;
-                level1->characters[(level1->n_characters)].inv_timer = 0;
-                (level1->n_characters) += 1;
+                level1->characters[0].anims = get_anim(animacao, "wizzard_m");
+                level1->characters[0].current = level1->characters[0].anims[0];
+                level1->characters[0].speed = 3;
+                set_character_hitbox(&level1->characters[0]);
+                level1->characters[0].lives = 3;
+                level1->characters[0].type = MainCharacter;
+                level1->characters[0].inv_timer = 0;
             }
-            /*
-            Coordenada(i,0, &(level1->characters[(level1->n_characters)].pos_graphic.x), &(level1->characters[(level1->n_characters)].pos_graphic.y), 'T', mapa[i]);
-            if(((level1->characters[(level1->n_characters)].pos_graphic.x)!= 0)||((level1->characters[(level1->n_characters)].pos_graphic.y) != 0))                                 //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+
+            Coordenada(i,0, &(level1->characters[(level1->n_characters)].hitbox.bounds.center.x), &(level1->characters[(level1->n_characters)].hitbox.bounds.center.y), 'T', mapa[i]);
+            if(((level1->characters[(level1->n_characters)].hitbox.bounds.center.x)!= 0)||((level1->characters[(level1->n_characters)].hitbox.bounds.center.y) != 0))                                 //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
             {
                 level1->characters[(level1->n_characters)].anims = get_anim(animacao, "big_zombie");
                 level1->characters[(level1->n_characters)].current = level1->characters[(level1->n_characters)].anims[0];
                 level1->characters[(level1->n_characters)].speed = 2;
-                set_character_hitbox(&level1->characters[i]);
+                set_character_hitbox(&level1->characters[(level1->n_characters)]);
                 level1->characters[(level1->n_characters)].lives = 1;
                 level1->characters[(level1->n_characters)].type = EnemyOgre;
-                level1->characters[(level1->n_characters)].hitbox.bounds.center.x = 300;
-                level1->characters[(level1->n_characters)].hitbox.bounds.center.y = i * 50 - 900;
                 (level1->n_characters) += 1;
             }
 
-            Coordenada(i,0, &(level1->characters[(level1->n_characters)].pos_graphic.x), &(level1->characters[(level1->n_characters)].pos_graphic.y), 'Z', mapa[i]);
-            if(((level1->characters[(level1->n_characters)].pos_graphic.x)!= 0)||((level1->characters[(level1->n_characters)].pos_graphic.y) != 0))                                 //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+            Coordenada(i,0, &(level1->characters[(level1->n_characters)].hitbox.bounds.center.x), &(level1->characters[(level1->n_characters)].hitbox.bounds.center.y), 'Z', mapa[i]);
+            if(((level1->characters[(level1->n_characters)].hitbox.bounds.center.x)!= 0)||((level1->characters[(level1->n_characters)].hitbox.bounds.center.y) != 0))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
             {
                 level1->characters[(level1->n_characters)].anims = get_anim(animacao, "skelet_idle");
                 level1->characters[(level1->n_characters)].current = level1->characters[(level1->n_characters)].anims[0];
@@ -256,9 +253,7 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                 set_character_hitbox(&level1->characters[(level1->n_characters)]);
                 level1->characters[(level1->n_characters)].lives = 1;
                 level1->characters[(level1->n_characters)].type = EnemySkeleton;
-                //determinam a posicao do ps, seu centro x y
-                level1->characters[(level1->n_characters)].hitbox.bounds.center.x = 600;
-                level1->characters[(level1->n_characters)].hitbox.bounds.center.y = i * 50 - 100;
+
                 (level1->n_characters) += 1;
             }
 
@@ -281,7 +276,7 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                     (level1->n_envs) += 1;
                 }
             }
-            // Coordenada(i,0, &(teste->Bau_x), &(teste->Bau_y), 'B', mapa[i]);*/
+            // Coordenada(i,0, &(teste->Bau_x), &(teste->Bau_y), 'B', mapa[i]);
         }
     }
 }
@@ -296,8 +291,8 @@ void Coordenada(int linha,int coluna,float *cord_x,float *cord_y, char busca, ch
             if(Mapa[corre_coluna] == busca)
             {
 
-                *cord_y = corre_coluna;
-                *cord_x = linha;
+                *cord_y = corre_coluna*16;
+                *cord_x = linha*64;
             }
         }
     }
@@ -305,8 +300,8 @@ void Coordenada(int linha,int coluna,float *cord_x,float *cord_y, char busca, ch
     {
         if(Mapa[coluna] == busca)
         {
-            *cord_y = coluna;
-            *cord_x = linha;
+            *cord_y = coluna*16;
+            *cord_x = linha*32;
         }
     }
 }

@@ -35,6 +35,6 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
 
 void load_jogo(char Nome_Mapa[], char Mapa1 [][COLUNA], LEVEL *level,ANIMATION *anims1);
 
-int Salva_Jogo(char mapa[][COLUNA],char nome_arquivo_out[MAX_NOME]);
+int Salva_Jogo(char mapa[][COLUNA],char nome_arquivo_out[MAX_NOME],LEVEL *level1);
 
 #endif
