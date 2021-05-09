@@ -146,9 +146,9 @@ int main()
     wall_south.p1.x = 16;
     wall_south.p1.y = 16;
     wall_south.p2.x = 944;
-    wall_south.p2.y = 500;
+    wall_south.p2.y = 16;
     //linha de colisao
-    set_line_normal(&wall_south,DOWN | RIGHT);
+    set_line_normal(&wall_south,DOWN);
     //area da linha que diz se tem colisao ou n
     set_line_box(&wall_south);
     level.lines[0] = wall_south;
