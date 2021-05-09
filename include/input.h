@@ -8,8 +8,9 @@
 #define ARROWDOWN (1 << 1)
 #define ARROWLEFT (1 << 2)
 #define ARROWRIGHT (1 << 3)
+#define ATTACK (1 << 4)
 
-typedef char KEYBOARD_STATE;
+typedef unsigned int KEYBOARD_STATE;
 
 /**
  * @brief Atualiza o estado atual do teclado de acordo com o evento

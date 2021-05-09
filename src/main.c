@@ -80,7 +80,7 @@ int main()
     wall_south.normal.y = -1;
     wall_south.normal.x = 0;
 
-  /*
+  
 
     //Personagem principal
     level.characters[0].anims = get_anim(anims, "wizzard_m");
@@ -122,13 +122,13 @@ int main()
         }
     level.n_characters = 20;
 
-    */
-    level.n_characters = 0;
-    load_jogo("../mp/fase_1.txt",MAPA,&level,anims);
+    
+    //level.n_characters = 0;
+    //load_jogo("../mp/fase_1.txt",MAPA,&level,anims);
     for(i=0;i<LINHA;i++)
         puts(MAPA[i]);
 
-    Salva_Jogo(MAPA,"../map/Naodeu.txt");
+    //Salva_Jogo(MAPA,"../map/Naodeu.txt");
 
     //add retas para colisao
     //muro do sul
