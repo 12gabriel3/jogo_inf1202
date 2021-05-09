@@ -21,6 +21,9 @@ void set_kb_state(KEYBOARD_STATE *state, ALLEGRO_EVENT event){
                 case ALLEGRO_KEY_A:
                     *state |= ARROWLEFT;
                     break;
+                case ALLEGRO_KEY_SPACE:
+                    *state |= ATTACK;
+                    break;
             }
         }
     else if(event.type == ALLEGRO_EVENT_KEY_UP){
@@ -40,6 +43,9 @@ void set_kb_state(KEYBOARD_STATE *state, ALLEGRO_EVENT event){
                 case ALLEGRO_KEY_LEFT:
                 case ALLEGRO_KEY_A:
                     *state &= ~ARROWLEFT;
+                    break;
+                case ALLEGRO_KEY_SPACE:
+                    *state &= ~ATTACK;
                     break;
             }
     }

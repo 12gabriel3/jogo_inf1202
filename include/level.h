@@ -17,6 +17,7 @@ typedef struct {
     int n_characters;
     LINE lines[LINES_MAX];
     int n_lines;
+    AURA aura;
     KEYBOARD_STATE input;
 } LEVEL;
 
@@ -26,7 +27,7 @@ void update_characters(LEVEL *level);
 
 void get_main_collision(LEVEL *level);
 
-
+void atk(LEVEL *level);
 
 void Coordenada(int linha,int coluna,float *cord_x,float *cord_y, char busca, char Mapa[]);
 

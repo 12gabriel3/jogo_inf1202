@@ -173,6 +173,7 @@ int main()
                     update_characters(&level);
                     get_main_collision(&level);
                     update_ui(&level);
+                    al_draw_bitmap(animate(get_anim(anims, "aura")), 500, 500, 0);
                     //desenha a linha vermelha p allegro
                     al_draw_line(0, 400, 600, 500, al_color_name("red"), 1);
 
