@@ -140,20 +140,7 @@ int main()
 
     Salva_Jogo(MAPA,"../map/Naodeu.txt",&level);
 
-    //add retas para colisao
-    //muro do sul
-    //cordenadas
-    wall_south.p1.x = 16;
-    wall_south.p1.y = 16;
-    wall_south.p2.x = 944;
-    wall_south.p2.y = 16;
-    //linha de colisao
-    set_line_normal(&wall_south,DOWN);
-    //area da linha que diz se tem colisao ou n
-    set_line_box(&wall_south);
-    level.lines[0] = wall_south;
-    //dizer quantas linhas tem
-    level.n_lines = 1;
+    add_line(&level);
 
 
     level.heart_full = get_sprite(sprites, "ui_heart_full");

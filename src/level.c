@@ -246,7 +246,7 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
             {
                 level1->characters[(level1->n_characters)].anims = get_anim(animacao, "big_zombie");
                 level1->characters[(level1->n_characters)].current = level1->characters[(level1->n_characters)].anims[0];
-                level1->characters[(level1->n_characters)].speed = 2;
+                level1->characters[(level1->n_characters)].speed = 0.5;
                 set_character_hitbox(&level1->characters[(level1->n_characters)]);
                 level1->characters[(level1->n_characters)].lives = 1;
                 level1->characters[(level1->n_characters)].type = EnemyOgre;
@@ -258,7 +258,7 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
             {
                 level1->characters[(level1->n_characters)].anims = get_anim(animacao, "skelet_idle");
                 level1->characters[(level1->n_characters)].current = level1->characters[(level1->n_characters)].anims[0];
-                level1->characters[(level1->n_characters)].speed = 1;
+                level1->characters[(level1->n_characters)].speed = 0.5;
                 set_character_hitbox(&level1->characters[(level1->n_characters)]);
                 level1->characters[(level1->n_characters)].lives = 1;
                 level1->characters[(level1->n_characters)].type = EnemySkeleton;
@@ -290,7 +290,17 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                     (level1->n_envs) += 1;
                 }
             }
-            // Coordenada(i,0, &(teste->Bau_x), &(teste->Bau_y), 'B', mapa[i]);
+            for(j=0; j<COLUNA; j++)
+            {
+                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), 'G', mapa[i]);
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= 0)||((level1->envs[(level1->n_envs)].pos_graphic.y) != 0))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->envs[(level1->n_envs)].anim = *get_anim(animacao,"chest_full_open");
+                    level1->envs[(level1->n_envs)].anim.period = 1;
+                    level1->envs[(level1->n_envs)].is_anim = 1;
+                    (level1->n_envs) += 1;
+                }
+            }
         }
     }
 }
@@ -305,8 +315,8 @@ void Coordenada(int linha,int coluna,float *cord_x,float *cord_y, char busca, ch
             if(Mapa[corre_coluna] == busca)
             {
 
-                *cord_y = corre_coluna*16;
-                *cord_x = linha*16;
+                *cord_x = corre_coluna*16;
+                *cord_y = linha*16;
             }
         }
     }
@@ -322,8 +332,62 @@ void Coordenada(int linha,int coluna,float *cord_x,float *cord_y, char busca, ch
 
 void atualiza_env(LEVEL *level)
 {
-    for(int i=0; i<(level->n_envs);i++)
+    for(int i=0; i<(level->n_envs); i++)
     {
-      update_env(&level->envs[i]);
+        update_env(&level->envs[i]);
     }
+}
+
+void add_line(LEVEL *level)
+{
+    LINE wall_south;
+
+    //add retas para colisao
+    //muro do sul
+    //cordenadas
+    wall_south.p1.x = 16;
+    wall_south.p1.y = 16;
+    wall_south.p2.x = 944;
+    wall_south.p2.y = 16;
+    //linha de colisao
+    set_line_normal(&wall_south,DOWN);
+    //area da linha que diz se tem colisao ou n
+    set_line_box(&wall_south);
+    level->lines[0] = wall_south;
+
+
+    wall_south.p1.x = 944;
+    wall_south.p1.y = 352;
+    wall_south.p2.x = 16;
+    wall_south.p2.y = 352;
+    //linha de colisao
+    set_line_normal(&wall_south,UP);
+    //area da linha que diz se tem colisao ou n
+    set_line_box(&wall_south);
+    level->lines[1] = wall_south;
+
+
+    wall_south.p1.x = 16;
+    wall_south.p1.y = 16;
+    wall_south.p2.x = 16;
+    wall_south.p2.y = 352;
+    //linha de colisao
+    set_line_normal(&wall_south,DOWN);
+    //area da linha que diz se tem colisao ou n
+    set_line_box(&wall_south);
+    level->lines[2] = wall_south;
+
+
+    wall_south.p1.x = 944;
+    wall_south.p1.y = 352;
+    wall_south.p2.x = 944;
+    wall_south.p2.y = 16;
+    //linha de colisao
+    set_line_normal(&wall_south,LEFT);
+    //area da linha que diz se tem colisao ou n
+    set_line_box(&wall_south);
+    level->lines[3] = wall_south;
+    //dizer quantas linhas tem
+    level->n_lines = 4;
+
 }

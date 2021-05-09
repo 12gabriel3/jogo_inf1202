@@ -39,4 +39,6 @@ int Salva_Jogo(char mapa[][COLUNA],char nome_arquivo_out[MAX_NOME],LEVEL *level1
 
 void atualiza_env(LEVEL *level);
 
+void add_line(LEVEL *level);
+
 #endif
