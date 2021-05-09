@@ -97,18 +97,18 @@ int main()
     level.characters[0].type = MainCharacter;
     level.characters[0].atk_timer = 0;
     for(i = 1; i < 10; i++)
-        {
-            level.characters[i].anims = get_anim(anims, "wizzard_f");
-            level.characters[i].current = level.characters[i].anims[0];
-            level.characters[i].speed = 1;
-            set_character_hitbox(&level.characters[i]);
-            level.characters[i].lives = 1;
-            level.characters[i].type = EnemySkeleton;
-            //determinam a posicao do ps, seu centro x y
-            level.characters[i].hitbox.bounds.center.x = 600;
-            level.characters[i].hitbox.bounds.center.y = i * 50 - 100;
-        }
-
+    {
+        level.characters[i].anims = get_anim(anims, "wizzard_f");
+        level.characters[i].current = level.characters[i].anims[0];
+        level.characters[i].speed = 1;
+        set_character_hitbox(&level.characters[i]);
+        level.characters[i].lives = 1;
+        level.characters[i].type = EnemySkeleton;
+        //determinam a posicao do ps, seu centro x y
+        level.characters[i].hitbox.bounds.center.x = 600;
+        level.characters[i].hitbox.bounds.center.y = i * 50 - 100;
+    }
+    
     //add os chars no nivel
     for(i = 10; i < 20; i++)
         {
@@ -171,10 +171,13 @@ int main()
                     al_clear_to_color(al_map_rgb_f(0, 0, 0));
 
                     //atualiza as caracteristicas de cada char
-                    update_characters(&level);
-                    get_main_collision(&level);
-                    update_ui(&level);
+                    
                     atk(&level);
+                    get_main_collision(&level);
+                    update_characters(&level);
+                    update_ui(&level);
+                    
+                    printf("\n%f", level.characters[0].hitbox.r);
                     //desenha a linha vermelha p allegro
                     al_draw_line(0, 400, 600, 500, al_color_name("red"), 1);
 
