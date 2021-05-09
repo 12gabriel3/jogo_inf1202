@@ -87,7 +87,7 @@ void get_main_collision(LEVEL *level)
     i = 1;
     if(level->characters[0].inv_timer == 0)
     {
-        while(!cc_collides(level->characters[0].hitbox, level->characters[i].hitbox) && i < level->n_characters)
+        while((!level->characters[i].lives || !cc_collides(level->characters[0].hitbox, level->characters[i].hitbox)) && i < level->n_characters)
             i++;
         if(i < level->n_characters)
         {
@@ -137,7 +137,9 @@ void atk(LEVEL *level){
             level->aura.anim.current_period = 0;
         }
         for(i = 1; i < level->n_characters; i++){
-            if(level->characters[i].lives && cc_collides(level->aura.hitbox, level->characters[i].hitbox)) level->characters[i].lives--;
+            if(level->characters[i].lives && cc_collides(level->aura.hitbox, level->characters[i].hitbox)) {
+                level->characters[i].lives--;
+            }
         }
     }
     if(level->characters[0].atk_timer) level->characters[0].atk_timer--;

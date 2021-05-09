@@ -22,7 +22,7 @@ void move_character(CHARACTER *character){
 }
 
 void set_character_hitbox(CHARACTER *character){
-    character->hitbox.r = al_get_bitmap_width(character->current.frames[0].bitmap)/2;
+    character->hitbox.r = al_get_bitmap_width(character->current.frames[0].bitmap)/2.0;
     set_circle_box(&character->hitbox);
     character->pos_graphic.x = -character->hitbox.r;
     character->pos_graphic.y = -al_get_bitmap_height(character->current.frames[0].bitmap) + 
