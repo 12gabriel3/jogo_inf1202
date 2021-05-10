@@ -88,6 +88,7 @@ int main()
 
 
     level.aura.anim = *get_anim(anims, "aura");
+    level.aura.anim.period = 20;
     level.aura.active = 0;
 
     level.n_characters = 1;
