@@ -17,7 +17,7 @@
 #define HITBOX_MARGIN_PX 0
 #define FLIP_THRESHOLD 20
 #define INV_TIMER 60
-#define ATTACK_TIMER 60
+#define ATTACK_TIMER 180
 
 typedef enum {MainCharacter, EnemySkeleton, EnemyOgre, EnemySpike} CHARACTER_TYPE; 
 
