@@ -5,7 +5,7 @@
 #include <geometry.h>
 #include <character.h>
 #define ENVS_MAX 2000
-#define CHARACTERS_MAX 50
+#define CHARACTERS_MAX 100
 #define LINES_MAX 100
 #define UI_MAX 50
 

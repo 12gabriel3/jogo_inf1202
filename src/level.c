@@ -111,7 +111,7 @@ void update_characters(LEVEL *level)
     {
         if(level->characters[i].lives > 0)
         {
-            move_character(&level->characters[i]);
+            if(level->characters[i].type != EnemySpike) move_character(&level->characters[i]);
             al_draw_bitmap(animate(&level->characters[i].current),
                            level->characters[i].pos_graphic.x + level->characters[i].hitbox.bounds.center.x,
                            level->characters[i].pos_graphic.y + level->characters[i].hitbox.bounds.center.y,
@@ -255,6 +255,21 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                 (level1->n_characters) += 1;
             }
 
+            Coordenada(i,0, &(level1->characters[(level1->n_characters)].hitbox.bounds.center.x), &(level1->characters[(level1->n_characters)].hitbox.bounds.center.y), 'X', mapa[i]);
+            if(((level1->characters[(level1->n_characters)].hitbox.bounds.center.x)!= -1)||((level1->characters[(level1->n_characters)].hitbox.bounds.center.y) != -1))                                 //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+            {
+                level1->characters[(level1->n_characters)].anims = get_anim(animacao, "floor_spikes");
+                level1->characters[(level1->n_characters)].current = level1->characters[(level1->n_characters)].anims[0];
+                level1->characters[(level1->n_characters)].speed = 0;
+                level1->characters[(level1->n_characters)].direction.x = 0;
+                level1->characters[(level1->n_characters)].direction.y = 0;
+                set_character_hitbox(&level1->characters[(level1->n_characters)]);
+                level1->characters[(level1->n_characters)].lives = 1000;
+                level1->characters[(level1->n_characters)].type = EnemySpike;
+                level1->characters[(level1->n_characters)].flags = 0;
+                (level1->n_characters) += 1;
+            }
+
             Coordenada(i,0, &(level1->characters[(level1->n_characters)].hitbox.bounds.center.x), &(level1->characters[(level1->n_characters)].hitbox.bounds.center.y), 'Z', mapa[i]);
             if(((level1->characters[(level1->n_characters)].hitbox.bounds.center.x)!= -1)||((level1->characters[(level1->n_characters)].hitbox.bounds.center.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
             {
@@ -292,19 +307,6 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
             {
                 level1->envs[(level1->n_envs)].pos_graphic.x = -1;
                 level1->envs[(level1->n_envs)].pos_graphic.y = -1;
-                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), 'X', mapa[i]);
-                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
-                {
-                    level1->envs[(level1->n_envs)].anim = *get_anim(animacao,"floor_spikes");
-                    level1->envs[(level1->n_envs)].anim.period = 30;
-                    level1->envs[(level1->n_envs)].is_anim = 1;
-                    (level1->n_envs) += 1;
-                }
-            }
-            for(j=0; j<COLUNA; j++)
-            {
-                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
-                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
                 Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), 'G', mapa[i]);
                 if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
                 {
@@ -321,7 +323,7 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
 void Coordenada(int linha,int coluna,float *cord_x,float *cord_y, char busca, char Mapa[])
 {
     int corre_coluna;
-    if((busca != '#') && (busca != 'X'))
+    if((busca != '#'))
     {
         for(corre_coluna = 0; corre_coluna < COLUNA; corre_coluna ++)
         {
@@ -333,7 +335,7 @@ void Coordenada(int linha,int coluna,float *cord_x,float *cord_y, char busca, ch
             }
         }
     }
-    if((busca == '#') || (busca == 'X'))
+    if((busca == '#'))
     {
         if(Mapa[coluna] == busca)
         {
