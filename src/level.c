@@ -109,7 +109,7 @@ void update_characters(LEVEL *level)
     int i;
     set_characters_intention(level);
     remove_collision(level);
-    for(i = 0; i < level->n_characters; i++)
+    for(i = level->n_characters - 1; i > -1; i--)
     {
         if(level->characters[i].lives > 0)
         {
