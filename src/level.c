@@ -36,11 +36,13 @@ int remove_collision(LEVEL *level)
     collision = 0;
     for(i = 0; i < level->n_characters; i++)
     {
-        if(level->characters[i].lives > 0)
+        if(level->characters[i].lives > 0 && level->characters[i].type != EnemySpike)
         {
             for(j = 0; j < level->n_characters; j++)
             {
-                if(level->characters[j].lives > 0)
+                if(level->characters[j].lives > 0 && 
+                   !(level->characters[i].type == EnemySkeleton && level->characters[j].type == EnemySpike) &&
+                   !(level->characters[i].type == MainCharacter && level->characters[j].type == EnemySpike) )
                 {
                     //se tiver uma colisao ele tira a velocidade do char
                     if(&level->characters[j] != &level->characters[i])
