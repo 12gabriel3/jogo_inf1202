@@ -50,7 +50,7 @@ int main()
     {
         printf("Nao consegui");
     }
-    display = al_create_display(960,368);
+    display = al_create_display(960,384);
 
     if (!display)
     {

@@ -280,6 +280,11 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                     level1->envs[(level1->n_envs)].is_anim = 0;
                     level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_mid");
                     (level1->n_envs) += 1;
+                    level1->envs[(level1->n_envs)].pos_graphic = level1->envs[(level1->n_envs) - 1].pos_graphic;
+                    level1->envs[(level1->n_envs)].pos_graphic.y -= 16;
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_top_mid");
+                    (level1->n_envs) += 1;
                 }
             }
 
@@ -333,7 +338,7 @@ void Coordenada(int linha,int coluna,float *cord_x,float *cord_y, char busca, ch
         if(Mapa[coluna] == busca)
         {
             *cord_x = coluna*16;
-            *cord_y = linha*16;
+            *cord_y = linha*16+16;
         }
     }
 }
@@ -355,9 +360,9 @@ void add_line(LEVEL *level)
     //muro do sul
     //cordenadas
     wall_south.p1.x = 16;
-    wall_south.p1.y = 16;
+    wall_south.p1.y = 16+16;
     wall_south.p2.x = 944;
-    wall_south.p2.y = 16;
+    wall_south.p2.y = 16+16;
     //linha de colisao
     set_line_normal(&wall_south,DOWN);
     //area da linha que diz se tem colisao ou n
@@ -366,9 +371,9 @@ void add_line(LEVEL *level)
 
 
     wall_south.p1.x = 944;
-    wall_south.p1.y = 352;
+    wall_south.p1.y = 352+16;
     wall_south.p2.x = 16;
-    wall_south.p2.y = 352;
+    wall_south.p2.y = 352+16;
     //linha de colisao
     set_line_normal(&wall_south,UP);
     //area da linha que diz se tem colisao ou n
@@ -377,9 +382,9 @@ void add_line(LEVEL *level)
 
 
     wall_south.p1.x = 16;
-    wall_south.p1.y = 16;
+    wall_south.p1.y = 16+16;
     wall_south.p2.x = 16;
-    wall_south.p2.y = 352;
+    wall_south.p2.y = 352+16;
     //linha de colisao
     set_line_normal(&wall_south,DOWN);
     //area da linha que diz se tem colisao ou n
@@ -388,9 +393,9 @@ void add_line(LEVEL *level)
 
 
     wall_south.p1.x = 944;
-    wall_south.p1.y = 352;
+    wall_south.p1.y = 352+16;
     wall_south.p2.x = 944;
-    wall_south.p2.y = 16;
+    wall_south.p2.y = 16+16;
     //linha de colisao
     set_line_normal(&wall_south,LEFT);
     //area da linha que diz se tem colisao ou n
