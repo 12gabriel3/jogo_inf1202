@@ -229,8 +229,10 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
 
         for(i=0; i<LINHA; i++)
         {
+            level1->characters[(level1->n_characters)].hitbox.bounds.center.x = -1;
+            level1->characters[(level1->n_characters)].hitbox.bounds.center.y = -1;
             Coordenada(i,0, &(level1->characters[0].hitbox.bounds.center.x), &(level1->characters[0].hitbox.bounds.center.y), 'J', mapa[i]);
-            if(((level1->characters[0].hitbox.bounds.center.x)!= 0)||((level1->characters[0].hitbox.bounds.center.y) != 0))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+            if(((level1->characters[0].hitbox.bounds.center.x)!= -1)||((level1->characters[0].hitbox.bounds.center.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
             {
                 level1->characters[0].anims = get_anim(animacao, "wizzard_m");
                 level1->characters[0].current = level1->characters[0].anims[0];
@@ -242,7 +244,7 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
             }
 
             Coordenada(i,0, &(level1->characters[(level1->n_characters)].hitbox.bounds.center.x), &(level1->characters[(level1->n_characters)].hitbox.bounds.center.y), 'T', mapa[i]);
-            if(((level1->characters[(level1->n_characters)].hitbox.bounds.center.x)!= 0)||((level1->characters[(level1->n_characters)].hitbox.bounds.center.y) != 0))                                 //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+            if(((level1->characters[(level1->n_characters)].hitbox.bounds.center.x)!= -1)||((level1->characters[(level1->n_characters)].hitbox.bounds.center.y) != -1))                                 //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
             {
                 level1->characters[(level1->n_characters)].anims = get_anim(animacao, "big_zombie");
                 level1->characters[(level1->n_characters)].current = level1->characters[(level1->n_characters)].anims[0];
@@ -254,7 +256,7 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
             }
 
             Coordenada(i,0, &(level1->characters[(level1->n_characters)].hitbox.bounds.center.x), &(level1->characters[(level1->n_characters)].hitbox.bounds.center.y), 'Z', mapa[i]);
-            if(((level1->characters[(level1->n_characters)].hitbox.bounds.center.x)!= 0)||((level1->characters[(level1->n_characters)].hitbox.bounds.center.y) != 0))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+            if(((level1->characters[(level1->n_characters)].hitbox.bounds.center.x)!= -1)||((level1->characters[(level1->n_characters)].hitbox.bounds.center.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
             {
                 level1->characters[(level1->n_characters)].anims = get_anim(animacao, "skelet_idle");
                 level1->characters[(level1->n_characters)].current = level1->characters[(level1->n_characters)].anims[0];
@@ -270,8 +272,10 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
 
             for(j=0; j<COLUNA; j++)
             {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
                 Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), '#', mapa[i]);
-                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= 0)||((level1->envs[(level1->n_envs)].pos_graphic.y) != 0))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
                 {
                     level1->envs[(level1->n_envs)].is_anim = 0;
                     level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_mid");
@@ -281,8 +285,10 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
 
             for(j=0; j<COLUNA; j++)
             {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
                 Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), 'X', mapa[i]);
-                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= 0)||((level1->envs[(level1->n_envs)].pos_graphic.y) != 0))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
                 {
                     level1->envs[(level1->n_envs)].anim = *get_anim(animacao,"floor_spikes");
                     level1->envs[(level1->n_envs)].anim.period = 30;
@@ -292,8 +298,10 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
             }
             for(j=0; j<COLUNA; j++)
             {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
                 Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), 'G', mapa[i]);
-                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= 0)||((level1->envs[(level1->n_envs)].pos_graphic.y) != 0))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
                 {
                     level1->envs[(level1->n_envs)].anim = *get_anim(animacao,"chest_full_open");
                     level1->envs[(level1->n_envs)].anim.period = 1;
