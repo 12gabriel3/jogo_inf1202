@@ -10,14 +10,14 @@ void set_characters_intention(LEVEL *level)
         case MainCharacter:
             level->characters[i].direction = input_to_vector(level->input);
             break;
-        case EnemySkeleton:
+        case EnemyOgre:
             level->characters[i].direction = direction_from_to(level->characters[i].hitbox.bounds.center, level->characters[0].hitbox.bounds.center);
             if(module(dist_from_to(level->characters[i].hitbox.bounds.center, level->characters[0].hitbox.bounds.center)) < 200)
-                level->characters[i].speed = 2.7;
+                level->characters[i].speed = 2.3;
             else
                 level->characters[i].speed = 1;
             break;
-        case EnemyOgre:
+        case EnemySkeleton:
             level->characters[i].direction = direction_from_to(level->characters[i].hitbox.bounds.center, level->characters[0].hitbox.bounds.center);
             break;
         case EnemySpike:
