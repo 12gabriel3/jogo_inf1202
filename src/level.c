@@ -243,6 +243,12 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                 level1->characters[0].lives = 3;
                 level1->characters[0].type = MainCharacter;
                 level1->characters[0].inv_timer = 0;
+                level1->envs[(level1->n_envs)].pos_graphic = level1->characters[0].hitbox.bounds.center;
+                level1->envs[(level1->n_envs)].pos_graphic.x -= 8;
+                level1->envs[(level1->n_envs)].pos_graphic.y -= 8;
+                level1->envs[(level1->n_envs)].is_anim = 0;
+                level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"floor");
+                (level1->n_envs) += 1;
             }
 
             Coordenada(i,0, &(level1->characters[(level1->n_characters)].hitbox.bounds.center.x), &(level1->characters[(level1->n_characters)].hitbox.bounds.center.y), 'T', mapa[i]);
@@ -254,7 +260,14 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                 set_character_hitbox(&level1->characters[(level1->n_characters)]);
                 level1->characters[(level1->n_characters)].lives = 1;
                 level1->characters[(level1->n_characters)].type = EnemyOgre;
+                level1->envs[(level1->n_envs)].pos_graphic = level1->characters[(level1->n_characters)].hitbox.bounds.center;
                 (level1->n_characters) += 1;
+                level1->envs[(level1->n_envs)].pos_graphic.x -= 8;
+                level1->envs[(level1->n_envs)].pos_graphic.y -= 8;
+
+                level1->envs[(level1->n_envs)].is_anim = 0;
+                level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"floor");
+                (level1->n_envs) += 1;
             }
 
             Coordenada(i,0, &(level1->characters[(level1->n_characters)].hitbox.bounds.center.x), &(level1->characters[(level1->n_characters)].hitbox.bounds.center.y), 'X', mapa[i]);
@@ -281,8 +294,15 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                 set_character_hitbox(&level1->characters[(level1->n_characters)]);
                 level1->characters[(level1->n_characters)].lives = 1;
                 level1->characters[(level1->n_characters)].type = EnemySkeleton;
+                level1->envs[(level1->n_envs)].pos_graphic = level1->characters[(level1->n_characters)].hitbox.bounds.center;
 
                 (level1->n_characters) += 1;
+                level1->envs[(level1->n_envs)].pos_graphic.x -= 8;
+                level1->envs[(level1->n_envs)].pos_graphic.y -= 8;
+
+                level1->envs[(level1->n_envs)].is_anim = 0;
+                level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"floor");
+                (level1->n_envs) += 1;
             }
 
 
@@ -303,6 +323,14 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                     level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_top_mid");
                     (level1->n_envs) += 1;
                 }
+
+                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), ' ', mapa[i]);
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"floor");
+                    (level1->n_envs) += 1;
+                }
             }
 
             for(j=0; j<COLUNA; j++)
@@ -316,6 +344,12 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                     level1->envs[(level1->n_envs)].anim.period = 1;
                     level1->envs[(level1->n_envs)].is_anim = 1;
                     (level1->n_envs) += 1;
+                    
+                    level1->envs[(level1->n_envs)].pos_graphic = level1->envs[(level1->n_envs) - 1].pos_graphic;
+
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"floor");
+                    (level1->n_envs) += 1;
                 }
             }
         }
@@ -325,19 +359,19 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
 void Coordenada(int linha,int coluna,float *cord_x,float *cord_y, char busca, char Mapa[])
 {
     int corre_coluna;
-    if((busca != '#'))
+    if((busca != '#') && (busca != ' ') && (busca != 'G'))
     {
         for(corre_coluna = 0; corre_coluna < COLUNA; corre_coluna ++)
         {
             if(Mapa[corre_coluna] == busca)
             {
 
-                *cord_x = corre_coluna*16;
-                *cord_y = linha*16;
+                *cord_x = corre_coluna*16+8;
+                *cord_y = linha*16+16+8;
             }
         }
     }
-    if((busca == '#'))
+    else
     {
         if(Mapa[coluna] == busca)
         {
