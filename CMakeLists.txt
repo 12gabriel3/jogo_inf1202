@@ -26,6 +26,9 @@ target_link_libraries(env geometry graphics)
 add_library(level ./src/level.c)
 target_link_libraries(level geometry env character)
 
+add_library(game ./src/game.c)
+target_link_libraries(game level input allegro_monolith)
+
 # add the executable
 add_executable(OMago ./src/main.c)
-target_link_libraries(OMago allegro_monolith graphics input geometry character level)
+target_link_libraries(OMago allegro_monolith graphics input geometry character level game)

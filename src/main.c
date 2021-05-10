@@ -4,6 +4,7 @@
 #include <geometry.h>
 #include <character.h>
 #include <level.h>
+#include <game.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_color.h>
 
@@ -17,7 +18,7 @@ int main()
     ALLEGRO_EVENT event;
     SPRITE sprites[SPRITES_MAX];
     ANIMATION anims[ANIMS_MAX];
-    LEVEL level;
+    GAME game;
     KEYBOARD_STATE key_pressed;
     ALLEGRO_MONITOR_INFO monitor;
     LINE wall_south;
@@ -29,8 +30,8 @@ int main()
 
     for(i=0; i>200; i++)
     {
-        level.characters[i].hitbox.bounds.center.x = 0;
-        level.characters[i].hitbox.bounds.center.y = 0;
+        game.current_level.characters[i].hitbox.bounds.center.x = 0;
+        game.current_level.characters[i].hitbox.bounds.center.y = 0;
     }
     /*                                                     fim altera��o sem o gabriel
     -----------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -87,25 +88,24 @@ int main()
     wall_south.normal.x = 0;
 
 
-    level.aura.anim = *get_anim(anims, "aura");
-    level.aura.anim.period = 20;
-    level.aura.active = 0;
+    game.current_level.aura.anim = *get_anim(anims, "aura");
+    game.current_level.aura.anim.period = 20;
+    game.current_level.aura.active = 0;
 
-    level.n_characters = 1;
-    level.n_envs = 0;
-    load_jogo("../Map/FASE 1.txt",MAPA,&level,anims,sprites);
+    game.current_level.n_characters = 1;
+    game.current_level.n_envs = 0;
+    load_jogo("../Map/FASE 1.txt",MAPA,&game.current_level,anims,sprites);
 
     for(i=0; i<LINHA; i++)
         printf("%s",MAPA[i]);
 
-    Salva_Jogo(MAPA,"../map/Naodeu.txt",&level);
+    Salva_Jogo(MAPA,"../map/Naodeu.txt",&game.current_level);
 
-    add_line(&level);
+    add_line(&game.current_level);
     fundo = al_load_bitmap("../img/Fundo.png");
 
-    level.heart_full = get_sprite(sprites, "ui_heart_full");
-    level.heart_empty = get_sprite(sprites, "ui_heart_empty");
-
+    game.current_level.heart_full = get_sprite(sprites, "ui_heart_full");
+    game.current_level.heart_empty = get_sprite(sprites, "ui_heart_empty");
 
 
     //looping janela allegro p ficar aberta
@@ -114,33 +114,7 @@ int main()
         //espera ocorrer algo na fila de evento para executar
         al_wait_for_event(queue, &event);//passando o endere�o, vai modificando a cada atualiza��o
 
-        //saber quais teclas est�o sendo apertadas
-        set_kb_state(&key_pressed, event);//&key referencia de quais teclas est�o sendo usadas
-
-        //diz para o nivel qual o imput
-        level.input = key_pressed; //agora o nivel vai saber qual tecla esta sendo apertada
-
-        //analisa o evento timer p cada frame
-        if(event.type == ALLEGRO_EVENT_TIMER)
-        {
-            //limpa a tela p preto (tabela RGB 000) p cada atualiza��o
-            al_clear_to_color(al_map_rgb_f(0, 0, 0));
-            al_draw_bitmap_region(fundo,0,0,960,368,0,0,0);
-            atualiza_env(&level);
-
-            //atualiza as caracteristicas de cada char
-            update_characters(&level);
-            get_main_collision(&level);
-            update_ui(&level);
-            atk(&level);
-            //desenha a linha vermelha p allegro
-           // al_draw_line(0, 400, 600, 500, al_color_name("red"), 1);
-
-
-
-            //atualiza tela (?) veio de um exemplo
-            al_flip_display();
-        }
+        run_game(&game, event);
     }
     //A allegro roda ate tu apertar 'X' p encerrar o prog
     while(event.type != ALLEGRO_EVENT_DISPLAY_CLOSE);
