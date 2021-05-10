@@ -340,6 +340,7 @@ void atualiza_env(LEVEL *level)
 
 void add_line(LEVEL *level)
 {
+
     LINE wall_south;
 
     //add retas para colisao

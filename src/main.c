@@ -21,6 +21,7 @@ int main()
     KEYBOARD_STATE key_pressed;
     ALLEGRO_MONITOR_INFO monitor;
     LINE wall_south;
+    ALLEGRO_BITMAP *fundo = NULL;
     /*                                                     Inicio altera��o sem o gabriel
     -----------------------------------------------------------------------------------------------------------------------------------------------*/
     int i;
@@ -47,7 +48,7 @@ int main()
     }
     else
     {
-        printf("N�o consegui");
+        printf("Nao consegui");
     }
     display = al_create_display(960,368);
 
@@ -89,48 +90,6 @@ int main()
     level.aura.anim = *get_anim(anims, "aura");
     level.aura.active = 0;
 
-    /*
-     //Personagem principal
-     level.characters[0].anims = get_anim(anims, "wizzard_m");
-     //current � anima�ao atual do main
-     level.characters[0].current = level.characters[0].anims[0];
-     //velocidade dele
-     level.characters[0].speed = 3;
-     //para detectar colisoes do main
-     set_character_hitbox(&level.characters[0]);
-     //dectar a vida do main
-     level.characters[0].lives = 3;
-     //padronizar o comportamento de um ps
-     level.characters[0].type = MainCharacter;
-     level.characters[0].atk_timer = 0;
-     for(i = 1; i < 10; i++)
-         {
-             level.characters[i].anims = get_anim(anims, "wizzard_f");
-             level.characters[i].current = level.characters[i].anims[0];
-             level.characters[i].speed = 1;
-             set_character_hitbox(&level.characters[i]);
-             level.characters[i].lives = 1;
-             level.characters[i].type = EnemySkeleton;
-             //determinam a posicao do ps, seu centro x y
-             level.characters[i].hitbox.bounds.center.x = 600;
-             level.characters[i].hitbox.bounds.center.y = i * 50 - 100;
-         }
-
-     //add os chars no nivel
-     for(i = 10; i < 20; i++)
-         {
-             level.characters[i].anims = get_anim(anims, "big_zombie");
-             level.characters[i].current = level.characters[i].anims[0];
-             level.characters[i].speed = 2;
-             set_character_hitbox(&level.characters[i]);
-             level.characters[i].lives = 1;
-             level.characters[i].type = EnemyOgre;
-             level.characters[i].hitbox.bounds.center.x = 300;
-             level.characters[i].hitbox.bounds.center.y = i * 50 - 900;
-         }
-     level.n_characters = 20;
-     */
-
     level.n_characters = 1;
     level.n_envs = 0;
     load_jogo("../Map/FASE 1.txt",MAPA,&level,anims,sprites);
@@ -141,7 +100,7 @@ int main()
     Salva_Jogo(MAPA,"../map/Naodeu.txt",&level);
 
     add_line(&level);
-
+    fundo = al_load_bitmap("../img/Fundo.png");
 
     level.heart_full = get_sprite(sprites, "ui_heart_full");
     level.heart_empty = get_sprite(sprites, "ui_heart_empty");
@@ -165,6 +124,7 @@ int main()
         {
             //limpa a tela p preto (tabela RGB 000) p cada atualiza��o
             al_clear_to_color(al_map_rgb_f(0, 0, 0));
+            al_draw_bitmap_region(fundo,0,0,960,368,0,0,0);
             atualiza_env(&level);
 
             //atualiza as caracteristicas de cada char
