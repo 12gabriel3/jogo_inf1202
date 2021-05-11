@@ -24,7 +24,6 @@ void set_characters_intention(LEVEL *level)
             break;
         }
     }
-
 }
 
 //remove as colisoes
@@ -40,9 +39,9 @@ int remove_collision(LEVEL *level)
         {
             for(j = 0; j < level->n_characters; j++)
             {
-                if(level->characters[j].lives > 0 && 
-                   !(level->characters[i].type == EnemySkeleton && level->characters[j].type == EnemySpike) &&
-                   !(level->characters[i].type == MainCharacter && level->characters[j].type == EnemySpike) )
+                if(level->characters[j].lives > 0 &&
+                        !(level->characters[i].type == EnemySkeleton && level->characters[j].type == EnemySpike) &&
+                        !(level->characters[i].type == MainCharacter && level->characters[j].type == EnemySpike) )
                 {
                     //se tiver uma colisao ele tira a velocidade do char
                     if(&level->characters[j] != &level->characters[i])
@@ -78,7 +77,6 @@ int remove_collision(LEVEL *level)
                 }
             }
         }
-
     }
     return collision;
 }
@@ -101,7 +99,6 @@ void get_main_collision(LEVEL *level)
     {
         level->characters[0].inv_timer--;
     }
-
 }
 
 void update_characters(LEVEL *level)
@@ -113,7 +110,8 @@ void update_characters(LEVEL *level)
     {
         if(level->characters[i].lives > 0)
         {
-            if(level->characters[i].type != EnemySpike) move_character(&level->characters[i]);
+            if(level->characters[i].type != EnemySpike)
+                move_character(&level->characters[i]);
             al_draw_bitmap(animate(&level->characters[i].current),
                            level->characters[i].pos_graphic.x + level->characters[i].hitbox.bounds.center.x,
                            level->characters[i].pos_graphic.y + level->characters[i].hitbox.bounds.center.y,
@@ -166,17 +164,12 @@ void update_ui(LEVEL *level)
     }
 }
 
-
-
-
 void load_jogo(char Nome_Mapa[], char Mapa1 [][COLUNA], LEVEL *level,ANIMATION *anims1,SPRITE *sprite1)
 {
     FILE *Arq;
 
     Busca(Nome_Mapa, Arq, Mapa1, level, anims1,sprite1);
 }
-
-
 
 int Salva_Jogo(char mapa[][COLUNA],char nome_arquivo_out[MAX_NOME],LEVEL *level1)
 {
@@ -195,7 +188,6 @@ int Salva_Jogo(char mapa[][COLUNA],char nome_arquivo_out[MAX_NOME],LEVEL *level1
             falha = 1;
         // if(fprintf(arq,"\nPontos: %d\n",obj->Pontos) < 0)
         //falha = 1;
-
     }
     else
         falha = 1;
@@ -269,20 +261,24 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                 level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"floor");
                 (level1->n_envs) += 1;
             }
-
-            Coordenada(i,0, &(level1->characters[(level1->n_characters)].hitbox.bounds.center.x), &(level1->characters[(level1->n_characters)].hitbox.bounds.center.y), 'X', mapa[i]);
-            if(((level1->characters[(level1->n_characters)].hitbox.bounds.center.x)!= -1)||((level1->characters[(level1->n_characters)].hitbox.bounds.center.y) != -1))                                 //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+            for(j=0; j<COLUNA; j++)      // laço para verificar coluna a coluna se ha espinho
             {
-                level1->characters[(level1->n_characters)].anims = get_anim(animacao, "floor_spikes");
-                level1->characters[(level1->n_characters)].current = level1->characters[(level1->n_characters)].anims[0];
-                level1->characters[(level1->n_characters)].speed = 0;
-                level1->characters[(level1->n_characters)].direction.x = 0;
-                level1->characters[(level1->n_characters)].direction.y = 0;
-                set_character_hitbox(&level1->characters[(level1->n_characters)]);
-                level1->characters[(level1->n_characters)].lives = 1000;
-                level1->characters[(level1->n_characters)].type = EnemySpike;
-                level1->characters[(level1->n_characters)].flags = 0;
-                (level1->n_characters) += 1;
+                level1->characters[(level1->n_characters)].hitbox.bounds.center.x = -1;
+                level1->characters[(level1->n_characters)].hitbox.bounds.center.y = -1;
+                Coordenada(i,j, &(level1->characters[(level1->n_characters)].hitbox.bounds.center.x), &(level1->characters[(level1->n_characters)].hitbox.bounds.center.y), 'X', mapa[i]);
+                if(((level1->characters[(level1->n_characters)].hitbox.bounds.center.x)!= -1)||((level1->characters[(level1->n_characters)].hitbox.bounds.center.y) != -1))                                 //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->characters[(level1->n_characters)].anims = get_anim(animacao, "floor_spikes");
+                    level1->characters[(level1->n_characters)].current = level1->characters[(level1->n_characters)].anims[0];
+                    level1->characters[(level1->n_characters)].speed = 0;
+                    level1->characters[(level1->n_characters)].direction.x = 0;
+                    level1->characters[(level1->n_characters)].direction.y = 0;
+                    set_character_hitbox(&level1->characters[(level1->n_characters)]);
+                    level1->characters[(level1->n_characters)].lives = 1000;
+                    level1->characters[(level1->n_characters)].type = EnemySpike;
+                    level1->characters[(level1->n_characters)].flags = 0;
+                    (level1->n_characters) += 1;
+                }
             }
 
             Coordenada(i,0, &(level1->characters[(level1->n_characters)].hitbox.bounds.center.x), &(level1->characters[(level1->n_characters)].hitbox.bounds.center.y), 'Z', mapa[i]);
@@ -305,8 +301,6 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                 (level1->n_envs) += 1;
             }
 
-
-
             for(j=0; j<COLUNA; j++)
             {
                 level1->envs[(level1->n_envs)].pos_graphic.x = -1;
@@ -323,7 +317,9 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                     level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_top_mid");
                     (level1->n_envs) += 1;
                 }
-
+            }
+            for(j=0; j<COLUNA; j++)
+            {
                 Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), ' ', mapa[i]);
                 if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
                 {
@@ -344,9 +340,7 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                     level1->envs[(level1->n_envs)].anim.period = 1;
                     level1->envs[(level1->n_envs)].is_anim = 1;
                     (level1->n_envs) += 1;
-                    
                     level1->envs[(level1->n_envs)].pos_graphic = level1->envs[(level1->n_envs) - 1].pos_graphic;
-
                     level1->envs[(level1->n_envs)].is_anim = 0;
                     level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"floor");
                     (level1->n_envs) += 1;
@@ -359,13 +353,12 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
 void Coordenada(int linha,int coluna,float *cord_x,float *cord_y, char busca, char Mapa[])
 {
     int corre_coluna;
-    if((busca != '#') && (busca != ' ') && (busca != 'G'))
+    if((busca != '#') && (busca != ' ') && (busca != 'G') && (busca != 'X'))
     {
         for(corre_coluna = 0; corre_coluna < COLUNA; corre_coluna ++)
         {
             if(Mapa[corre_coluna] == busca)
             {
-
                 *cord_x = corre_coluna*16+8;
                 *cord_y = linha*16+16+8;
             }
@@ -373,10 +366,21 @@ void Coordenada(int linha,int coluna,float *cord_x,float *cord_y, char busca, ch
     }
     else
     {
-        if(Mapa[coluna] == busca)
+        if(busca != 'X')
         {
-            *cord_x = coluna*16;
-            *cord_y = linha*16+16;
+            if(Mapa[coluna] == busca)
+            {
+                *cord_x = coluna*16;
+                *cord_y = linha*16+16;
+            }
+        }
+        else
+        {
+            if(Mapa[coluna] == busca)
+            {
+                *cord_x = coluna*16+8;
+                *cord_y = linha*16+16+8;
+            }
         }
     }
 }
@@ -441,5 +445,8 @@ void add_line(LEVEL *level)
     level->lines[3] = wall_south;
     //dizer quantas linhas tem
     level->n_lines = 4;
+
+
+
 
 }
