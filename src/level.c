@@ -154,20 +154,25 @@ int atk(LEVEL *level)
             if(level->characters[i].lives && level->characters[i].inv_timer == 0 && cc_collides(level->aura.hitbox, level->characters[i].hitbox))
             {
                 level->characters[i].lives--;
-                if(!level->characters[i].lives){
-                    if(level->characters[i].type == EnemyOgre) points += 20;
-                    else points += 10;
+                if(!level->characters[i].lives)
+                {
+                    if(level->characters[i].type == EnemyOgre)
+                        points += 20;
+                    else
+                        points += 10;
                 }
                 level->characters[i].inv_timer = INV_TIMER;
             }
-            if(level->characters[i].inv_timer) level->characters[i].inv_timer--;
+            if(level->characters[i].inv_timer)
+                level->characters[i].inv_timer--;
         }
     }
     if(level->characters[0].atk_timer)
         level->characters[0].atk_timer--;
     for(i = 1; i < level->n_characters; i++)
     {
-        if(level->characters[i].inv_timer) level->characters[i].inv_timer--;
+        if(level->characters[i].inv_timer)
+            level->characters[i].inv_timer--;
     }
     return points;
 }
@@ -188,44 +193,17 @@ void update_ui(LEVEL *level, ALLEGRO_FONT *font, int score)
     al_draw_text(font, al_color_name("yellow"), 960, 0, ALLEGRO_ALIGN_RIGHT, text);
 }
 
-void load_jogo(char Nome_Mapa[], char Mapa1 [][COLUNA], LEVEL *level,ANIMATION *anims1,SPRITE *sprite1)
+void load_mapa(char Nome_Mapa[], LEVEL *level,ANIMATION *anims1,SPRITE *sprite1)
 {
     FILE *Arq;
 
-    Busca(Nome_Mapa, Arq, Mapa1, level, anims1,sprite1);
+    Busca(Nome_Mapa, Arq, level, anims1,sprite1);
 }
 
-int Salva_Jogo(char mapa[][COLUNA],char nome_arquivo_out[MAX_NOME],LEVEL *level1)
-{
-    FILE *arq;
-    int i,falha = 0;
-    if((arq = fopen((nome_arquivo_out),"w+")))
-    {
-        for(i=0; i<LINHA; i++)
-            fputs(mapa[i],arq);
-
-        if(fprintf(arq,"\n\n--------------------------------------------------------------\n")< 0)
-            falha = 1;
-        // if(fprintf(arq,"\nFase: %d\n",obj->Fase) < 0)
-        //falha = 1;
-        if(fprintf(arq,"\nVidas: %d\n",level1->characters[0].lives) < 0)
-            falha = 1;
-        // if(fprintf(arq,"\nPontos: %d\n",obj->Pontos) < 0)
-        //falha = 1;
-    }
-    else
-        falha = 1;
-
-    if(!falha)
-        return 1;
-    else
-        return 0;
-    fclose(arq);
-}
-
-void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVEL *level1, ANIMATION *animacao, SPRITE *sprite)
+void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, LEVEL *level1, ANIMATION *animacao, SPRITE *sprite)
 {
     int i=0,j,n_monstro = 0;
+    char mapa[LINHA][COLUNA];
     char texto_str[COLUNA];
 
     if(!(arq = fopen((nome_arquivo_inp),"r")))
@@ -256,7 +234,7 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                 level1->characters[0].current = level1->characters[0].anims[0];
                 level1->characters[0].speed = 3;
                 set_character_hitbox(&level1->characters[0]);
-                level1->characters[0].lives = 3;
+                //level1->characters[0].lives = 3;
                 level1->characters[0].type = MainCharacter;
                 level1->characters[0].inv_timer = 0;
                 level1->envs[(level1->n_envs)].pos_graphic = level1->characters[0].hitbox.bounds.center;
@@ -423,25 +401,35 @@ void atualiza_env(LEVEL *level)
     }
 }
 
-int got_treasure(LEVEL *level){
+int got_treasure(LEVEL *level)
+{
     return cc_collides(level->characters[0].hitbox, level->chest);
 }
 
-int any_monster_alive(LEVEL *level){
+int any_monster_alive(LEVEL *level)
+{
     int i = 1;
     int alive;
-    while(level->characters[i].lives == 0 && i < level->n_characters) i++;
-    if(i == level->n_characters) alive = 0;
-    else alive = 1;
+    while(level->characters[i].lives == 0 && i < level->n_characters)
+        i++;
+    if(i == level->n_characters)
+        alive = 0;
+    else
+        alive = 1;
     return alive;
 }
 
-int level_over(LEVEL *level){
+int level_over(LEVEL *level)
+{
     int status;
-    if(!level->characters[0].lives) status = GAME_OVER;
-    else if(!any_monster_alive(level)) status = KILLED_MONSTERS;
-    else if(got_treasure(level)) status = GOT_TREASURE;
-    else status = GO_ON;
+    if(!level->characters[0].lives)
+        status = GAME_OVER;
+    else if(!any_monster_alive(level))
+        status = KILLED_MONSTERS;
+    else if(got_treasure(level))
+        status = GOT_TREASURE;
+    else
+        status = GO_ON;
     return status;
 }
 

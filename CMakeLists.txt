@@ -27,7 +27,10 @@ add_library(level ./src/level.c)
 target_link_libraries(level geometry env character allegro_monolith)
 
 add_library(game ./src/game.c)
-target_link_libraries(game level input allegro_monolith)
+target_link_libraries(game menu level input allegro_monolith)
+
+add_library(menu ./src/menu.c)
+target_link_libraries(menu game input allegro_monolith)
 
 # add the executable
 add_executable(OMago ./src/main.c)

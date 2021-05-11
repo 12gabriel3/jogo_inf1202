@@ -3,6 +3,7 @@
 
 #include <level.h>
 #include <input.h>
+#include <menu.h>
 #include <allegro5/allegro.h>
 
 #define PAUSE 0
@@ -17,6 +18,8 @@ typedef struct {
     LEVEL current_level;
 } GAME;
 
-void run_game(GAME *game, ALLEGRO_EVENT event);
+int run_game(GAME *game, ALLEGRO_EVENT event);
+int Salva_Jogo(char nome_arquivo_out[MAX_NOME],GAME *game);
+int load_jogo(char nome_arquivo_out[MAX_NOME],GAME *game);
 
 #endif

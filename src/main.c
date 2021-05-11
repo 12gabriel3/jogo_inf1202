@@ -24,7 +24,6 @@ int main()
     /*                                                     Inicio altera��o sem o gabriel
     -----------------------------------------------------------------------------------------------------------------------------------------------*/
     int i;
-    char MAPA[LINHA][COLUNA];
 
     for(i=0; i>200; i++)
     {
@@ -77,23 +76,16 @@ int main()
     //p representar o muro vermelho
     al_init_font_addon();
     al_init_ttf_addon();
-
     //coloca todos os sprites e imagens que est�o na pasta aos vetores
     carrega_sprites(game.sprites, game.anims, "../img"); //.. :Diretorio de cima
 
     game.current_level.aura.anim = *get_anim(game.anims, "aura");
     game.current_level.aura.anim.period = 20;
     game.current_level.aura.active = 0;
-
     game.current_level.n_characters = 1;
     game.current_level.n_envs = 0;
-    load_jogo("../Map/FASE 1.txt",MAPA,&game.current_level,game.anims,game.sprites);
     game.font = al_load_font("../fonts/PressStart2P-Regular.ttf", -20, 0);
     game.score = 0;
-    for(i=0; i<LINHA; i++)
-        printf("%s",MAPA[i]);
-
-    Salva_Jogo(MAPA,"../map/Naodeu.txt",&game.current_level);
 
     add_line(&game.current_level);
     fundo = al_load_bitmap("../img/Fundo.png");
@@ -101,17 +93,15 @@ int main()
     game.current_level.heart_full = get_sprite(game.sprites, "ui_heart_full");
     game.current_level.heart_empty = get_sprite(game.sprites, "ui_heart_empty");
 
-
     //looping janela allegro p ficar aberta
     do
     {
         //espera ocorrer algo na fila de evento para executar
         al_wait_for_event(queue, &event);//passando o endere�o, vai modificando a cada atualiza��o
 
-        run_game(&game, event);
     }
     //A allegro roda ate tu apertar 'X' p encerrar o prog
-    while(event.type != ALLEGRO_EVENT_DISPLAY_CLOSE);
+    while(event.type != ALLEGRO_EVENT_DISPLAY_CLOSE && run_game(&game, event));
 
     return 0;
 }
