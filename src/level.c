@@ -12,10 +12,10 @@ void set_characters_intention(LEVEL *level)
             break;
         case EnemyOgre:
             level->characters[i].direction = direction_from_to(level->characters[i].hitbox.bounds.center, level->characters[0].hitbox.bounds.center);
-            if(module(dist_from_to(level->characters[i].hitbox.bounds.center, level->characters[0].hitbox.bounds.center)) < 200)
-                level->characters[i].speed = 2.3;
+            if(module(dist_from_to(level->characters[i].hitbox.bounds.center, level->characters[0].hitbox.bounds.center)) < 150)
+                level->characters[i].speed = 1.5;
             else
-                level->characters[i].speed = 1;
+                level->characters[i].speed = 0.8;
             break;
         case EnemySkeleton:
             level->characters[i].direction = direction_from_to(level->characters[i].hitbox.bounds.center, level->characters[0].hitbox.bounds.center);
@@ -112,6 +112,7 @@ void update_characters(LEVEL *level)
         {
             if(level->characters[i].type != EnemySpike)
                 move_character(&level->characters[i]);
+            
             al_draw_bitmap(animate(&level->characters[i].current),
                            level->characters[i].pos_graphic.x + level->characters[i].hitbox.bounds.center.x,
                            level->characters[i].pos_graphic.y + level->characters[i].hitbox.bounds.center.y,
@@ -122,7 +123,7 @@ void update_characters(LEVEL *level)
 
 void atk(LEVEL *level)
 {
-    int i;
+    int i, points;
     if(level->input & ATTACK && level->characters[0].atk_timer == 0)
     {
         level->aura.active = 1;
@@ -142,14 +143,20 @@ void atk(LEVEL *level)
         }
         for(i = 1; i < level->n_characters; i++)
         {
-            if(level->characters[i].lives && cc_collides(level->aura.hitbox, level->characters[i].hitbox))
+            if(level->characters[i].lives && level->characters[i].inv_timer == 0 && cc_collides(level->aura.hitbox, level->characters[i].hitbox))
             {
                 level->characters[i].lives--;
+                level->characters[i].inv_timer = INV_TIMER;
             }
+            if(level->characters[i].inv_timer) level->characters[i].inv_timer--;
         }
     }
     if(level->characters[0].atk_timer)
         level->characters[0].atk_timer--;
+    for(i = 1; i < level->n_characters; i++)
+    {
+        if(level->characters[i].inv_timer) level->characters[i].inv_timer--;
+    }
 }
 
 void update_ui(LEVEL *level)
@@ -250,7 +257,7 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                 level1->characters[(level1->n_characters)].current = level1->characters[(level1->n_characters)].anims[0];
                 level1->characters[(level1->n_characters)].speed = 0.5;
                 set_character_hitbox(&level1->characters[(level1->n_characters)]);
-                level1->characters[(level1->n_characters)].lives = 1;
+                level1->characters[(level1->n_characters)].lives = 2;
                 level1->characters[(level1->n_characters)].type = EnemyOgre;
                 level1->envs[(level1->n_envs)].pos_graphic = level1->characters[(level1->n_characters)].hitbox.bounds.center;
                 (level1->n_characters) += 1;
@@ -286,7 +293,7 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
             {
                 level1->characters[(level1->n_characters)].anims = get_anim(animacao, "skelet_idle");
                 level1->characters[(level1->n_characters)].current = level1->characters[(level1->n_characters)].anims[0];
-                level1->characters[(level1->n_characters)].speed = 0.5;
+                level1->characters[(level1->n_characters)].speed = 1;
                 set_character_hitbox(&level1->characters[(level1->n_characters)]);
                 level1->characters[(level1->n_characters)].lives = 1;
                 level1->characters[(level1->n_characters)].type = EnemySkeleton;
@@ -336,13 +343,13 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                 Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), 'G', mapa[i]);
                 if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
                 {
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"floor");
+                    (level1->n_envs) += 1;
+                    level1->envs[(level1->n_envs)].pos_graphic = level1->envs[(level1->n_envs) - 1].pos_graphic;
                     level1->envs[(level1->n_envs)].anim = *get_anim(animacao,"chest_full_open");
                     level1->envs[(level1->n_envs)].anim.period = 1;
                     level1->envs[(level1->n_envs)].is_anim = 1;
-                    (level1->n_envs) += 1;
-                    level1->envs[(level1->n_envs)].pos_graphic = level1->envs[(level1->n_envs) - 1].pos_graphic;
-                    level1->envs[(level1->n_envs)].is_anim = 0;
-                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"floor");
                     (level1->n_envs) += 1;
                 }
             }
