@@ -11,6 +11,8 @@
 typedef struct {
     int score, n_level;
     int state;
+    SPRITE sprites[SPRITES_MAX];
+    ANIMATION anims[ANIMS_MAX];
     ALLEGRO_FONT *font;
     LEVEL current_level;
 } GAME;

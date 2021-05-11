@@ -18,12 +18,8 @@ int main()
     //fila de eventos p serem processados, organiza tudo
     ALLEGRO_EVENT_QUEUE *queue;
     ALLEGRO_EVENT event;
-    SPRITE sprites[SPRITES_MAX];
-    ANIMATION anims[ANIMS_MAX];
     GAME game;
-    KEYBOARD_STATE key_pressed;
     ALLEGRO_MONITOR_INFO monitor;
-    LINE wall_south;
     ALLEGRO_BITMAP *fundo = NULL;
     /*                                                     Inicio altera��o sem o gabriel
     -----------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -83,21 +79,15 @@ int main()
     al_init_ttf_addon();
 
     //coloca todos os sprites e imagens que est�o na pasta aos vetores
-    carrega_sprites(sprites, anims, "../img"); //.. :Diretorio de cima
+    carrega_sprites(game.sprites, game.anims, "../img"); //.. :Diretorio de cima
 
-    //add retas para colisao
-    // muro do sul
-    wall_south.normal.y = -1;
-    wall_south.normal.x = 0;
-
-
-    game.current_level.aura.anim = *get_anim(anims, "aura");
+    game.current_level.aura.anim = *get_anim(game.anims, "aura");
     game.current_level.aura.anim.period = 20;
     game.current_level.aura.active = 0;
 
     game.current_level.n_characters = 1;
     game.current_level.n_envs = 0;
-    load_jogo("../Map/FASE 1.txt",MAPA,&game.current_level,anims,sprites);
+    load_jogo("../Map/FASE 1.txt",MAPA,&game.current_level,game.anims,game.sprites);
     game.font = al_load_font("../fonts/Roboto-Regular.ttf", -20, 0);
     game.score = 0;
     for(i=0; i<LINHA; i++)
@@ -108,8 +98,8 @@ int main()
     add_line(&game.current_level);
     fundo = al_load_bitmap("../img/Fundo.png");
 
-    game.current_level.heart_full = get_sprite(sprites, "ui_heart_full");
-    game.current_level.heart_empty = get_sprite(sprites, "ui_heart_empty");
+    game.current_level.heart_full = get_sprite(game.sprites, "ui_heart_full");
+    game.current_level.heart_empty = get_sprite(game.sprites, "ui_heart_empty");
 
 
     //looping janela allegro p ficar aberta
