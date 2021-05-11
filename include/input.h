@@ -9,12 +9,14 @@
 #define ARROWLEFT (1 << 2)
 #define ARROWRIGHT (1 << 3)
 #define ATTACK (1 << 4)
+#define ESC (1 << 5)
+
 
 typedef unsigned int KEYBOARD_STATE;
 
 /**
  * @brief Atualiza o estado atual do teclado de acordo com o evento
- * 
+ *
  * @param state Representa quais teclas estao pressionadas
  * @param event O evento que será verificado
  */

@@ -10,6 +10,7 @@
 #define SALVA_JOGO   1
 #define CARREGA_JOGO 2
 #define NOVO_JOGO    3
+#define CONTINUA     4
 #define SAIR         0
 
 int run_menu(ALLEGRO_FONT *font, ALLEGRO_EVENT event);

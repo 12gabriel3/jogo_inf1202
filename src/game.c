@@ -7,18 +7,22 @@ int run_game(GAME *game, ALLEGRO_EVENT event)
     {
         switch (run_menu(game->font,event))
         {
-    case SAIR:
-        return 0;
-        break;
-    case SALVA_JOGO:
-        Salva_Jogo("../save_game/game.save",game);
-        break;
-    case CARREGA_JOGO:
-        load_jogo("../save_game/game.save",game);
-        break;
-    case NOVO_JOGO:
-        load_mapa("../Map/FASE 1.txt",&game->current_level,game->anims,game->sprites);
-        break;
+        case SAIR:
+            return 0;
+            break;
+        case SALVA_JOGO:
+            Salva_Jogo("../save_game/game.save",game);
+            break;
+        case CARREGA_JOGO:
+            load_jogo("../save_game/game.save",game);
+            break;
+        case NOVO_JOGO:
+            load_mapa("../Map/FASE 1.txt",&game->current_level,game->anims,game->sprites);
+            game->state = PLAY;
+            break;
+        case CONTINUA:
+            game->state = PLAY;
+            break;
         }
 
     }
@@ -26,8 +30,13 @@ int run_game(GAME *game, ALLEGRO_EVENT event)
     {
         set_kb_state(&game->current_level.input, event);
         //limpa a tela p preto (tabela RGB 000) p cada atualiza��o
+        if(game->current_level.input &ESC)
+        {
+            game->current_level.input &= ~ESC;
+            game->state = PAUSE;
+        }
 
-        if(event.type == ALLEGRO_EVENT_TIMER)
+        else if(event.type == ALLEGRO_EVENT_TIMER)
         {
             al_clear_to_color(al_map_rgb_f(0, 0, 0));
             atualiza_env(&game->current_level);
@@ -79,6 +88,7 @@ int load_jogo(char nome_arquivo_out[MAX_NOME],GAME *game)
 {
     FILE *arq;
     int i,falha = 0;
+
     if((arq = fopen((nome_arquivo_out),"rb")))
     {
         fread(game,sizeof(*game),1,arq);
@@ -87,6 +97,35 @@ int load_jogo(char nome_arquivo_out[MAX_NOME],GAME *game)
         falha = 1;
 
     fclose(arq);
+
+    carrega_sprites(game->sprites, game->anims, "../img"); //.. :Diretorio de cima
+
+    game->state = PLAY;
+    game->current_level.aura.anim = *get_anim(game->anims, "aura");
+    game->font = al_load_font("../fonts/PressStart2P-Regular.ttf", -20, 0);
+    game->current_level.heart_full = get_sprite(game->sprites, "ui_heart_full");
+    game->current_level.heart_empty = get_sprite(game->sprites, "ui_heart_empty");
+
+    game->current_level.characters[0].anims = get_anim(game->anims,"wizzard_f");
+    game->current_level.characters[0].current = game->current_level.characters[0].anims[0];
+
+    for(i=1; i < game->current_level.n_characters; i++)
+    {
+        switch (game->current_level.characters[i].type)
+        {
+        case EnemyOgre:
+            game->current_level.characters[i].anims = get_anim(game->anims,"big_zombie");
+            game->current_level.characters[i].current = game->current_level.characters[i].anims[0];
+            break;
+        case EnemySkeleton:
+            game->current_level.characters[i].anims = get_anim(game->anims,"skelet_idle");
+            game->current_level.characters[i].current = game->current_level.characters[i].anims[0];
+            break;
+        case EnemySpike:
+            game->current_level.characters[i].anims = get_anim(game->anims,"floor_spikes");
+            game->current_level.characters[i].current = game->current_level.characters[i].anims[0];
+        }
+    }
 
     return falha;
 }

@@ -64,7 +64,7 @@ int main()
     al_register_event_source(queue, al_get_keyboard_event_source());
     al_register_event_source(queue, al_get_display_event_source(display));
     al_register_event_source(queue, al_get_timer_event_source(timer));
-   // load_mapa("../Map/FASE 1.txt",&game.current_level,game.anims,game.sprites);
+
     //come�ar a contagem de tempo
     al_start_timer(timer);
 
@@ -80,12 +80,13 @@ int main()
     carrega_sprites(game.sprites, game.anims, "../img"); //.. :Diretorio de cima
 
     game.current_level.characters[0].lives = 3;
-    game.state = PAUSE;
+    game.state = PLAY;
     game.current_level.aura.anim = *get_anim(game.anims, "aura");
     game.current_level.aura.anim.period = 20;
     game.current_level.aura.active = 0;
     game.current_level.n_characters = 1;
     game.current_level.n_envs = 0;
+    load_mapa("../Map/FASE 1.txt",&game.current_level,game.anims,game.sprites);
     game.font = al_load_font("../fonts/PressStart2P-Regular.ttf", -20, 0);
     game.score = 0;
 
