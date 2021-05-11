@@ -88,7 +88,7 @@ int main()
     game.current_level.n_characters = 1;
     game.current_level.n_envs = 0;
     load_jogo("../Map/FASE 1.txt",MAPA,&game.current_level,game.anims,game.sprites);
-    game.font = al_load_font("../fonts/Roboto-Regular.ttf", -20, 0);
+    game.font = al_load_font("../fonts/PressStart2P-Regular.ttf", -20, 0);
     game.score = 0;
     for(i=0; i<LINHA; i++)
         printf("%s",MAPA[i]);

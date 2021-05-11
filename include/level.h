@@ -12,9 +12,15 @@
 #define LINES_MAX 100
 #define UI_MAX 50
 
+#define GO_ON 0
+#define GAME_OVER 1
+#define KILLED_MONSTERS 2
+#define GOT_TREASURE 3
+
 typedef struct {
     SPRITE *heart_full, *heart_empty;
     ENV envs[ENVS_MAX];
+    CIRCLE chest;
     int n_envs;
     CHARACTER characters[CHARACTERS_MAX];
     int n_characters;
@@ -43,5 +49,7 @@ int Salva_Jogo(char mapa[][COLUNA],char nome_arquivo_out[MAX_NOME],LEVEL *level1
 void atualiza_env(LEVEL *level);
 
 void add_line(LEVEL *level);
+
+int level_over(LEVEL *level);
 
 #endif

@@ -89,7 +89,7 @@ void get_main_collision(LEVEL *level)
     {
         while((!level->characters[i].lives || !cc_collides(level->characters[0].hitbox, level->characters[i].hitbox)) && i < level->n_characters)
             i++;
-        if(i < level->n_characters)
+        if(i < level->n_characters && level->characters[0].lives)
         {
             level->characters[0].lives--;
             level->characters[0].inv_timer = INV_TIMER;
@@ -108,11 +108,19 @@ void update_characters(LEVEL *level)
     remove_collision(level);
     for(i = level->n_characters - 1; i > -1; i--)
     {
-        if(level->characters[i].lives > 0)
+        if(level->characters[i].type == EnemySpike)
         {
-            if(level->characters[i].type != EnemySpike)
-                move_character(&level->characters[i]);
-            
+            al_draw_bitmap(animate(&level->characters[i].current),
+                           level->characters[i].pos_graphic.x + level->characters[i].hitbox.bounds.center.x,
+                           level->characters[i].pos_graphic.y + level->characters[i].hitbox.bounds.center.y,
+                           level->characters[i].flags);
+        }
+    }
+    for(i = level->n_characters - 1; i > -1; i--)
+    {
+        if(level->characters[i].lives > 0 && level->characters[i].type != EnemySpike)
+        {
+            move_character(&level->characters[i]);
             al_draw_bitmap(animate(&level->characters[i].current),
                            level->characters[i].pos_graphic.x + level->characters[i].hitbox.bounds.center.x,
                            level->characters[i].pos_graphic.y + level->characters[i].hitbox.bounds.center.y,
@@ -277,25 +285,6 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                 level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"floor");
                 (level1->n_envs) += 1;
             }
-            for(j=0; j<COLUNA; j++)      // laço para verificar coluna a coluna se ha espinho
-            {
-                level1->characters[(level1->n_characters)].hitbox.bounds.center.x = -1;
-                level1->characters[(level1->n_characters)].hitbox.bounds.center.y = -1;
-                Coordenada(i,j, &(level1->characters[(level1->n_characters)].hitbox.bounds.center.x), &(level1->characters[(level1->n_characters)].hitbox.bounds.center.y), 'X', mapa[i]);
-                if(((level1->characters[(level1->n_characters)].hitbox.bounds.center.x)!= -1)||((level1->characters[(level1->n_characters)].hitbox.bounds.center.y) != -1))                                 //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
-                {
-                    level1->characters[(level1->n_characters)].anims = get_anim(animacao, "floor_spikes");
-                    level1->characters[(level1->n_characters)].current = level1->characters[(level1->n_characters)].anims[0];
-                    level1->characters[(level1->n_characters)].speed = 0;
-                    level1->characters[(level1->n_characters)].direction.x = 0;
-                    level1->characters[(level1->n_characters)].direction.y = 0;
-                    set_character_hitbox(&level1->characters[(level1->n_characters)]);
-                    level1->characters[(level1->n_characters)].lives = 1000;
-                    level1->characters[(level1->n_characters)].type = EnemySpike;
-                    level1->characters[(level1->n_characters)].flags = 0;
-                    (level1->n_characters) += 1;
-                }
-            }
 
             Coordenada(i,0, &(level1->characters[(level1->n_characters)].hitbox.bounds.center.x), &(level1->characters[(level1->n_characters)].hitbox.bounds.center.y), 'Z', mapa[i]);
             if(((level1->characters[(level1->n_characters)].hitbox.bounds.center.x)!= -1)||((level1->characters[(level1->n_characters)].hitbox.bounds.center.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
@@ -315,6 +304,26 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                 level1->envs[(level1->n_envs)].is_anim = 0;
                 level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"floor");
                 (level1->n_envs) += 1;
+            }
+
+            for(j=0; j<COLUNA; j++)      // laço para verificar coluna a coluna se ha espinho
+            {
+                level1->characters[(level1->n_characters)].hitbox.bounds.center.x = -1;
+                level1->characters[(level1->n_characters)].hitbox.bounds.center.y = -1;
+                Coordenada(i,j, &(level1->characters[(level1->n_characters)].hitbox.bounds.center.x), &(level1->characters[(level1->n_characters)].hitbox.bounds.center.y), 'X', mapa[i]);
+                if(((level1->characters[(level1->n_characters)].hitbox.bounds.center.x)!= -1)||((level1->characters[(level1->n_characters)].hitbox.bounds.center.y) != -1))                                 //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->characters[(level1->n_characters)].anims = get_anim(animacao, "floor_spikes");
+                    level1->characters[(level1->n_characters)].current = level1->characters[(level1->n_characters)].anims[0];
+                    level1->characters[(level1->n_characters)].speed = 0;
+                    level1->characters[(level1->n_characters)].direction.x = 0;
+                    level1->characters[(level1->n_characters)].direction.y = 0;
+                    set_character_hitbox(&level1->characters[(level1->n_characters)]);
+                    level1->characters[(level1->n_characters)].lives = 1000;
+                    level1->characters[(level1->n_characters)].type = EnemySpike;
+                    level1->characters[(level1->n_characters)].flags = 0;
+                    (level1->n_characters) += 1;
+                }
             }
 
             for(j=0; j<COLUNA; j++)
@@ -359,6 +368,11 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, char mapa[][COLUNA], LEVE
                     level1->envs[(level1->n_envs)].anim = *get_anim(animacao,"chest_full_open");
                     level1->envs[(level1->n_envs)].anim.period = 1;
                     level1->envs[(level1->n_envs)].is_anim = 1;
+                    level1->chest.bounds.center = level1->envs[(level1->n_envs)].pos_graphic;
+                    level1->chest.bounds.center.x += 8;
+                    level1->chest.bounds.halfwidth = 8;
+                    level1->chest.bounds.halfheight = 8;
+                    level1->chest.r = 8;
                     (level1->n_envs) += 1;
                 }
             }
@@ -407,6 +421,28 @@ void atualiza_env(LEVEL *level)
     {
         update_env(&level->envs[i]);
     }
+}
+
+int got_treasure(LEVEL *level){
+    return cc_collides(level->characters[0].hitbox, level->chest);
+}
+
+int any_monster_alive(LEVEL *level){
+    int i = 1;
+    int alive;
+    while(level->characters[i].lives == 0 && i < level->n_characters) i++;
+    if(i == level->n_characters) alive = 0;
+    else alive = 1;
+    return alive;
+}
+
+int level_over(LEVEL *level){
+    int status;
+    if(!level->characters[0].lives) status = GAME_OVER;
+    else if(!any_monster_alive(level)) status = KILLED_MONSTERS;
+    else if(got_treasure(level)) status = GOT_TREASURE;
+    else status = GO_ON;
+    return status;
 }
 
 void add_line(LEVEL *level)
