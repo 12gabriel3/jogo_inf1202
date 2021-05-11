@@ -7,6 +7,8 @@
 #include <game.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_color.h>
+#include <allegro5/allegro_font.h>
+#include <allegro5/allegro_ttf.h>
 
 
 int main()
@@ -77,7 +79,8 @@ int main()
     //pegar sprites
     al_init_image_addon();
     //p representar o muro vermelho
-    al_init_primitives_addon();
+    al_init_font_addon();
+    al_init_ttf_addon();
 
     //coloca todos os sprites e imagens que est�o na pasta aos vetores
     carrega_sprites(sprites, anims, "../img"); //.. :Diretorio de cima
@@ -95,7 +98,8 @@ int main()
     game.current_level.n_characters = 1;
     game.current_level.n_envs = 0;
     load_jogo("../Map/FASE 1.txt",MAPA,&game.current_level,anims,sprites);
-
+    game.font = al_load_font("../fonts/Roboto-Regular.ttf", -12, 0);
+    game.score = 0;
     for(i=0; i<LINHA; i++)
         printf("%s",MAPA[i]);
 

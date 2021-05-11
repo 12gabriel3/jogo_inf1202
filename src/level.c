@@ -121,9 +121,9 @@ void update_characters(LEVEL *level)
     }
 }
 
-void atk(LEVEL *level)
+int atk(LEVEL *level)
 {
-    int i, points;
+    int i, points = 0;
     if(level->input & ATTACK && level->characters[0].atk_timer == 0)
     {
         level->aura.active = 1;
@@ -146,6 +146,10 @@ void atk(LEVEL *level)
             if(level->characters[i].lives && level->characters[i].inv_timer == 0 && cc_collides(level->aura.hitbox, level->characters[i].hitbox))
             {
                 level->characters[i].lives--;
+                if(!level->characters[i].lives){
+                    if(level->characters[i].type == EnemyOgre) points += 20;
+                    else points += 10;
+                }
                 level->characters[i].inv_timer = INV_TIMER;
             }
             if(level->characters[i].inv_timer) level->characters[i].inv_timer--;
@@ -157,11 +161,15 @@ void atk(LEVEL *level)
     {
         if(level->characters[i].inv_timer) level->characters[i].inv_timer--;
     }
+    return points;
 }
 
-void update_ui(LEVEL *level)
+void update_ui(LEVEL *level, ALLEGRO_FONT *font, int score)
 {
     int i;
+    char text[20];
+    itoa(score, text, 10);
+    printf("\n%s", text);
     for(i = 0; i < 3; i++)
     {
         if(i < level->characters[0].lives)
@@ -169,6 +177,7 @@ void update_ui(LEVEL *level)
         else
             al_draw_bitmap(level->heart_empty->bitmap, i*16, 0, 0);
     }
+    al_draw_text(font, al_color_name("yellow"), 960, 0, ALLEGRO_ALIGN_RIGHT, text);
 }
 
 void load_jogo(char Nome_Mapa[], char Mapa1 [][COLUNA], LEVEL *level,ANIMATION *anims1,SPRITE *sprite1)

@@ -4,8 +4,11 @@
 #include <env.h>
 #include <geometry.h>
 #include <character.h>
+#include <allegro5/allegro_font.h>
+#include <allegro5/allegro_color.h>
+
 #define ENVS_MAX 2000
-#define CHARACTERS_MAX 1000
+#define CHARACTERS_MAX 100
 #define LINES_MAX 100
 #define UI_MAX 50
 
@@ -21,13 +24,13 @@ typedef struct {
     KEYBOARD_STATE input;
 } LEVEL;
 
-void update_ui(LEVEL *level);
+void update_ui(LEVEL *level, ALLEGRO_FONT *font, int score);
 
 void update_characters(LEVEL *level);
 
 void get_main_collision(LEVEL *level);
 
-void atk(LEVEL *level);
+int atk(LEVEL *level);
 
 void Coordenada(int linha,int coluna,float *cord_x,float *cord_y, char busca, char Mapa[]);
 

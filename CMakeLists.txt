@@ -24,7 +24,7 @@ add_library(env ./src/env.c)
 target_link_libraries(env geometry graphics)
 
 add_library(level ./src/level.c)
-target_link_libraries(level geometry env character)
+target_link_libraries(level geometry env character allegro_monolith)
 
 add_library(game ./src/game.c)
 target_link_libraries(game level input allegro_monolith)

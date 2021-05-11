@@ -11,8 +11,8 @@ void run_game(GAME *game, ALLEGRO_EVENT event){
         //atualiza as caracteristicas de cada char
         update_characters(&game->current_level);
         get_main_collision(&game->current_level);
-        update_ui(&game->current_level);
-        atk(&game->current_level);
+        game->score += atk(&game->current_level);
+        update_ui(&game->current_level, game->font, game->score);
         //desenha a linha vermelha p allegro
         // al_draw_line(0, 400, 600, 500, al_color_name("red"), 1);
 

@@ -11,6 +11,7 @@
 typedef struct {
     int score, n_level;
     int state;
+    ALLEGRO_FONT *font;
     LEVEL current_level;
 } GAME;
 
