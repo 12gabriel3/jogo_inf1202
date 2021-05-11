@@ -2,6 +2,9 @@
 #define MENU_H
 
 #include <game.h>
+#include <allegro5/allegro_color.h>
+#include <allegro5/allegro_font.h>
+#include <allegro5/allegro_ttf.h>
 
 
 #define SALVA_JOGO   1
