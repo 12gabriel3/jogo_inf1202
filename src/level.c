@@ -410,7 +410,7 @@ int any_monster_alive(LEVEL *level)
 {
     int i = 1;
     int alive;
-    while(level->characters[i].lives == 0 && i < level->n_characters)
+    while((level->characters[i].lives == 0 || level->characters[i].type == EnemySpike) && i < level->n_characters)
         i++;
     if(i == level->n_characters)
         alive = 0;

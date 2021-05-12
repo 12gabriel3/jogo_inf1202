@@ -1,5 +1,5 @@
 #include <game.h>
-
+#include <string.h>
 
 int run_game(GAME *game, ALLEGRO_EVENT event)
 {
@@ -17,8 +17,20 @@ int run_game(GAME *game, ALLEGRO_EVENT event)
             load_jogo("../save_game/game.save",game);
             break;
         case NOVO_JOGO:
-            load_mapa("../Map/FASE 1.txt",&game->current_level,game->anims,game->sprites);
+            game->current_level.characters[0].lives = 3;
             game->state = PLAY;
+            game->current_level.aura.anim = *get_anim(game->anims, "aura");
+            game->current_level.aura.anim.period = 20;
+            game->current_level.aura.active = 0;
+            game->current_level.n_characters = 1;
+            game->current_level.n_envs = 0;
+            load_mapa("../Map/FASE 1.txt",&game->current_level,game->anims,game->sprites);
+            game->score = 0;
+
+            add_line(&game->current_level);
+
+            game->current_level.heart_full = get_sprite(game->sprites, "ui_heart_full");
+            game->current_level.heart_empty = get_sprite(game->sprites, "ui_heart_empty");
             break;
         case CONTINUA:
             game->state = PLAY;
@@ -117,7 +129,14 @@ int load_jogo(char nome_arquivo_out[MAX_NOME],GAME *game)
 
     for(i=0; i < game->current_level.n_envs; i++)
     {
-        if(game->current_level.envs[i].is_anim) game->current_level.envs[i].anim = *get_anim(game->anims, game->current_level.envs[i].anim.name);
+        if(game->current_level.envs[i].is_anim) {
+            game->current_level.envs[i].anim = *get_anim(game->anims, game->current_level.envs[i].anim.name);
+            if(!strcmp(game->current_level.envs[i].anim.name, "chest_full_open_anim")) {
+                game->current_level.envs[i].anim.loop = 0;
+                game->current_level.envs[i].anim.play = 0;
+            }
+        }
+        
         else game->current_level.envs[i].sprite = get_sprite(game->sprites, game->current_level.envs[i].sprite->name);
     }
 

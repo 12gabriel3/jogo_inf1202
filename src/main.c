@@ -78,24 +78,9 @@ int main()
     al_init_ttf_addon();
     //coloca todos os sprites e imagens que est�o na pasta aos vetores
     carrega_sprites(game.sprites, game.anims, "../img"); //.. :Diretorio de cima
-
-    game.current_level.characters[0].lives = 3;
-    game.state = PLAY;
-    game.current_level.aura.anim = *get_anim(game.anims, "aura");
-    game.current_level.aura.anim.period = 20;
-    game.current_level.aura.active = 0;
-    game.current_level.n_characters = 1;
-    game.current_level.n_envs = 0;
-    load_mapa("../Map/FASE 1.txt",&game.current_level,game.anims,game.sprites);
+    
+    game.state = PAUSE;
     game.font = al_load_font("../fonts/PressStart2P-Regular.ttf", -20, 0);
-    game.score = 0;
-
-    add_line(&game.current_level);
-    fundo = al_load_bitmap("../img/Fundo.png");
-
-    game.current_level.heart_full = get_sprite(game.sprites, "ui_heart_full");
-    game.current_level.heart_empty = get_sprite(game.sprites, "ui_heart_empty");
-
     //looping janela allegro p ficar aberta
     do
     {
