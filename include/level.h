@@ -40,9 +40,9 @@ int atk(LEVEL *level, ANIMATION *anims);
 
 void Coordenada(int linha,int coluna,float *cord_x,float *cord_y, char busca, char Mapa[]);
 
-void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, LEVEL *level1, ANIMATION *animacao, SPRITE *sprite);
+int Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, LEVEL *level1, ANIMATION *animacao, SPRITE *sprite);
 
-void load_mapa(char Nome_Mapa[], LEVEL *level,ANIMATION *anims1,SPRITE *sprite1);
+int load_mapa(char Nome_Mapa[], LEVEL *level,ANIMATION *anims1,SPRITE *sprite1);
 
 void atualiza_env(LEVEL *level);
 

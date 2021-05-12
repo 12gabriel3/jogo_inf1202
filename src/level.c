@@ -163,6 +163,7 @@ int atk(LEVEL *level, ANIMATION *anims)
                 } else {
                     if(level->characters[i].type == EnemyOgre) {
                         level->characters[i].anims = get_anim(anims, "tiny_zombie");
+                        level->characters[i].current = level->characters[i].anims[0];
                         set_character_hitbox(&level->characters[i]);
                     }
                 }
@@ -198,14 +199,14 @@ void update_ui(LEVEL *level, ALLEGRO_FONT *font, int score)
     al_draw_text(font, al_color_name("yellow"), 960, 0, ALLEGRO_ALIGN_RIGHT, text);
 }
 
-void load_mapa(char Nome_Mapa[], LEVEL *level,ANIMATION *anims1,SPRITE *sprite1)
+int load_mapa(char Nome_Mapa[], LEVEL *level,ANIMATION *anims1,SPRITE *sprite1)
 {
     FILE *Arq;
 
-    Busca(Nome_Mapa, Arq, level, anims1,sprite1);
+    return Busca(Nome_Mapa, Arq, level, anims1,sprite1);
 }
 
-void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, LEVEL *level1, ANIMATION *animacao, SPRITE *sprite)
+int Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, LEVEL *level1, ANIMATION *animacao, SPRITE *sprite)
 {
     int i=0,j,n_monstro = 0;
     char mapa[LINHA][COLUNA];
@@ -213,7 +214,7 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, LEVEL *level1, ANIMATION 
 
     if(!(arq = fopen((nome_arquivo_inp),"r")))
     {
-        printf("\n\n Erro na abertura do arquivo de leitura! \n\n");              // Escreve mensagem de erro caso n�o consiga executar a funcao
+        return 1;              // Escreve mensagem de erro caso n�o consiga executar a funcao
     }
     else
     {
@@ -394,6 +395,7 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, LEVEL *level1, ANIMATION 
             }
         }
     }
+    return 0;
 }
 
 void Coordenada(int linha,int coluna,float *cord_x,float *cord_y, char busca, char Mapa[])

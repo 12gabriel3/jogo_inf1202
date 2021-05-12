@@ -109,7 +109,10 @@ void next_level(GAME *game){
     game->current_level.n_characters = 1;
     game->current_level.n_envs = 0;
     game->current_level.n_lines = 0;
-    load_mapa(level,&game->current_level,game->anims,game->sprites);
+    if(load_mapa(level,&game->current_level,game->anims,game->sprites)) {
+        game->n_level = 0;
+        next_level(game);
+    }
 }
 
 int load_jogo(char nome_arquivo_out[MAX_NOME],GAME *game)
