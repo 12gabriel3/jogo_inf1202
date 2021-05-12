@@ -60,21 +60,21 @@ int remove_collision(LEVEL *level)
                         if(module(level->characters[i].direction) > 1)
                             normalize(&level->characters[i].direction);
                     }
-                    //remove as colisoes com os muros
-                    for(k = 0; k < level->n_lines; k++)
-                    {
-                        next_pos_i = level->characters[i].hitbox;
-                        vec_sum(&next_pos_i.bounds.center, multiply(level->characters[i].speed, level->characters[i].direction));
-                        normal = lc_collision_normal(next_pos_i, level->lines[k]);
-                        if(dot_prod(normal, level->characters[i].direction) > 0)
-                        {
-                            vec_sum(&level->characters[i].direction, multiply(-0.5, normal));
-                            collision = 1;
-                        }
-                        if(module(level->characters[i].direction) > 1)
-                            normalize(&level->characters[i].direction);
-                    }
                 }
+            }
+            //remove as colisoes com os muros
+            for(k = 0; k < level->n_lines; k++)
+            {
+                next_pos_i = level->characters[i].hitbox;
+                vec_sum(&next_pos_i.bounds.center, multiply(level->characters[i].speed, level->characters[i].direction));
+                normal = lc_collision_normal(next_pos_i, level->lines[k]);
+                if(dot_prod(normal, level->characters[i].direction) > 0)
+                {
+                    vec_sum(&level->characters[i].direction, multiply(-0.5, normal));
+                    collision = 1;
+                }
+                if(module(level->characters[i].direction) > 1)
+                    normalize(&level->characters[i].direction);
             }
         }
     }
@@ -317,7 +317,40 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, LEVEL *level1, ANIMATION 
                 if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
                 {
                     level1->envs[(level1->n_envs)].is_anim = 0;
-                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_mid");                    
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_mid");
+
+                    level1->lines[level1->n_lines].p1.x = level1->envs[(level1->n_envs)].pos_graphic.x;
+                    level1->lines[level1->n_lines].p1.y = level1->envs[(level1->n_envs)].pos_graphic.y;
+                    level1->lines[level1->n_lines].p2.x = level1->envs[(level1->n_envs)].pos_graphic.x+16;
+                    level1->lines[level1->n_lines].p2.y = level1->envs[(level1->n_envs)].pos_graphic.y;
+                    set_line_normal(&level1->lines[level1->n_lines], UP);
+                    set_line_box(&level1->lines[level1->n_lines]);
+                    level1->n_lines++;
+
+                    level1->lines[level1->n_lines].p1.x = level1->envs[(level1->n_envs)].pos_graphic.x;
+                    level1->lines[level1->n_lines].p1.y = level1->envs[(level1->n_envs)].pos_graphic.y+16;
+                    level1->lines[level1->n_lines].p2.x = level1->envs[(level1->n_envs)].pos_graphic.x+16;
+                    level1->lines[level1->n_lines].p2.y = level1->envs[(level1->n_envs)].pos_graphic.y+16;
+                    set_line_normal(&level1->lines[level1->n_lines], DOWN);
+                    set_line_box(&level1->lines[level1->n_lines]);
+                    level1->n_lines++;
+
+                    level1->lines[level1->n_lines].p1.x = level1->envs[(level1->n_envs)].pos_graphic.x;
+                    level1->lines[level1->n_lines].p1.y = level1->envs[(level1->n_envs)].pos_graphic.y;
+                    level1->lines[level1->n_lines].p2.x = level1->envs[(level1->n_envs)].pos_graphic.x;
+                    level1->lines[level1->n_lines].p2.y = level1->envs[(level1->n_envs)].pos_graphic.y+16;
+                    set_line_normal(&level1->lines[level1->n_lines], LEFT);
+                    set_line_box(&level1->lines[level1->n_lines]);
+                    level1->n_lines++;
+
+                    level1->lines[level1->n_lines].p1.x = level1->envs[(level1->n_envs)].pos_graphic.x+16;
+                    level1->lines[level1->n_lines].p1.y = level1->envs[(level1->n_envs)].pos_graphic.y;
+                    level1->lines[level1->n_lines].p2.x = level1->envs[(level1->n_envs)].pos_graphic.x+16;
+                    level1->lines[level1->n_lines].p2.y = level1->envs[(level1->n_envs)].pos_graphic.y+16;
+                    set_line_normal(&level1->lines[level1->n_lines], RIGHT);
+                    set_line_box(&level1->lines[level1->n_lines]);
+                    level1->n_lines++;
+
                     (level1->n_envs) += 1;
                     level1->envs[(level1->n_envs)].pos_graphic = level1->envs[(level1->n_envs) - 1].pos_graphic;
                     level1->envs[(level1->n_envs)].pos_graphic.y -= 16;

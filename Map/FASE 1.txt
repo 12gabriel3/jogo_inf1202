@@ -2,22 +2,22 @@
 #                                                          #
 #   J               Z                          T           #
 #                                 X                        #
-#            X         X                     X             #
-#                     X X         Z                  X     #
-#   X                X   X                          X      #
-#           X       X     X       X                X   T   #
-#                  X       X             Z        X        #
-#                 X    Z    X                    X         #
-#                X           X           X      X          #
-#     X         X     X       X                X           #
-#              X               X    Z         X       T    #
-#             X                 X            X             #
-#            X          Z        X          X    G         #
-#    Z      X       X             X        X               #
-#          X                        X     X             X  #
-#         X               X          X   X     T           #
-#        X                            X X                  #
-#       X         Z             T      X          X        #
+#            X         #                     X             #
+#                     # #         Z                  #     #
+#   X                #   #                          #      #
+#           X       #     #       X                #   T   #
+#                  #       #             Z        #        #
+#                 #    Z    #                    #         #
+#                #           #           X      #          #
+#     X         #     X       #                #           #
+#              #               #    Z         #       T    #
+#             #                 #            #             #
+#            #          Z        #          #    G         #
+#    Z      #       X             #        #               #
+#          #                        #     #             X  #
+#         #               X          #   #     T           #
+#        #                            # #                  #
+#       #         Z             T      #          X        #
 #       Z                                                  #
 #                                      T                   #
 ############################################################

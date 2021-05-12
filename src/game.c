@@ -31,8 +31,6 @@ int run_game(GAME *game, ALLEGRO_EVENT event)
             load_mapa("../Map/FASE 1.txt",&game->current_level,game->anims,game->sprites);
             game->score = 0;
 
-            add_line(&game->current_level);
-
             game->current_level.heart_full = get_sprite(game->sprites, "ui_heart_full");
             game->current_level.heart_empty = get_sprite(game->sprites, "ui_heart_empty");
             break;
@@ -110,6 +108,7 @@ void next_level(GAME *game){
     game->current_level.aura.active = 0;
     game->current_level.n_characters = 1;
     game->current_level.n_envs = 0;
+    game->current_level.n_lines = 0;
     load_mapa(level,&game->current_level,game->anims,game->sprites);
 }
 

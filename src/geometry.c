@@ -139,9 +139,9 @@ COORD invert(COORD c){
 
 
 COORD change_direction(COORD v, char direction){
-    if(direction & UP && v.y > 0) v.y = -fmod(v.y, 1.0);
+    if(direction & UP && v.y > 0) v.y = -v.y;
     else if(direction & DOWN && v.y < 0) v.y = -fmod(v.y, 1.0);
-    if(direction & LEFT && v.x > 0) v.x = -fmod(v.x, 1.0);
+    if(direction & LEFT && v.x > 0) v.x = -v.x;
     else if(direction & RIGHT && v.x < 0) v.x = -fmod(v.x, 1.0);
     return v;
 }
