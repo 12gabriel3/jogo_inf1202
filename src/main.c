@@ -19,19 +19,7 @@ int main()
     ALLEGRO_EVENT_QUEUE *queue;
     ALLEGRO_EVENT event;
     GAME game;
-    ALLEGRO_MONITOR_INFO monitor;
-    ALLEGRO_BITMAP *fundo = NULL;
-    /*                                                     Inicio altera��o sem o gabriel
-    -----------------------------------------------------------------------------------------------------------------------------------------------*/
-    int i;
 
-    for(i=0; i>200; i++)
-    {
-        game.current_level.characters[i].hitbox.bounds.center.x = 0;
-        game.current_level.characters[i].hitbox.bounds.center.y = 0;
-    }
-    /*                                                     fim altera��o sem o gabriel
-    -----------------------------------------------------------------------------------------------------------------------------------------------*/
     //intalar as coisas do allegro
     if(!al_init())
     {
@@ -40,14 +28,7 @@ int main()
 
     al_install_keyboard();
     al_install_mouse();
-    if(al_get_monitor_info(0, &monitor))
-    {
-        printf("%d, %d", monitor.x2, monitor.y2);
-    }
-    else
-    {
-        printf("Nao consegui");
-    }
+
     display = al_create_display(960,384);
 
     if (!display)
