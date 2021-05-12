@@ -15,6 +15,7 @@ int run_game(GAME *game, ALLEGRO_EVENT event)
             break;
         case CARREGA_JOGO:
             load_jogo("../save_game/game.save",game);
+            game->current_level.aura.anim.period = 20;
             break;
         case NOVO_JOGO:
             game->current_level.characters[0].lives = 3;
@@ -24,6 +25,7 @@ int run_game(GAME *game, ALLEGRO_EVENT event)
             game->current_level.aura.active = 0;
             game->current_level.n_characters = 1;
             game->current_level.n_envs = 0;
+            game->current_level.n_lines = 0;
             game->n_level = 1;
             load_mapa("../Map/FASE 1.txt",&game->current_level,game->anims,game->sprites);
             game->score = 0;

@@ -312,7 +312,7 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, LEVEL *level1, ANIMATION 
                 if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
                 {
                     level1->envs[(level1->n_envs)].is_anim = 0;
-                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_mid");
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_mid");                    
                     (level1->n_envs) += 1;
                     level1->envs[(level1->n_envs)].pos_graphic = level1->envs[(level1->n_envs) - 1].pos_graphic;
                     level1->envs[(level1->n_envs)].pos_graphic.y -= 16;
