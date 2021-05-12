@@ -67,6 +67,7 @@ int run_game(GAME *game, ALLEGRO_EVENT event)
                 next_level(game);
                 break;
             case GOT_TREASURE:
+                game->score += 100;
                 next_level(game);
                 break;
             case GAME_OVER:
