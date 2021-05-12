@@ -3,12 +3,13 @@
 
 int run_game(GAME *game, ALLEGRO_EVENT event)
 {
+    int cont = 1;
     if(game->state == PAUSE)
     {
         switch (run_menu(game->font,event))
         {
         case SAIR:
-            return 0;
+            cont = 0;
             break;
         case SALVA_JOGO:
             Salva_Jogo("../save_game/game.save",game);
@@ -79,7 +80,7 @@ int run_game(GAME *game, ALLEGRO_EVENT event)
             al_flip_display();
         }
     }
-    return 1;
+    return cont;
 }
 
 
