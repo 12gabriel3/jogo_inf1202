@@ -355,7 +355,229 @@ int Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, LEVEL *level1, ANIMATION *
                 if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
                 {
                     level1->envs[(level1->n_envs)].is_anim = 0;
-                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_mid");
+                    rand_num = rand() % 100;
+                    if(rand_num < 90)
+                        level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_mid");
+                    else if(rand_num < 95)
+                        level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_hole_1");
+                    else 
+                        level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_hole_2");
+                    add_collision(level1, 0, -4);
+
+                    (level1->n_envs) += 1;
+                    level1->envs[(level1->n_envs)].pos_graphic = level1->envs[(level1->n_envs) - 1].pos_graphic;
+                    level1->envs[(level1->n_envs)].pos_graphic.y -= 16;
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_top_mid");
+                    (level1->n_envs) += 1;
+                }
+            }
+
+            for(j=0; j<COLUNA; j++)
+            {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
+                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), 'B', mapa[i]);
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->envs[(level1->n_envs)].is_anim = 1;
+                    level1->envs[(level1->n_envs)].anim = *get_anim(animacao, "wall_fountain_mid_blue");
+                    add_collision(level1, 0, -4);
+
+                    (level1->n_envs) += 1;
+                    level1->envs[(level1->n_envs)].pos_graphic = level1->envs[(level1->n_envs) - 1].pos_graphic;
+                    level1->envs[(level1->n_envs)].pos_graphic.y -= 16;
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_fountain_top");
+                    (level1->n_envs) += 1;
+                }
+            }
+
+            for(j=0; j<COLUNA; j++)
+            {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
+                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), 'b', mapa[i]);
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->envs[(level1->n_envs)].is_anim = 1;
+                    level1->envs[(level1->n_envs)].anim = *get_anim(animacao,"wall_fountain_basin_blue_anim");
+
+                    (level1->n_envs) += 1;
+                }
+            }
+
+            for(j=0; j<COLUNA; j++)
+            {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
+                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), 'R', mapa[i]);
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->envs[(level1->n_envs)].is_anim = 1;
+                    level1->envs[(level1->n_envs)].anim = *get_anim(animacao, "wall_fountain_mid_red");
+                    add_collision(level1, 0, -4);
+
+                    (level1->n_envs) += 1;
+                    level1->envs[(level1->n_envs)].pos_graphic = level1->envs[(level1->n_envs) - 1].pos_graphic;
+                    level1->envs[(level1->n_envs)].pos_graphic.y -= 16;
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_fountain_top");
+                    (level1->n_envs) += 1;
+                }
+            }
+
+            for(j=0; j<COLUNA; j++)
+            {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
+                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), 'r', mapa[i]);
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->envs[(level1->n_envs)].is_anim = 1;
+                    level1->envs[(level1->n_envs)].anim = *get_anim(animacao,"wall_fountain_basin_red_anim");
+
+                    (level1->n_envs) += 1;
+                }
+            }
+
+            for(j=0; j<COLUNA; j++)
+            {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
+                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), 'C', mapa[i]);
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite, "wall_column_mid");
+                    add_collision(level1, 0, -4);
+
+                    (level1->n_envs) += 1;
+                    level1->envs[(level1->n_envs)].pos_graphic = level1->envs[(level1->n_envs) - 1].pos_graphic;
+                    level1->envs[(level1->n_envs)].pos_graphic.y -= 16;
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_column_top");
+                    (level1->n_envs) += 1;
+                }
+            }
+
+            for(j=0; j<COLUNA; j++)
+            {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
+                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), 'c', mapa[i]);
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_column_base");
+                    (level1->n_envs) += 1;
+                }
+            }
+
+            for(j=0; j<COLUNA; j++)
+            {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
+                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), 'M', mapa[i]);
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite, "wall_goo");
+                    add_collision(level1, 0, -4);
+
+                    (level1->n_envs) += 1;
+                    level1->envs[(level1->n_envs)].pos_graphic = level1->envs[(level1->n_envs) - 1].pos_graphic;
+                    level1->envs[(level1->n_envs)].pos_graphic.y -= 16;
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_top_mid");
+                    (level1->n_envs) += 1;
+                }
+            }
+
+            for(j=0; j<COLUNA; j++)
+            {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
+                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), 'm', mapa[i]);
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_goo_base");
+
+                    (level1->n_envs) += 1;
+                }
+            }
+
+
+            for(j=0; j<COLUNA; j++)
+            {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
+                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), '0', mapa[i]);
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite, "wall_banner_blue");
+                    add_collision(level1, 0, -4);
+
+                    (level1->n_envs) += 1;
+                    level1->envs[(level1->n_envs)].pos_graphic = level1->envs[(level1->n_envs) - 1].pos_graphic;
+                    level1->envs[(level1->n_envs)].pos_graphic.y -= 16;
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_top_mid");
+                    (level1->n_envs) += 1;
+                }
+            }
+
+            for(j=0; j<COLUNA; j++)
+            {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
+                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), '1', mapa[i]);
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite, "wall_banner_green");
+                    add_collision(level1, 0, -4);
+
+                    (level1->n_envs) += 1;
+                    level1->envs[(level1->n_envs)].pos_graphic = level1->envs[(level1->n_envs) - 1].pos_graphic;
+                    level1->envs[(level1->n_envs)].pos_graphic.y -= 16;
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_top_mid");
+                    (level1->n_envs) += 1;
+                }
+            }
+
+            for(j=0; j<COLUNA; j++)
+            {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
+                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), '2', mapa[i]);
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite, "wall_banner_red");
+                    add_collision(level1, 0, -4);
+
+                    (level1->n_envs) += 1;
+                    level1->envs[(level1->n_envs)].pos_graphic = level1->envs[(level1->n_envs) - 1].pos_graphic;
+                    level1->envs[(level1->n_envs)].pos_graphic.y -= 16;
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_top_mid");
+                    (level1->n_envs) += 1;
+                }
+            }
+
+            for(j=0; j<COLUNA; j++)
+            {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
+                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), '3', mapa[i]);
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite, "wall_banner_yellow");
                     add_collision(level1, 0, -4);
 
                     (level1->n_envs) += 1;
@@ -619,7 +841,9 @@ void Coordenada(int linha,int coluna,float *cord_x,float *cord_y, char busca, ch
 {
     int corre_coluna;
     if((busca != '#') && (busca != ' ') && (busca != 'G') && (busca != 'X') && (busca != '|') && (busca != 'l') && (busca != '^')
-         && (busca != '>') && (busca != 'v') && (busca != '<') && (busca != 'w'))
+         && (busca != '>') && (busca != 'v') && (busca != '<') && (busca != 'w') && (busca != 'B') && (busca != 'b') && (busca != 'R')
+          && (busca != 'r') && (busca != '0') && (busca != '1') && (busca != '2') && (busca != '3') && (busca != 'M') && (busca != 'm')
+           && (busca != 'C') && (busca != 'c'))
     {
         for(corre_coluna = 0; corre_coluna < COLUNA; corre_coluna ++)
         {
