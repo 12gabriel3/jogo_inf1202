@@ -111,20 +111,8 @@ int load_jogo(char nome_arquivo_out[MAX_NOME],GAME *game)
 
     for(i=1; i < game->current_level.n_characters; i++)
     {
-        switch (game->current_level.characters[i].type)
-        {
-        case EnemyOgre:
-            game->current_level.characters[i].anims = get_anim(game->anims,"big_zombie");
-            game->current_level.characters[i].current = game->current_level.characters[i].anims[0];
-            break;
-        case EnemySkeleton:
-            game->current_level.characters[i].anims = get_anim(game->anims,"skelet_idle");
-            game->current_level.characters[i].current = game->current_level.characters[i].anims[0];
-            break;
-        case EnemySpike:
-            game->current_level.characters[i].anims = get_anim(game->anims,"floor_spikes");
-            game->current_level.characters[i].current = game->current_level.characters[i].anims[0];
-        }
+        game->current_level.characters[i].anims = get_anim(game->anims,game->current_level.characters[i].anims->name);
+        game->current_level.characters[i].current = game->current_level.characters[i].anims[0];
     }
 
     for(i=0; i < game->current_level.n_envs; i++)
