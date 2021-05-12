@@ -8,7 +8,7 @@
 #include <allegro5/allegro_color.h>
 
 #define ENVS_MAX 2000
-#define CHARACTERS_MAX 100
+#define CHARACTERS_MAX 200
 #define LINES_MAX 100
 #define UI_MAX 50
 

@@ -24,6 +24,7 @@ int run_game(GAME *game, ALLEGRO_EVENT event)
             game->current_level.aura.active = 0;
             game->current_level.n_characters = 1;
             game->current_level.n_envs = 0;
+            game->n_level = 1;
             load_mapa("../Map/FASE 1.txt",&game->current_level,game->anims,game->sprites);
             game->score = 0;
 
@@ -61,10 +62,10 @@ int run_game(GAME *game, ALLEGRO_EVENT event)
             switch(level_over(&game->current_level))
             {
             case KILLED_MONSTERS:
-                al_draw_text(game->font, al_color_name("yellow"), 100, 100, 0, "Voce matou todos os monstros");
+                next_level(game);
                 break;
             case GOT_TREASURE:
-                al_draw_text(game->font, al_color_name("yellow"), 100, 100, 0, "Voce pegou o testouro");
+                next_level(game);
                 break;
             case GAME_OVER:
                 al_draw_text(game->font, al_color_name("yellow"), 100, 100, 0, "GAME OVER");
@@ -94,6 +95,18 @@ int Salva_Jogo(char nome_arquivo_out[MAX_NOME],GAME *game)
     fclose(arq);
 
     return falha;
+}
+
+void next_level(GAME *game){
+    char level[22] = "../Map/FASE ";
+    char number[4];
+    game->n_level++;
+    strcat(level, itoa(game->n_level, number, 10));
+    strcat(level, ".txt");
+    game->current_level.aura.active = 0;
+    game->current_level.n_characters = 1;
+    game->current_level.n_envs = 0;
+    load_mapa(level,&game->current_level,game->anims,game->sprites);
 }
 
 int load_jogo(char nome_arquivo_out[MAX_NOME],GAME *game)

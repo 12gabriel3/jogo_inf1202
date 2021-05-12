@@ -19,7 +19,11 @@ typedef struct {
 } GAME;
 
 int run_game(GAME *game, ALLEGRO_EVENT event);
+
 int Salva_Jogo(char nome_arquivo_out[MAX_NOME],GAME *game);
+
 int load_jogo(char nome_arquivo_out[MAX_NOME],GAME *game);
+
+void next_level(GAME *game);
 
 #endif
