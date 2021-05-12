@@ -206,11 +206,47 @@ int load_mapa(char Nome_Mapa[], LEVEL *level,ANIMATION *anims1,SPRITE *sprite1)
     return Busca(Nome_Mapa, Arq, level, anims1,sprite1);
 }
 
+void add_collision(LEVEL *level1, int dx, int dy){
+    level1->lines[level1->n_lines].p1.x = level1->envs[(level1->n_envs)].pos_graphic.x + dx;
+    level1->lines[level1->n_lines].p1.y = level1->envs[(level1->n_envs)].pos_graphic.y + dy;
+    level1->lines[level1->n_lines].p2.x = level1->envs[(level1->n_envs)].pos_graphic.x+16 + dx;
+    level1->lines[level1->n_lines].p2.y = level1->envs[(level1->n_envs)].pos_graphic.y + dy;
+    set_line_normal(&level1->lines[level1->n_lines], UP);
+    set_line_box(&level1->lines[level1->n_lines]);
+    level1->n_lines++;
+
+    level1->lines[level1->n_lines].p1.x = level1->envs[(level1->n_envs)].pos_graphic.x + dx;
+    level1->lines[level1->n_lines].p1.y = level1->envs[(level1->n_envs)].pos_graphic.y+16 + dy;
+    level1->lines[level1->n_lines].p2.x = level1->envs[(level1->n_envs)].pos_graphic.x+16 + dx;
+    level1->lines[level1->n_lines].p2.y = level1->envs[(level1->n_envs)].pos_graphic.y+16 + dy;
+    set_line_normal(&level1->lines[level1->n_lines], DOWN);
+    set_line_box(&level1->lines[level1->n_lines]);
+    level1->n_lines++;
+
+    level1->lines[level1->n_lines].p1.x = level1->envs[(level1->n_envs)].pos_graphic.x + dx;
+    level1->lines[level1->n_lines].p1.y = level1->envs[(level1->n_envs)].pos_graphic.y + dy;
+    level1->lines[level1->n_lines].p2.x = level1->envs[(level1->n_envs)].pos_graphic.x + dx;
+    level1->lines[level1->n_lines].p2.y = level1->envs[(level1->n_envs)].pos_graphic.y+16 + dy;
+    set_line_normal(&level1->lines[level1->n_lines], LEFT);
+    set_line_box(&level1->lines[level1->n_lines]);
+    level1->n_lines++;
+
+    level1->lines[level1->n_lines].p1.x = level1->envs[(level1->n_envs)].pos_graphic.x+16 + dx;
+    level1->lines[level1->n_lines].p1.y = level1->envs[(level1->n_envs)].pos_graphic.y + dy;
+    level1->lines[level1->n_lines].p2.x = level1->envs[(level1->n_envs)].pos_graphic.x+16 + dx;
+    level1->lines[level1->n_lines].p2.y = level1->envs[(level1->n_envs)].pos_graphic.y+16 + dy;
+    set_line_normal(&level1->lines[level1->n_lines], RIGHT);
+    set_line_box(&level1->lines[level1->n_lines]);
+    level1->n_lines++;
+}
+
 int Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, LEVEL *level1, ANIMATION *animacao, SPRITE *sprite)
 {
     int i=0,j,n_monstro = 0;
     char mapa[LINHA][COLUNA];
     char texto_str[COLUNA];
+    char env_name[20];
+    int rand_num;
 
     if(!(arq = fopen((nome_arquivo_inp),"r")))
     {
@@ -228,7 +264,8 @@ int Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, LEVEL *level1, ANIMATION *
         }
         while(!feof(arq));
         fclose(arq);
-
+        
+        srand(time(NULL));
         for(i=0; i<LINHA; i++)
         {
             level1->characters[(level1->n_characters)].hitbox.bounds.center.x = -1;
@@ -319,38 +356,7 @@ int Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, LEVEL *level1, ANIMATION *
                 {
                     level1->envs[(level1->n_envs)].is_anim = 0;
                     level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_mid");
-
-                    level1->lines[level1->n_lines].p1.x = level1->envs[(level1->n_envs)].pos_graphic.x;
-                    level1->lines[level1->n_lines].p1.y = level1->envs[(level1->n_envs)].pos_graphic.y;
-                    level1->lines[level1->n_lines].p2.x = level1->envs[(level1->n_envs)].pos_graphic.x+16;
-                    level1->lines[level1->n_lines].p2.y = level1->envs[(level1->n_envs)].pos_graphic.y;
-                    set_line_normal(&level1->lines[level1->n_lines], UP);
-                    set_line_box(&level1->lines[level1->n_lines]);
-                    level1->n_lines++;
-
-                    level1->lines[level1->n_lines].p1.x = level1->envs[(level1->n_envs)].pos_graphic.x;
-                    level1->lines[level1->n_lines].p1.y = level1->envs[(level1->n_envs)].pos_graphic.y+16;
-                    level1->lines[level1->n_lines].p2.x = level1->envs[(level1->n_envs)].pos_graphic.x+16;
-                    level1->lines[level1->n_lines].p2.y = level1->envs[(level1->n_envs)].pos_graphic.y+16;
-                    set_line_normal(&level1->lines[level1->n_lines], DOWN);
-                    set_line_box(&level1->lines[level1->n_lines]);
-                    level1->n_lines++;
-
-                    level1->lines[level1->n_lines].p1.x = level1->envs[(level1->n_envs)].pos_graphic.x;
-                    level1->lines[level1->n_lines].p1.y = level1->envs[(level1->n_envs)].pos_graphic.y;
-                    level1->lines[level1->n_lines].p2.x = level1->envs[(level1->n_envs)].pos_graphic.x;
-                    level1->lines[level1->n_lines].p2.y = level1->envs[(level1->n_envs)].pos_graphic.y+16;
-                    set_line_normal(&level1->lines[level1->n_lines], LEFT);
-                    set_line_box(&level1->lines[level1->n_lines]);
-                    level1->n_lines++;
-
-                    level1->lines[level1->n_lines].p1.x = level1->envs[(level1->n_envs)].pos_graphic.x+16;
-                    level1->lines[level1->n_lines].p1.y = level1->envs[(level1->n_envs)].pos_graphic.y;
-                    level1->lines[level1->n_lines].p2.x = level1->envs[(level1->n_envs)].pos_graphic.x+16;
-                    level1->lines[level1->n_lines].p2.y = level1->envs[(level1->n_envs)].pos_graphic.y+16;
-                    set_line_normal(&level1->lines[level1->n_lines], RIGHT);
-                    set_line_box(&level1->lines[level1->n_lines]);
-                    level1->n_lines++;
+                    add_collision(level1, 0, -4);
 
                     (level1->n_envs) += 1;
                     level1->envs[(level1->n_envs)].pos_graphic = level1->envs[(level1->n_envs) - 1].pos_graphic;
@@ -360,13 +366,224 @@ int Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, LEVEL *level1, ANIMATION *
                     (level1->n_envs) += 1;
                 }
             }
+
+            for(j=0; j<COLUNA; j++)
+            {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
+                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), 'w', mapa[i]);
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_mid");
+                    add_collision(level1, 0, -4);
+
+                    (level1->n_envs) += 1;
+                }
+            }
+
+            for(j=0; j<COLUNA; j++)
+            {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
+                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), '|', mapa[i]);
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {   
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    strcpy(env_name, "floor_");
+                    rand_num = rand() % 100;
+                    if(rand_num < 93)
+                        strcat(env_name, "1");
+                    else if(rand_num < 94)
+                        strcat(env_name, "2");
+                    else if(rand_num < 95)
+                        strcat(env_name, "3");
+                    else if(rand_num < 96)
+                        strcat(env_name, "4");
+                    else if(rand_num < 97)
+                        strcat(env_name, "5");
+                    else if(rand_num < 98)
+                        strcat(env_name, "6");
+                    else if(rand_num < 99)
+                        strcat(env_name, "7");
+                    else
+                        strcat(env_name, "8");
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite, env_name);
+                    (level1->n_envs) += 1;
+
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_side_mid_right");
+                    level1->envs[(level1->n_envs)].pos_graphic = level1->envs[(level1->n_envs - 1)].pos_graphic;
+                    add_collision(level1, -12, 0);
+                    (level1->n_envs) += 1;
+
+                    
+                }
+            }
+
+            for(j=0; j<COLUNA; j++)
+            {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
+                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), 'l', mapa[i]);
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    strcpy(env_name, "floor_");
+                    rand_num = rand() % 100;
+                    if(rand_num < 93)
+                        strcat(env_name, "1");
+                    else if(rand_num < 94)
+                        strcat(env_name, "2");
+                    else if(rand_num < 95)
+                        strcat(env_name, "3");
+                    else if(rand_num < 96)
+                        strcat(env_name, "4");
+                    else if(rand_num < 97)
+                        strcat(env_name, "5");
+                    else if(rand_num < 98)
+                        strcat(env_name, "6");
+                    else if(rand_num < 99)
+                        strcat(env_name, "7");
+                    else
+                        strcat(env_name, "8");
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite, env_name);
+                    (level1->n_envs) += 1;
+                    level1->envs[(level1->n_envs)].pos_graphic = level1->envs[(level1->n_envs - 1)].pos_graphic;
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_side_mid_left");
+                    add_collision(level1, 12, 0);
+                    (level1->n_envs) += 1;
+                }
+            }
+
+            for(j=0; j<COLUNA; j++)
+            {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
+                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), '^', mapa[i]);
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_inner_corner_mid_right");
+                    add_collision(level1, 12, 0);
+                    add_collision(level1, 0, -4);
+                    (level1->n_envs) += 1;
+                }
+            }
+
+            for(j=0; j<COLUNA; j++)
+            {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
+                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), '>', mapa[i]);
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    strcpy(env_name, "floor_");
+                    rand_num = rand() % 100;
+                    if(rand_num < 93)
+                        strcat(env_name, "1");
+                    else if(rand_num < 94)
+                        strcat(env_name, "2");
+                    else if(rand_num < 95)
+                        strcat(env_name, "3");
+                    else if(rand_num < 96)
+                        strcat(env_name, "4");
+                    else if(rand_num < 97)
+                        strcat(env_name, "5");
+                    else if(rand_num < 98)
+                        strcat(env_name, "6");
+                    else if(rand_num < 99)
+                        strcat(env_name, "7");
+                    else
+                        strcat(env_name, "8");
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite, env_name);
+                    (level1->n_envs) += 1;
+                    level1->envs[(level1->n_envs)].pos_graphic = level1->envs[(level1->n_envs - 1)].pos_graphic;
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_inner_corner_l_top_rigth");
+                    add_collision(level1, 12, 0);
+                    (level1->n_envs) += 1;
+                }
+            }
+
+            for(j=0; j<COLUNA; j++)
+            {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
+                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), 'v', mapa[i]);
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    strcpy(env_name, "floor_");
+                    rand_num = rand() % 100;
+                    if(rand_num < 93)
+                        strcat(env_name, "1");
+                    else if(rand_num < 94)
+                        strcat(env_name, "2");
+                    else if(rand_num < 95)
+                        strcat(env_name, "3");
+                    else if(rand_num < 96)
+                        strcat(env_name, "4");
+                    else if(rand_num < 97)
+                        strcat(env_name, "5");
+                    else if(rand_num < 98)
+                        strcat(env_name, "6");
+                    else if(rand_num < 99)
+                        strcat(env_name, "7");
+                    else
+                        strcat(env_name, "8");
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite, env_name);
+                    (level1->n_envs) += 1;
+                    level1->envs[(level1->n_envs)].pos_graphic = level1->envs[(level1->n_envs - 1)].pos_graphic;
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_inner_corner_l_top_left");
+                    add_collision(level1, -12, 0);
+                    (level1->n_envs) += 1;
+                }
+            }
+
+            for(j=0; j<COLUNA; j++)
+            {
+                level1->envs[(level1->n_envs)].pos_graphic.x = -1;
+                level1->envs[(level1->n_envs)].pos_graphic.y = -1;
+                Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), '<', mapa[i]);
+                if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
+                {
+                    level1->envs[(level1->n_envs)].is_anim = 0;
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"wall_inner_corner_mid_left");
+                    add_collision(level1, -12, 0);
+                    add_collision(level1, 0, -4);
+                    (level1->n_envs) += 1;
+                }
+            }
+
             for(j=0; j<COLUNA; j++)
             {
                 Coordenada(i,j, &(level1->envs[(level1->n_envs)].pos_graphic.x), &(level1->envs[(level1->n_envs)].pos_graphic.y), ' ', mapa[i]);
                 if(((level1->envs[(level1->n_envs)].pos_graphic.x)!= -1)||((level1->envs[(level1->n_envs)].pos_graphic.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
                 {
                     level1->envs[(level1->n_envs)].is_anim = 0;
-                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite,"floor");
+                    strcpy(env_name, "floor_");
+                    rand_num = rand() % 100;
+                    if(rand_num < 93)
+                        strcat(env_name, "1");
+                    else if(rand_num < 94)
+                        strcat(env_name, "2");
+                    else if(rand_num < 95)
+                        strcat(env_name, "3");
+                    else if(rand_num < 96)
+                        strcat(env_name, "4");
+                    else if(rand_num < 97)
+                        strcat(env_name, "5");
+                    else if(rand_num < 98)
+                        strcat(env_name, "6");
+                    else if(rand_num < 99)
+                        strcat(env_name, "7");
+                    else
+                        strcat(env_name, "8");
+                    level1->envs[(level1->n_envs)].sprite = get_sprite(sprite, env_name);
                     (level1->n_envs) += 1;
                 }
             }
@@ -401,7 +618,8 @@ int Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, LEVEL *level1, ANIMATION *
 void Coordenada(int linha,int coluna,float *cord_x,float *cord_y, char busca, char Mapa[])
 {
     int corre_coluna;
-    if((busca != '#') && (busca != ' ') && (busca != 'G') && (busca != 'X'))
+    if((busca != '#') && (busca != ' ') && (busca != 'G') && (busca != 'X') && (busca != '|') && (busca != 'l') && (busca != '^')
+         && (busca != '>') && (busca != 'v') && (busca != '<') && (busca != 'w'))
     {
         for(corre_coluna = 0; corre_coluna < COLUNA; corre_coluna ++)
         {

@@ -6,6 +6,8 @@
 #include <character.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_color.h>
+#include <stdlib.h>
+#include <time.h>
 
 #define ENVS_MAX 2000
 #define CHARACTERS_MAX 200

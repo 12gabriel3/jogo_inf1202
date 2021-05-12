@@ -1,23 +1,23 @@
-############################################################
-#                                       Z                  #
-#   J            Z                                    Z    #
-#                           Z                              #
-#                 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX          #
-#                XXXX                                      #
-#               XXXX                  T                    #
-#              XXXX                                   Z    #
-#         Z   XXXX       T                                 #
-#            XXXX                              T           #
-#           XXXX                                           #
-#          XXXX                  XXXXXXXXXXXXXXXXX         #
-#  Z       XXXX                  XXXXXXXXXXXXXXXXX         #
-#           XXXX       T                        XX         #
-#            XXXX                      T        XX     Z   #
-#             XXXX                              XX         #
-#              XXXX            T                XX         #
-#               XXXX                          G XX         #
-#         Z      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX         #
-#                                        Z                 #
-#                                                      Z   #
-#  Z                   Z                                   #
-############################################################
+<##########################################################^
+|                                       Z                  l
+|   J            Z                                    Z    l
+|                           Z                              l
+|                 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX          l
+|                XXXX                                      l
+|               XXXX                  T                    l
+|              XXXX                                   Z    l
+|         Z   XXXX       T                                 l
+|            XXXX                              T           l
+|           XXXX                                           l
+|          XXXX                  XXXXXXXXXXXXXXXXX         l
+|  Z       XXXX                  XXXXXXXXXXXXXXXXX         l
+|           XXXX       T                        XX         l
+|            XXXX                      T        XX     Z   l
+|             XXXX                              XX         l
+|              XXXX            T                XX         l
+|               XXXX                          G XX         l
+|         Z      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX         l
+|                                        Z                 l
+|                                                      Z   l
+v  Z                   Z                                   >
+w##########################################################w
