@@ -36,7 +36,7 @@ void update_characters(LEVEL *level);
 
 void get_main_collision(LEVEL *level);
 
-int atk(LEVEL *level);
+int atk(LEVEL *level, ANIMATION *anims);
 
 void Coordenada(int linha,int coluna,float *cord_x,float *cord_y, char busca, char Mapa[]);
 

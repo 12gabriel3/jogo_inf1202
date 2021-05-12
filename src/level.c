@@ -12,7 +12,7 @@ void set_characters_intention(LEVEL *level)
             break;
         case EnemyOgre:
             level->characters[i].direction = direction_from_to(level->characters[i].hitbox.bounds.center, level->characters[0].hitbox.bounds.center);
-            if(module(dist_from_to(level->characters[i].hitbox.bounds.center, level->characters[0].hitbox.bounds.center)) < 150)
+            if(module(dist_from_to(level->characters[i].hitbox.bounds.center, level->characters[0].hitbox.bounds.center)) < 150 && level->characters[i].lives == 1)
                 level->characters[i].speed = 1.5;
             else
                 level->characters[i].speed = 0.8;
@@ -129,7 +129,7 @@ void update_characters(LEVEL *level)
     }
 }
 
-int atk(LEVEL *level)
+int atk(LEVEL *level, ANIMATION *anims)
 {
     int i, points = 0;
     if(level->input & ATTACK && level->characters[0].atk_timer == 0)
@@ -160,6 +160,11 @@ int atk(LEVEL *level)
                         points += 20;
                     else
                         points += 10;
+                } else {
+                    if(level->characters[i].type == EnemyOgre) {
+                        level->characters[i].anims = get_anim(anims, "tiny_zombie");
+                        set_character_hitbox(&level->characters[i]);
+                    }
                 }
                 level->characters[i].inv_timer = INV_TIMER;
             }

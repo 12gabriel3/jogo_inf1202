@@ -16,6 +16,7 @@ int run_game(GAME *game, ALLEGRO_EVENT event)
         case CARREGA_JOGO:
             load_jogo("../save_game/game.save",game);
             game->current_level.aura.anim.period = 20;
+            game->current_level.input = 0;
             break;
         case NOVO_JOGO:
             game->current_level.characters[0].lives = 3;
@@ -47,7 +48,7 @@ int run_game(GAME *game, ALLEGRO_EVENT event)
         //limpa a tela p preto (tabela RGB 000) p cada atualiza��o
         if(game->current_level.input &ESC)
         {
-            game->current_level.input &= ~ESC;
+            game->current_level.input = 0;;
             game->state = PAUSE;
         }
 
@@ -59,7 +60,7 @@ int run_game(GAME *game, ALLEGRO_EVENT event)
             //atualiza as caracteristicas de cada char
             update_characters(&game->current_level);
             get_main_collision(&game->current_level);
-            game->score += atk(&game->current_level);
+            game->score += atk(&game->current_level, game->anims);
             update_ui(&game->current_level, game->font, game->score);
             switch(level_over(&game->current_level))
             {
