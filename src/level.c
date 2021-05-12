@@ -230,7 +230,7 @@ void Busca(char nome_arquivo_inp[MAX_NOME], FILE *arq, LEVEL *level1, ANIMATION 
             Coordenada(i,0, &(level1->characters[0].hitbox.bounds.center.x), &(level1->characters[0].hitbox.bounds.center.y), 'J', mapa[i]);
             if(((level1->characters[0].hitbox.bounds.center.x)!= -1)||((level1->characters[0].hitbox.bounds.center.y) != -1))                                  //verifica se a posi��o atual da matriz ainda � zero, caso contrario atualiza o numero de OGROS no mapa
             {
-                level1->characters[0].anims = get_anim(animacao, "wizzard_m");
+                level1->characters[0].anims = get_anim(animacao, "wizzard_f");
                 level1->characters[0].current = level1->characters[0].anims[0];
                 level1->characters[0].speed = 3;
                 set_character_hitbox(&level1->characters[0]);

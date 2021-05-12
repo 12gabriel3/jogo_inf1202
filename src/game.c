@@ -127,5 +127,11 @@ int load_jogo(char nome_arquivo_out[MAX_NOME],GAME *game)
         }
     }
 
+    for(i=0; i < game->current_level.n_envs; i++)
+    {
+        if(game->current_level.envs[i].is_anim) game->current_level.envs[i].anim = *get_anim(game->anims, game->current_level.envs[i].anim.name);
+        else game->current_level.envs[i].sprite = get_sprite(game->sprites, game->current_level.envs[i].sprite->name);
+    }
+
     return falha;
 }
